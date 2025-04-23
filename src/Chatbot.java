@@ -1,2 +1,2 @@
-public interface Chatbot {
+public class Chatbot {
 }
