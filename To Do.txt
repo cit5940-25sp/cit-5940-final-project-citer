@@ -1,0 +1,3 @@
+1. Narrow down the moods that I wish to cover in this project
+2. Understand the food and restaurants around philly.
+3. Analyse the text based on sentiment analysis ? -> check with TAs if this is allowed.
