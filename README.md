@@ -11,45 +11,28 @@ This is an example of a project directory for you to start working from. Please 
 |--- README.md # explanation for the purpose of your repo
 |--- src
     |----- *.java (source code files)
+    ├── ChatBot.java          (the brain)
+    ├── Command.java          (the command interface)
+    ├── AcademicCommand.java  (course planning feature)
+    ├── TodoCommand.java      (daily planner feature)
+    ├── FoodCommand.java      (food recommendations feature)
+    ├── CoursePlanner.java    (DAG for course recommendations)
+    ├── DailyPlanner.java     (Stack for tasks)
+    ├── Task.java              (Represents a to-do task)
+    ├── Restaurant.java        (Represents a restaurant)
+    ├── RestaurantData.java    (Load restaurants from CSV)
+    ├── FoodRecommendationStrategy.java (Strategy pattern interface)
+    ├── HighestRatedStrategy.java (Concrete strategy)
+    ├── RandomStrategy.java     (Concrete strategy)
+    ├── CourseReviewLoader.java (Loader if you want course reviews)
+    ├── CourseReview.java       (Course review object)
+    ├── ReviewCommand.java      (Optional: View course reviews)
 |--- test
     |----- *Test.java (unit test files)
+├── data
+    ├── restaurant_data.csv
+    ├── cis_course_reviews.csv
 ```
 
 design pattern: command & startegy
-
-
-class diagram
-
-
-+----------------+
-|    ChatBot     |
-+----------------+
-| - ruleMap: HashMap<String, Command> |
-| + handleInput(input: String): void  |
-+----------------+
-           |
-           | uses
-           v
-+----------------+
-|    Command     |   <<interface>>
-+----------------+
-| + execute(): void |
-+----------------+
-     /      |      \
-    /       |       \
-   v        v        v
-+----------------+  +----------------+  +----------------+
-| AcademicCommand|  |  FoodCommand   |  |  TodoCommand   |
-+----------------+  +----------------+  +----------------+
-| + execute()    |  | + execute()    |  | + execute()    |
-+----------------+  +----------------+  +----------------+
-       |                        |                    |
-       v                        |                    v
-+---------------------+         |        +----------------------+
-|   CoursePlanner     |         |        |    DailyPlanner      |
-+---------------------+         |        +----------------------+
-| - adjList: Map<Node, List<Node>> |      | - stack: Stack<Task>     |
-| + topoSort(): List<Course>       |      | + addTask(t: Task): void |
-| + recommendCourses(i: String): List<Course> | | + getNextTask(): Task   |
-+---------------------+                  +----------------------+
 
