@@ -14,3 +14,42 @@ This is an example of a project directory for you to start working from. Please 
 |--- test
     |----- *Test.java (unit test files)
 ```
+
+design pattern: command & startegy
+
+
+class diagram
+
+
++----------------+
+|    ChatBot     |
++----------------+
+| - ruleMap: HashMap<String, Command> |
+| + handleInput(input: String): void  |
++----------------+
+           |
+           | uses
+           v
++----------------+
+|    Command     |   <<interface>>
++----------------+
+| + execute(): void |
++----------------+
+     /      |      \
+    /       |       \
+   v        v        v
++----------------+  +----------------+  +----------------+
+| AcademicCommand|  |  FoodCommand   |  |  TodoCommand   |
++----------------+  +----------------+  +----------------+
+| + execute()    |  | + execute()    |  | + execute()    |
++----------------+  +----------------+  +----------------+
+       |                        |                    |
+       v                        |                    v
++---------------------+         |        +----------------------+
+|   CoursePlanner     |         |        |    DailyPlanner      |
++---------------------+         |        +----------------------+
+| - adjList: Map<Node, List<Node>> |      | - stack: Stack<Task>     |
+| + topoSort(): List<Course>       |      | + addTask(t: Task): void |
+| + recommendCourses(i: String): List<Course> | | + getNextTask(): Task   |
++---------------------+                  +----------------------+
+
