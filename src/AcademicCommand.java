@@ -136,7 +136,9 @@ public class AcademicCommand implements Command {
         for (CourseRecommendation rec : recommendations) {
             System.out.println(rec);
             count++;
-            if (count >= maxRecommendations) break;
+            if (count >= maxRecommendations) {
+                break;
+            }
         }
     }
 
