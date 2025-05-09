@@ -1,38 +1,56 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ChatBot {
+    // Maps command keywords (like "course") to their corresponding Command implementations
     private HashMap<String, Command> ruleMap;
 
+    // Maps numeric options (1, 2, ...) to command keywords for numbered selection
+    private HashMap<Integer, String> numberToCommand;
+
+    // Tracks the next available number for command registration
+    private int nextCommandIndex = 1;
+
+    // Constructor: initialize data structures
     public ChatBot() {
         ruleMap = new HashMap<>();
+        numberToCommand = new HashMap<>();
     }
 
+    // Registers a command by keyword and also assigns it a numeric shortcut
     public void registerRule(String input, Command command) {
         ruleMap.put(input, command);
+        numberToCommand.put(nextCommandIndex++, input);
     }
 
+    // Handles user input: executes the matched command or suggests a correction
     public void handleInput(String input) {
         Command command = ruleMap.get(input);
         if (command != null) {
+            // Run the associated feature
             command.execute();
         } else {
-            System.out.println("Sorry, I don't understand that.");
+            String suggestion = suggestCommand(input); // Try to correct a typo
+            if (suggestion != null) {
+                System.out.println("❓ Did you mean \"" + suggestion + "\"?");
+            } else {
+                System.out.println("❌ Sorry, I don't understand that.");
+            }
         }
     }
+
+    // Main program loop
     public static void main(String[] args) {
         ChatBot bot = new ChatBot();
 
-        // Load datasets
+        // Load datasets from CSV files
         List<Restaurant> restaurants = RestaurantData.loadFromCSV("../data/restaurant_data.csv");
         List<CourseReview> courseReviews = CourseReviewData.loadFromCSV("../data/cis_courses.csv");
 
-        // Set up Data Structures
+        // Initialize core data structures
         CoursePlanner coursePlanner = new CoursePlanner();
         DailyPlanner dailyPlanner = new DailyPlanner();
 
-        // Register Commands
+        // Register commands and their associated features
         bot.registerRule("course", new AcademicCommand(coursePlanner));
         bot.registerRule("todo", new TodoCommand(dailyPlanner));
         bot.registerRule("food", new FoodCommand(restaurants));
@@ -41,18 +59,78 @@ public class ChatBot {
         System.out.println("🤖 Welcome to the Planner Bot!");
         Scanner scanner = new Scanner(System.in);
 
+        // User interaction loop
         while (true) {
+            // Show available options
             System.out.println("\nWhat would you like help with?");
-            System.out.println("Options: [course] [food] [todo] [review] [exit]");
+            for (Map.Entry<Integer, String> entry : bot.numberToCommand.entrySet()) {
+                System.out.println("[" + entry.getKey() + "] " + entry.getValue());
+            }
+            System.out.println("[exit] to quit");
             System.out.print("> ");
+
+            // Read user input
             String input = scanner.nextLine().toLowerCase().trim();
 
+            // Handle exit case
             if (input.equals("exit")) {
                 System.out.println("👋 Goodbye! Have a great day!");
                 break;
             }
+
+            // Convert numeric input to command string if valid
+            if (input.matches("\\d+")) {
+                int num = Integer.parseInt(input);
+                String mapped = bot.numberToCommand.get(num);
+                if (mapped != null) {
+                    input = mapped;
+                }
+            }
+
+            // Handle the input using ruleMap
             bot.handleInput(input);
         }
     }
 
+    // Suggests the closest command if the user input doesn't match exactly
+    private String suggestCommand(String input) {
+        int minDistance = Integer.MAX_VALUE;
+        String suggestion = null;
+
+        for (String command : ruleMap.keySet()) {
+            int dist = editDistance(input, command);
+            if (dist < minDistance) {
+                minDistance = dist;
+                suggestion = command;
+            }
+        }
+
+        // Only suggest if edit distance is small enough (≤2)
+        return (minDistance <= 2) ? suggestion : null;
+    }
+
+    // Computes the edit distance between two strings
+    private int editDistance(String a, String b) {
+        int[][] dp = new int[a.length() + 1][b.length() + 1];
+
+        for (int i = 0; i <= a.length(); i++) {
+            for (int j = 0; j <= b.length(); j++) {
+                if (i == 0) {
+                    dp[i][j] = j; // Inserting all characters of b
+                } else if (j == 0) {
+                    dp[i][j] = i; // Deleting all characters of a
+                } else if (a.charAt(i - 1) == b.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1]; // Characters match
+                } else {
+                    // Minimum of insert, delete, or replace
+                    dp[i][j] = 1 + Math.min(
+                            dp[i - 1][j - 1],
+                            Math.min(dp[i - 1][j], dp[i][j - 1])
+                    );
+                }
+            }
+        }
+
+        return dp[a.length()][b.length()];
+    }
 }
