@@ -1,32 +1,32 @@
 import java.util.*;
 
 public class ChatBot {
-    // Maps command keywords (like "course") to their corresponding Command implementations
+    // maps command keywords (like "course") to their corresponding Command implementations
     private HashMap<String, Command> ruleMap;
 
-    // Maps numeric options (1, 2, ...) to command keywords for numbered selection
+    // maps numeric options to command keywords for numbered selection
     private HashMap<Integer, String> numberToCommand;
 
-    // Tracks the next available number for command registration
+    // tracks the next available number for command registration
     private int nextCommandIndex = 1;
 
-    // Constructor: initialize data structures
+    // constructor: initialize data structures
     public ChatBot() {
         ruleMap = new HashMap<>();
         numberToCommand = new HashMap<>();
     }
 
-    // Registers a command by keyword and also assigns it a numeric shortcut
+    // registers a command by keyword and also assigns it a numeric shortcut
     public void registerRule(String input, Command command) {
         ruleMap.put(input, command);
         numberToCommand.put(nextCommandIndex++, input);
     }
 
-    // Handles user input: executes the matched command or suggests a correction
+    // handles user input: executes the matched command or suggests a correction
     public void handleInput(String input) {
         Command command = ruleMap.get(input);
         if (command != null) {
-            // Run the associated feature
+            // run the associated feature
             command.execute();
         } else {
             String suggestion = suggestCommand(input); // Try to correct a typo
@@ -38,19 +38,18 @@ public class ChatBot {
         }
     }
 
-    // Main program loop
     public static void main(String[] args) {
         ChatBot bot = new ChatBot();
 
-        // Load datasets from CSV files
+        // load datasets from CSV files
         List<Restaurant> restaurants = RestaurantData.loadFromCSV("../data/restaurant_data.csv");
         List<CourseReview> courseReviews = CourseReviewData.loadFromCSV("../data/cis_courses.csv");
 
-        // Initialize core data structures
+        // initialize core data structures
         CoursePlanner coursePlanner = new CoursePlanner();
         DailyPlanner dailyPlanner = new DailyPlanner();
 
-        // Register commands and their associated features
+        // register commands and their associated features
         bot.registerRule("course", new AcademicCommand(coursePlanner));
         bot.registerRule("todo", new TodoCommand(dailyPlanner));
         bot.registerRule("food", new FoodCommand(restaurants));
@@ -59,9 +58,9 @@ public class ChatBot {
         System.out.println("🤖 Welcome to the Planner Bot!");
         Scanner scanner = new Scanner(System.in);
 
-        // User interaction loop
+        // user interaction loop
         while (true) {
-            // Show available options
+            // show available options
             System.out.println("\nWhat would you like help with?");
             for (Map.Entry<Integer, String> entry : bot.numberToCommand.entrySet()) {
                 System.out.println("[" + entry.getKey() + "] " + entry.getValue());
@@ -69,16 +68,16 @@ public class ChatBot {
             System.out.println("[exit] to quit");
             System.out.print("> ");
 
-            // Read user input
+            // read user input
             String input = scanner.nextLine().toLowerCase().trim();
 
-            // Handle exit case
+            // handle exit case
             if (input.equals("exit")) {
                 System.out.println("👋 Goodbye! Have a great day!");
                 break;
             }
 
-            // Convert numeric input to command string if valid
+            // convert numeric input to command string if valid
             if (input.matches("\\d+")) {
                 int num = Integer.parseInt(input);
                 String mapped = bot.numberToCommand.get(num);
@@ -87,12 +86,12 @@ public class ChatBot {
                 }
             }
 
-            // Handle the input using ruleMap
+            // handle the input using ruleMap
             bot.handleInput(input);
         }
     }
 
-    // Suggests the closest command if the user input doesn't match exactly
+    // suggests the closest command if the user input doesn't match exactly
     private String suggestCommand(String input) {
         int minDistance = Integer.MAX_VALUE;
         String suggestion = null;
@@ -105,24 +104,27 @@ public class ChatBot {
             }
         }
 
-        // Only suggest if edit distance is small enough (≤2)
+        // only suggest if edit distance is small enough (≤2)
         return (minDistance <= 2) ? suggestion : null;
     }
 
-    // Computes the edit distance between two strings
+    // computes the edit distance between two strings
     private int editDistance(String a, String b) {
         int[][] dp = new int[a.length() + 1][b.length() + 1];
 
         for (int i = 0; i <= a.length(); i++) {
             for (int j = 0; j <= b.length(); j++) {
                 if (i == 0) {
-                    dp[i][j] = j; // Inserting all characters of b
+                    // inserting all characters of b
+                    dp[i][j] = j;
                 } else if (j == 0) {
-                    dp[i][j] = i; // Deleting all characters of a
+                    // deleting all characters of a
+                    dp[i][j] = i;
                 } else if (a.charAt(i - 1) == b.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1]; // Characters match
+                    // characters match
+                    dp[i][j] = dp[i - 1][j - 1];
                 } else {
-                    // Minimum of insert, delete, or replace
+                    // minimum of insert, delete, or replace
                     dp[i][j] = 1 + Math.min(
                             dp[i - 1][j - 1],
                             Math.min(dp[i - 1][j], dp[i][j - 1])
