@@ -206,6 +206,7 @@ public class FoodGraph {
             StringBuilder cusiine = new StringBuilder();
             for (String str: cuisines) {
                 cusiine.append(str.toLowerCase());
+                cusiine.append(" ");
             }
             System.out.println(Colors.RED + cusiine + Colors.RESET);
             System.out.println(Colors.GREEN + "You can select any 3 cuisines, please enter your response" + Colors.RESET);

@@ -1,0 +1,424 @@
+Name ,Cuisine ,Cost,Google/ Yelp Reviews,Within 1.5 mile radius
+Bad Brother,American,$$$,3.9,Yes
+Bake n' bacon Philadelphia,American,$$,4.2,No
+Bank & Bourbon,American,$$$,3.9,No
+Bloomdsday Wine Pub,American,$$,4.5,No
+Bud & Marilyn's ,American,$$,4.1,Yes
+Devon Seafood Grill,American,$$$,4.6,No
+Ember & Ash,American,$$$,4.1,No
+Enswell,American,$$,4.3,No
+Fork,American,$$$,3.8,Yes
+Franklin's Table Food Hall,American,$,4.4,No
+Friday Saturday Sunday,American,$$$,3.8,No
+Hearthside,American,$$,4,Yes
+Helm ,American,$$$,4,No
+Jean-Georges Philadelphia,American,$$$$,3.9,Yes
+Kensington Quarters,American,$$$,4.1,No
+Liberty Point,American,$$,4.1,No
+Little Fish,American,$$$,4,No
+Luke's Lobster RittenHouse,American,$$,4.3,No
+Mish Mish,American,$$$,4.2,No
+Moshulu,American,$$$$,4.1,Yes
+My Loup,American,$$$,4,No
+North Third,American,$$,4.4,No
+Pumpkin BYOB,American,$$$,4.4,No
+Reading Terminal Market,American,$$,4.2,Yes
+Rex at the Royal,American,$$$,3.8,No
+Roberts Block Restaurant,American,$$,4,No
+SOUTH Restaurant & Jazz Club,American,$$$,4,No
+Talula's Daily,American,$$,4.2,No
+Talula's Garden,American,$$$,4.3,Yes
+The Love,American,$$$$,4.1,No
+Vernick Food & Drink,American,$$$$,4.6,No
+White Dog Cafe,American,$$$,4.2,Yes
+Wilder,American,$$,4,No
+Ninja Bao,Asian,$$,4,Yes
+Buddakan,Asian ,$$$,4,No
+Crunchik'n,Asian ,$,4,Yes
+Hardena,Asian ,$,4.5,No
+Kampar,Asian ,$$,4.6,No
+Mawn,Asian ,$$$,3.8,Yes
+Sampan,Asian ,$$,3.9,No
+Sky Cafe,Asian ,$,4.6,Yes
+Sophie's Kitchen,Asian ,$,4.1,Yes
+Terakawan Ramen,Asian ,$$,4.5,Yes
+Vientiane Cafe,Asian ,$$,4.6,No
+Artisan Boulanger Patissier,Bakery,$,4.1,No
+Bart's Bagels,Bakery,$,3.9,No
+Bart's South Philly,Bakery,$,4.1,No
+Carangi Baking Comapny,Bakery,$,4.5,No
+Curiosity Doughnuts,Bakery,$$,4.3,No
+Fitzwater Bagels,Bakery,$,4.1,No
+Frangelli's Bakery & Donuts,Bakery,$,4.1,No
+Isgro's,Bakery,$$,4,Yes
+Kismet Bagels,Bakery,$$,4.5,No
+Lost Bread Co.,Bakery,$$,4.1,Yes
+Sarcone's,Bakery,$,4.5,No
+Seaforest Bakeshop,Bakery,$$,4,Yes
+Small Oven/ Porcos Porchetteria,Bakery,$$,4.9,No
+Spread Bagelry,Bakery,$,4.6,Yes
+Termini Bros Bakery,Bakery,$$,4.1,No
+Deke's BBQ,Barbeque,$$,4.3,No
+Dibbs BBQ,Barbeque,$$,4.5,No
+Fette Sau,Barbeque,$$$,4.2,Yes
+Mike's BBQ,Barbeque,$$$,4.3,No
+Zig Zag BBQ,Barbeque,$$,4.6,No
+1 Tippling Place,Bars & Breweries,$$,4.4,Yes
+48 Record Bar,Bars & Breweries,$$$,3.8,No
+Andra Hem,Bars & Breweries,$$,4.2,No
+Assembly Rooftop Lounge,Bars & Breweries,$$,4.2,No
+Attico Rooftop,Bars & Breweries,$$$,4,No
+Bella Vista Beverage,Bars & Breweries,$,3.9,Yes
+Blind Barber,Bars & Breweries,$$,4.6,No
+Bok Bar,Bars & Breweries,$$,4.5,No
+El Techo,Bars & Breweries,$$,4.6,No
+Evil Genius Beer Company ,Bars & Breweries,$,4.2,No
+Frankford Hall,Bars & Breweries,$$,4.6,Yes
+Graffiti Bar,Bars & Breweries,$$,3.8,No
+Hale & True Cider Co. ,Bars & Breweries,$$,4.1,No
+Independence Beer Garden,Bars & Breweries,$$,4.3,No
+Jet Wine Bar,Bars & Breweries,$$,4.1,No
+Le Caveau,Bars & Breweries,$$,4,No
+Libertee Grounds,Bars & Breweries,$$,4.1,No
+Lover City Brewing,Bars & Breweries,$$,4,No
+Mainstay Independent Brewing Company,Bars & Breweries,$$,4,No
+Moore Brothers Wine,Bars & Breweries,$$$,4.2,No
+Morgan's Pier ,Bars & Breweries,$,3.8,No
+Old City Beer Garden,Bars & Breweries,$$,4,No
+Pentridge Station ,Bars & Breweries,$,3.8,No
+Philadelphia Distilling,Bars & Breweries,$$,4,No
+PHS Pop Up Garden,Bars & Breweries,$$,4.5,No
+R&D Cocktail Club,Bars & Breweries,$$,4.5,Yes
+Rittenhouse Hotel,Bars & Breweries,$$,4.3,Yes
+Rodin Museum (Friday Bar),Bars & Breweries,$$,4.5,No
+Solar Myth ,Bars & Breweries,$$,4.2,No
+Stratus,Bars & Breweries,$$$,3.9,No
+Superfolie,Bars & Breweries,$$$,3.9,Yes
+The Franklin Mortgage & Investment,Bars & Breweries,$$$,4.5,Yes
+The Ranstead Room,Bars & Breweries,$$,3.9,No
+Time,Bars & Breweries,$$,3.9,Yes
+Tired Hands Fermentaria Tap Room,Bars & Breweries,$$,4,No
+Victory Brewing Company,Bars & Breweries,$$,4.4,No
+Writer's Block Rehab,Bars & Breweries,$$,4.4,No
+Yards Brewing Company,Bars & Breweries,$$,4.3,No
+Young American Hard Cider & Tasting Room,Bars & Breweries,$,4.2,No
+Healthy Picks ,Bodega/Late Night,$,4.3,No
+La Catrachita Food Truck ,Bodega/Late Night,$,4.3,Yes
+Night Owls Fast Food,Bodega/Late Night,$,4,No
+SQ Philip's Steaks,Bodega/Late Night,$,4.2,No
+Ants Pants Cafe,Breakfast/Brunch,$$,4.2,No
+Beiler's Bakery,Breakfast/Brunch,$,4.5,No
+Breakfast Den ,Breakfast/Brunch,$,3.9,No
+Broad Street Diner,Breakfast/Brunch,$,3.3,No
+Cafe La Maude,Breakfast/Brunch,$$,4.3,Yes
+Comfort & Floyd,Breakfast/Brunch,$$,4.2,No
+Down Home Diner,Breakfast/Brunch,$,4.1,No
+Eggcellent Cafe,Breakfast/Brunch,$$,4.7,Yes
+Essen Bakery,Breakfast/Brunch,$$,4,No
+Federal Donuts,Breakfast/Brunch,$,4.3,No
+Fitzwater Cafe,Breakfast/Brunch,$,4.5,No
+Haven Cafe,Breakfast/Brunch,$,4.1,No
+K'Far Cafe ,Breakfast/Brunch,$,4.2,No
+Middle Child Outpost,Breakfast/Brunch,$$,4.1,No
+Morning Glory Diner,Breakfast/Brunch,$$,4.5,No
+Redcrest Kitchen,Breakfast/Brunch,$$,4.1,No
+Sabrina's Cafe South Street,Breakfast/Brunch,$$,4.1,No
+Sulimay's Restauraunt,Breakfast/Brunch,$,4.4,No
+The Dutch,Breakfast/Brunch,$$,3.9,Yes
+Front Street Cafe,Brunch,$$,4,Yes
+Honey's Sit 'n Eat,Brunch,$$,3.9,No
+Mabu Kitchen,Brunch,$$,4.1,Yes
+Silk City,Brunch,$,4.4,No
+Winkel,Brunch,$$,3.9,No
+Little Delicious,Caribbean,$,4.4,Yes
+Ocho Rios Parilla,Caribbean,$,3.9,No
+Quality Taste Jamaican Restaurant & Jerk Hut,Caribbean,$,4.1,No
+Reggae Reggae Vibes,Caribbean,$,4.3,No
+Angelo's Pizzeria,Cheesesteaks,$,3.9,Yes
+Cleavers,Cheesesteaks,$$,4.6,No
+Dalessandro's Steaks,Cheesesteaks,$,4.3,Yes
+Donkey's Place,Cheesesteaks,$,4.1,Yes
+Ishkabibble's II,Cheesesteaks,$,4.4,No
+Jim's South Street,Cheesesteaks,$,4.3,No
+Larry's Steaks,Cheesesteaks,$,3.9,No
+Max's Steaks,Cheesesteaks,$,4,No
+Steve's Prince of Steaks,Cheesesteaks,$,4.5,Yes
+Tony and Nick's Steaks,Cheesesteaks,$,3.8,No
+Bing Bing Dim Sum ,Chinese,$$,4.3,No
+Dan Dan Rittenhouse,Chinese,$$,4.1,No
+David's Mai Lai Wah ,Chinese,$$,4.2,No
+Dim Sum Garden ,Chinese,$,4.5,No
+Dim Sum House by Jane G's,Chinese,$$,4.2,Yes
+Emei,Chinese,$$,4.3,No
+Han Dynasty - Old City,Chinese,$$,3.9,No
+Lau Kee,Chinese,$$,4.3,No
+Nan Zhou Hand Drawn Noodle House,Chinese,$$,3.9,No
+Sang Kee Noodle House,Chinese,$$,3.9,No
+Sang Kee Peking Duck House,Chinese,$$,4.1,Yes
+Shing Kee,Chinese,$$,4.2,No
+Yi Pin Restaurant,Chinese,$$,4.3,No
+Xing Wang,Chinese ,$,4.6,No
+Vesper Center City,Club,$$$,4.4,No
+Woody's,Club,$$,4.5,No
+Dunkin',Coffee/Donuts,$,4.6,Yes
+Bower Cafe 1213 ,Coffeeshop,$$,4.6,Yes
+Cafe Walnut,Coffeeshop,$,4.1,No
+Elixr Coffee Roasters,Coffeeshop,$$,4,No
+Function Coffee Labs,Coffeeshop,$,4.1,No
+Hive,Coffeeshop,$$,4.3,No
+ICI Macaraons & Cafe,Coffeeshop,$$,4.6,No
+J'aime French Bakery,Coffeeshop,$,4.1,No
+J'aime French Cafe,Coffeeshop,$,4.3,No
+La Colombe Coffee Roasters,Coffeeshop,$$,4.2,Yes
+Machine Shop,Coffeeshop,$,3.7,No
+Musette,Coffeeshop,$$,4.1,Yes
+Nook Bakery & Coffee Bar,Coffeeshop,$,4.4,No
+One Shot Coffee,Coffeeshop,$$,3.9,No
+Reanimator Coffee,Coffeeshop,$,4,No
+Suprema Coffee Roastery,Coffeeshop,$$,4.4,No
+The daily.,Coffeeshop,$$,4.1,No
+The Ground Rittenhouse,Coffeeshop,$$,4.3,Yes
+The Last Drop Coffee House,Coffeeshop,$,4,No
+Ultimo Coffee,Coffeeshop,$$,4.1,No
+Vernick Coffee Bar,Coffeeshop,$$,4.2,No
+Vibrant Coffee Roasters & Bakery,Coffeeshop,$$,4,No
+Cuba Libre Restauraunt ,Cuban,$$,3.9,No
+12 Steps Down,Dive Bar,$,4.3,No
+Bar Jawn,Dive Bar,$,4.5,No
+Barcade,Dive Bar,$$,4.3,No
+Black Cat Tavern on 12th,Dive Bar,$$,4.1,Yes
+Black Taxi,Dive Bar,$$,3.9,No
+Bob and Barbara's Lounge,Dive Bar,$,4.6,Yes
+Bonnie's Capistrano Bar,Dive Bar,$,4.2,No
+Fergie's Pub,Dive Bar,$,4.4,No
+Fountain Porter,Dive Bar,$,4.5,No
+Frankford Tiki Bar,Dive Bar,$,4.4,No
+Garage Bar,Dive Bar,$,3.9,Yes
+Grape Room,Dive Bar,$,3.9,No
+Howl at the Moon,Dive Bar,$,4.2,Yes
+Local 44 Restaurant & Bar ,Dive Bar,$,4.4,Yes
+Royal Tavern,Dive Bar,$$,4.1,No
+Tatooed Mom,Dive Bar,$,4.4,No
+The Jug Handle Inn,Dive Bar,$,4.5,No
+The Post ,Dive Bar,$$,4.4,No
+The Pub on Passyunk East,Dive Bar,$$,4.3,Yes
+The Trestle Inn,Dive Bar,$,4,No
+Triangle Tavern,Dive Bar,$$,4.2,No
+Union Tap House,Dive Bar,$,4.1,No
+Donut Plus,Donuts,$,4.1,No
+Abyssinia Bar and Restaurant,Ethiopian,$,3.9,Yes
+Almaz Café,Ethiopian,$,4.6,No
+Doro Bet ,Ethiopian,$,4.4,No
+Gojjo,Ethiopian,$$,4.2,Yes
+Queen of Sheba,Ethiopian,$,4.3,No
+Asad's Hot Chicken,Fast Food,$,4.1,Yes
+Raising Canes,Fast Food,$,4.5,Yes
+Chick-fil-A,Fast Food,$,4.3,Yes
+McDonald's,Fast Food,$,4.4,Yes
+Subway,Fast Food,$,3.8,No
+Crown Fried Chicken,Fast Food,$,4,No
+Pelicana,Fast Food,$$,4.5,No
+Raising Cane's,Fast Food,$,4.1,Yes
+Tabachoy,Filipino,$$,4.3,Yes
+Forsythia,French,$$$$,4.1,No
+Her Place Supper Club,French,$$$$,4.5,No
+Laurel ,French,$$$,4.1,No
+Louie Louie,French,$$$,4.5,Yes
+Parc,French,$$$,4,Yes
+Royal Boucherie,French,$$$,3.8,No
+Sofi's Corner Cafe,French,$$,4.3,No
+American Sardine Bar,Gastropub,$$,3.9,Yes
+Butcher Bar,Gastropub,$$,4.2,No
+Darling Jack's Tavern,Gastropub,$$,4,No
+Glory Beer Bar & Kitchen ,Gastropub,$$,3.9,No
+Good Dog Bar,Gastropub,$$,3.8,No
+Grace & Proper,Gastropub,$$,4.1,Yes
+Harp & Crown,Gastropub,$$$,4.4,Yes
+Khyber Pass Pub,Gastropub,$$,4.1,No
+MilkBoy,Gastropub,$$,4.5,No
+Monk's Cafe,Gastropub,$$,4.6,No
+Sassafras,Gastropub,$$,4.3,No
+Sidecar Bar & Grille ,Gastropub,$$,3.8,No
+St. Oner's ,Gastropub,$$,4.6,No
+The Dandelion,Gastropub,$$,4.2,No
+The Good King Tavern,Gastropub,$$,3.9,No
+The Morris ,Gastropub,$$$,4,Yes
+The Plough & The Stars,Gastropub,$$,3.8,No
+Twisted Tail,Gastropub,$$,4.3,No
+Village Whiskey,Gastropub,$$,4.2,No
+1-900-ICE-CREAM,Ice Cream,$,4.3,No
+D'Emilio's Old World Ice Treats,Ice Cream,$,4.6,No
+Jeni's Splendid Ice Creams,Ice Cream,$$,3.9,No
+Milk Jawn,Ice Cream,$$,4.3,Yes
+The Franklin Fountain,Ice Cream,$$,4.4,No
+Weckerly's Ice Cream,Ice Cream,$,4,No
+Amma's South Indian Cuisine,Indian,$$,4.4,Yes
+Ekta Indian Cuisine,Indian,$,4.5,Yes
+The Palace of Indian,Indian,$,3.9,No
+Virasat Haveli,Indian,$$,4.4,Yes
+Dante & Luigis ,Italian,$$$,4.1,No
+Gran Caffe L'Aquila,Italian,$$,4.1,No
+Le Virtu ,Italian,$$$,4.1,Yes
+Postiano Coast,Italian,$$$,4.4,Yes
+Saloon,Italian,$$$,3.9,Yes
+Ambrosia Ristorante BYOB,Italian ,$$,4.4,No
+Bistro La Baia BYOB,Italian ,$$,4,No
+Burrarta ,Italian ,$$,4.2,No
+Fiorella Pasta,Italian ,$$,3.9,No
+Giorgio On Pine,Italian ,$$,4.5,No
+Giuseppe & Sons ,Italian ,$$,4.4,No
+Il Ghiottone,Italian ,$,3.8,No
+Illata,Italian ,$$,4,Yes
+Irwin's ,Italian ,$$$,4.1,No
+L'Anima BYOB,Italian ,$$,4.2,No
+Little Nonna's ,Italian ,$$,3.8,No
+Murph's Bar,Italian ,$,4.1,No
+Osteria,Italian ,$$$,3.9,Yes
+Pagano's Market and Bar,Italian ,$$,3.9,No
+The Victor Cafe,Italian ,$$$,4.4,No
+Trattoria Carina,Italian ,$$$,4,Yes
+Vetri Cucina,Italian ,$$$$,4.3,No
+Via Locusta,Italian ,$$,4.2,No
+Wm. Mulherin's Sons,Italian ,$$$,4,No
+Aki Nom Nom Sushi and Ramen ,Japanese,$$,4.8,No
+Dasiwa,Japanese,$$,4.3,Yes
+Double Knot,Japanese,$$,4.6,No
+Fat Salmon Sushi,Japanese,$$,4,No
+Hibachi Japanese Steakhouse & Sushi Bar,Japanese,$$,4.1,Yes
+Kei Sushi Restaurant,Japanese,$,3.8,Yes
+Kichi Omakase,Japanese,$$$,4.4,No
+Kura Revolving Sushi,Japanese,$$,4,No
+Machi Sushi Bar,Japanese,$,4.2,No
+Royal Sushi & Izakaya,Japanese,$$,4.5,No
+Sagami Japanese ,Japanese,$$,3.9,No
+Sushi and Poke,Japanese,$,4.6,No
+Umai Umai,Japanese,$$,4.3,No
+Vic Sushi Bar,Japanese,$$,3.9,No
+Yakitori Boy,Japanese,$$,3.6,No
+Zama,Japanese,$$,4.1,No
+Uni Japanese Cuisine,Japanese ,$$,3.8,No
+SouthGate,Korean,$$,4.5,No
+Bolo,Latin,$$$,4,No
+Mixto Restaurante,Latin,$$$,4,Yes
+Mr. Platano's Restaurant,Latin,$,4,No
+Perla ,Latin,$$$,3.8,Yes
+Almyra,Mediterranean,$,4.3,No
+Alyan's Middle Eastern,Mediterranean,$,4.5,No
+Barbuzzo,Mediterranean,$$,4,No
+Dizengoff,Mediterranean,$,4.2,No
+Goldie,Mediterranean,$,4.2,No
+Hadramount ,Mediterranean,$,4,Yes
+Kabobeesh,Mediterranean,$,4.4,Yes
+Kanella,Mediterranean,$$,4.1,No
+Laser Wolf,Mediterranean,$$$$,4,No
+Lily's Ferry,Mediterranean,$$,4.2,No
+Makkah Market,Mediterranean,$,4.3,Yes
+Manakeesh Cafe Bakery & Grill,Mediterranean,$,4.6,No
+Marrakesh,Mediterranean,$$,3.9,No
+Pera Turkish Cuisine,Mediterranean,$$$,3.9,No
+Renata's Kitchen,Mediterranean,$$,4.3,Yes
+Saad's Halal ,Mediterranean,$,4.3,Yes
+Stina Pizzeria,Mediterranean,$$,4.5,No
+Suraya Restaurant,Mediterranean,$$,4.3,No
+Wah-Gi-Wah,Mediterranean,$$,4.4,No
+Zahav,Mediterranean,$$$,4.5,No
+Anejo Philadelphia,Mexican,$$,4.3,No
+Cafe y Choclate,Mexican,$$,4,No
+Casa Mexico,Mexican,$$,4.2,Yes
+Don Barriga ,Mexican,$$,4.1,Yes
+El Chingon ,Mexican,$$,3.8,No
+El Fuerte de Loreto Philly,Mexican,$$,4.1,No
+El Mezcal Catina ,Mexican,$$,4.1,Yes
+El Purpecheua ,Mexican,$$,4.2,No
+El Ray,Mexican,$$,4.1,No
+El Vez,Mexican,$$,3.8,Yes
+Hi-Lo Taco Co.,Mexican,$$,4.3,No
+La Chinesca,Mexican,$$,3.9,No
+La Chingonita,Mexican,$,4.1,No
+La Cocina Del Cafe,Mexican,$$,4.5,No
+La Marqueza ,Mexican,$,4.2,No
+Latin Spot,Mexican,$,3.9,Yes
+LMNO,Mexican,$$,3.9,No
+Loco Pez,Mexican,$$,4.3,No
+Los Camaradas,Mexican,$,4,No
+Los Gallos,Mexican,$$,4.5,No
+Mexican Grill La Guera 2 ,Mexican,$$,4.3,No
+Mexico Lindo Y Que Rico Restaurant,Mexican,$$,4.3,No
+Mission Taqueria,Mexican,$$,3.9,No
+Mole Poblano Restaurant,Mexican,$$,4.1,No
+Restaurant Taqueria El Jarocho,Mexican,$,3.8,No
+Rosy's Taco Bar,Mexican,$$,4,Yes
+South Philly Barbacoa,Mexican,$,4.1,No
+Taco Heart,Mexican,$$,4.1,No
+Tacos Don Memo,Mexican,$,4.4,No
+Tamalex,Mexican,$$,4.3,No
+Taqueria La Prima,Mexican,$,4.3,No
+Tio Flores,Mexican,$$,4.3,No
+Brazas BBQ Chicken,Peruvian,$,4.1,No
+Bar 1010,Pizza,$$,4.3,No
+Circles and Square,Pizza,$$,4.2,No
+Clarkville ,Pizza,$$,4.4,Yes
+Emmy Squared Pizza,Pizza,$$,4.3,Yes
+In Riva,Pizza,$,4.4,No
+Mulherin's Pizza,Pizza,$$,4.3,No
+Paulie Gee's Soul City Slice Shop,Pizza,$$$,4.3,No
+Pizza Plus South,Pizza,$$,4.2,No
+PIZZA Shackamaxon ,Pizza,$$,4.2,Yes
+Pizzata Pizzeria,Pizza,$,4,No
+Pizzeria Beddia,Pizza,$$,4.7,No
+Randazzo's,Pizza,$,4.6,No
+SALLY Philadelphia,Pizza,$$,4.1,No
+Square Pie,Pizza,$$,4.4,No
+Zio's Brick Oven Pizza,Pizza,$,4.1,No
+Axis Pizza,Pizza,$,4.3,Yes
+Mom-Mom's Kitchen,Polish,$,4.5,No
+Antonio's Deli,Sandwiches,$,4.4,No
+Cosmi's Deli,Sandwiches,$,3.9,No
+"Dear, Lunchbox",Sandwiches,$,4,No
+DiNic's Pork & Beef,Sandwiches,$,4.4,No
+Famous 4th Street Deli,Sandwiches,$$$,3.8,Yes
+Fu-Wah Mini Market,Sandwiches,$,4.1,No
+Gooey Looies,Sandwiches,$,4,No
+Hatch & Coop,Sandwiches,$,4.3,No
+Huda,Sandwiches,$,4.1,No
+John's Roast Pork,Sandwiches,$$,4.5,No
+Middle Child ,Sandwiches,$$,4,Yes
+Mighty Bread Company,Sandwiches,$$,4,No
+OK Hot Chicken,Sandwiches,$$,4.4,Yes
+Paesano's ,Sandwiches,$$$,3.9,No
+Papi Store,Sandwiches,$,4.5,No
+Poe's Sandwich Joint,Sandwiches,$$,4.1,No
+Ricci's Hoagies,Sandwiches,$,4.5,No
+Salt & Vinegar,Sandwiches,$$$,4,No
+Schlesinger's ,Sandwiches,$$,4.6,No
+Woodrow's Sandwich Shop,Sandwiches,$$,4.3,No
+Amada ,Spanish,$$$,4.4,No
+Barceolna Wine Bar,Spanish,$$,4.1,Yes
+Oloroso ,Spanish,$$,4.1,No
+Alpen Rose,Steakhouse ,$$$,4.2,Yes
+Del Frisco's Double Eagle Steakhouse,Steakhouse ,$$$$,4.5,Yes
+Malbec Argentine Steakhouse,Steakhouse ,$$$,3.9,No
+Circles Thai,Thai,$$,4,No
+JJ Thai Cuisine,Thai,$$,4,Yes
+Kalaya,Thai,$$$,4,No
+Ratchada Thai,Thai,$$,3.9,No
+Uzbekistan Restaurant,Uzbeki,$$,3.9,No
+Bar Bombon,Vegan,$$,3.9,Yes
+Charlie was a sinner,Vegan,$$$,4.2,No
+HipCityVeg,Vegan,$,4,No
+Monster Vegan,Vegan,$$,4.4,Yes
+Vedge,Vegan,$$$,4.3,No
+Goldie,Vegan Falafel,$,4.2,No
+Ba Le Bakery,Vietnamese,$,4,No
+Bistro SouthEast,Vietnamese,$$,4,No
+Gabriella's Vietnam ,Vietnamese,$$$,3.9,No
+Pho 75,Vietnamese,$,4.1,No
+Pho Cali,Vietnamese,$,3.9,No
+Pho Ha Saigon ,Vietnamese,$,4.5,Yes
+Pho Mi Rittenhouse ,Vietnamese,$,4.1,No
+Viet Bistro 2 LLC,Vietnamese,$,4.5,No
+Rose Bank Winery,Vineyard,$$,4,No
+John's Water Ice,Water Ice,$,4.1,No
+Kilamandjaro/Youma ,West African,$$,4.4,Yes
+Five Guys,Fast Food,$,3.3,Yes
+Masala Kitchen,Indian,$,5,Yes
