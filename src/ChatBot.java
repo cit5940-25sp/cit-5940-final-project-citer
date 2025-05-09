@@ -1,8 +1,9 @@
 import java.util.*;
 
 public class ChatBot {
-    // maps command keywords to their corresponding Command implementations
+    // maps command keywords (like "course") to their corresponding Command implementations
     private HashMap<String, Command> ruleMap;
+    private Trie commandTrie = new Trie();
 
     // maps numeric options to command keywords for numbered selection
     private HashMap<Integer, String> numberToCommand;
@@ -17,9 +18,10 @@ public class ChatBot {
     }
 
     // registers a command by keyword and also assigns it a numeric shortcut
-    public void registerRule(String input, Command command) {
+    public void featureChosen(String input, Command command) {
         ruleMap.put(input, command);
         numberToCommand.put(nextCommandIndex++, input);
+        commandTrie.insert(input); // insert into the trie
     }
 
     // handles user input: executes the matched command or suggests a correction
@@ -50,10 +52,10 @@ public class ChatBot {
         DailyPlanner dailyPlanner = new DailyPlanner();
 
         // register commands and their associated features
-        bot.registerRule("course", new AcademicCommand(coursePlanner));
-        bot.registerRule("todo", new TodoCommand(dailyPlanner));
-        bot.registerRule("food", new FoodCommand(restaurants));
-        bot.registerRule("review", new ReviewCommand(courseReviews));
+        bot.featureChosen("course", new AcademicCommand(coursePlanner));
+        bot.featureChosen("todo", new TodoCommand(dailyPlanner));
+        bot.featureChosen("food", new FoodCommand(restaurants));
+        bot.featureChosen("review", new ReviewCommand(courseReviews));
 
         System.out.println("🤖 Welcome to the Planner Bot!");
         Scanner scanner = new Scanner(System.in);
@@ -93,18 +95,26 @@ public class ChatBot {
 
     // suggests the closest command if the user input doesn't match exactly
     private String suggestCommand(String input) {
-        int minDistance = Integer.MAX_VALUE;
-        String suggestion = null;
+        List<String> candidates = commandTrie.getWordsWithPrefix(input.substring(0, 1));
 
-        for (String command : ruleMap.keySet()) {
-            int dist = editDistance(input, command);
-            if (dist < minDistance) {
-                minDistance = dist;
-                suggestion = command;
+        // fallback if none found
+        if (candidates.isEmpty()) {
+            for (String key : ruleMap.keySet()) {
+                candidates.add(key);
             }
         }
 
-        return (minDistance <= 2) ? suggestion : null;
+        String best = null;
+        int minDist = Integer.MAX_VALUE;
+        for (String cmd : candidates) {
+            int dist = editDistance(input, cmd);
+            if (dist < minDist) {
+                minDist = dist;
+                best = cmd;
+            }
+        }
+
+        return minDist <= 2 ? best : null;
     }
 
     // computes the edit distance between two strings
