@@ -15,7 +15,7 @@ public class AcademicCommand implements Command {
     /** Selected interest area for recommendations */
     private String interest;
 
-    /** Selected career path for recommendations */
+    /** Selected career path for recommendationsh */
     private String careerPath;
 
     /** Maximum number of recommendations to display */
