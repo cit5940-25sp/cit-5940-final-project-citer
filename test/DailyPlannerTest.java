@@ -2,7 +2,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class DailyPlannerTesting {
+public class DailyPlannerTest {
     @Test
     public void dailyPlannerTest() {
     }
@@ -46,3 +46,4 @@ public class DailyPlannerTesting {
     }
 
 }
+

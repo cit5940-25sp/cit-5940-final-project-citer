@@ -1,10 +1,6 @@
 import org.junit.Test;
 
-import java.util.HashMap;
-
-import static org.junit.Assert.*;
-
-public class ChatBotTesting {
+public class ChatBotTest {
     @Test
     public void chatBotTest() {
     }
@@ -16,6 +12,4 @@ public class ChatBotTesting {
     @Test
     public void handleInputTest() {
     }
-
-
 }
