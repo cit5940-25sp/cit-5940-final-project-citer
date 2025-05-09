@@ -1,0 +1,87 @@
+
+The structure of the code is as follows:
+        1. There is a command interface that has an execute command option.
+        2. There is a rule based chatbot class.
+
+Initial thoughts/ ideas:
+
+
+1. The feature described in the project proposal is a mood - food graph !
+    To think about this graph, I can imagine a prompt which actually helps alleviate the mood of the user if it is on
+    the lower end of the spectrum and to maintain it if it is on the higher end.
+    Thinking about this gives me some ideas about how to pursue this, as the mood can be understood as the culmination
+    of various aspects of life (academic pressure/ general viability of life choices/ personal events).
+
+    So to have a target towards creating a "mood" - "food" graph is to be able to actually capture the mood of the user
+    and then to recommend some options based on this.
+
+    Now not all individuals will fall in to the predictable category -> the user may or may not like the recommendation
+
+    The bot's features will only lead into the recommendation of the "food" that the user may be interested in.
+
+    So to give a list of available options is necessary to the user ! (If specifically asked for)
+
+
+2.  General structure:
+    ------ Have a data structure to capture the mood of the user (either through previous chats/ prompts analysis)
+    ------ If there is not much data available for this -> ask the user how they feel today !
+    ------ Once we have the mood captured, create a recommendation -> either alleviate or maintain
+    ------ Give the recommendation and ask the user do they like it ?
+    ------ User -> wants the restaurant to be near the uni ? Then check flag
+    ------ If the user would want something else, then ask the user what they would like to have
+    ------ Give the final recommendation basis their liking !
+
+3. Deciding factors:
+   -- How much time does the user has to spare -> less -> start recommending based on quick eats.
+   -- What is the user leaning towards -> filter down the cuisine
+   -- How does the user feel -> filter out the mood
+   -- Is there any special occasion -> filter out a party place
+   -- How much does the user feel like spending -> sort based on the cost
+      Can be High to Low/ Low to High
+   -- The ratings should always be High to Low (Quality >> Other factors)
+      The bot does not show low rated restaurants.
+
+4. How do I make this a mood food graph with  all these filters ?
+   I am thinking of having 2 sub types of moods, good - bad
+   I can have an arrayList which actually uses these moods so it will be easier to check if the mood is present in the \
+   list then its bad if not then its good :)
+   Easier to implement
+   So if a user falls into the 'bad' mood option, then we mandatorily filter the cuisine to a set of good mood foods.
+   -> find the set of cuisines that help with alleviating bad moods
+
+   The cuisines in themselves are a lot. So I can ask the user for a list of cuisines that they feel interested in eating,
+   I think using tries to recommend this will be very helpful ! In case we dont have a cuisine we can ask the user to enter something
+   else, or recommend something that closely matches with what the user actually ended up typing !
+
+5. Final thoughts on data structures:
+        The mood will trigger filters being set on : cuisine
+        Time will trigger filters being set on : cuisine, boolean flags near the campus.
+        Occasion will trigger filters being set on : cuisine
+
+
+        If all three are not triggered:
+            The user will be asked and filters will be set on the : cuisine
+            Tries will help to correct any cuisine that is misspelled or has a near hit with our available inventory
+
+        The last filter will be triggered for : cost
+
+        Results will be sorted based on the : ratings (High to Low)
+
+The first step is definitely filtering the cuisines, next step would be internally filter the Cost
+And the results and their sorting -> Is also an INTERNAL application.
+
+6. Data structure:
+    Have a graph G:
+        The vertices are cuisines:
+        Each vertex will have a map based structure to store:
+            Entries based on Cost as key
+                Further items shall be stored in values as : "Rest. name", Rating
+                    Internally the list will be sorted based on the Rating, highest rating will be before the lowest
+                        The bot should display ~ 3 of the restaurants in the category for each cuisine that user had asked for:
+                            If more is requested then 3 more can be shown.
+                                The entire process can be repeated with new cuisines set !
+
+7. Implementation of the structure.
+    There is a command interface that I can implement in my execution.
+    A graph that will be the primary data structure, followed by the command execute -> which should be implemented in the
+    calling class.

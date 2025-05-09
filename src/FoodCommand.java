@@ -12,17 +12,18 @@ public class FoodCommand implements Command {
 
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("What type of cuisine are you in the mood for? ");
-        String choice = scanner.nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("What type of cuisine are you in the mood for? ");
+            String choice = scanner.nextLine();
 
-        List<Restaurant> results = cuisineMap.getOrDefault(choice, new ArrayList<>());
-        if (results.isEmpty()) {
-            System.out.println("Sorry, no recommendations available for that cuisine.");
-        } else {
-            System.out.println("Here are some " + choice + " food suggestions:");
-            for (Restaurant r : results) {
-                System.out.println("- " + r.getName() + " (Rating: " + r.getRating() + ")");
+            List<Restaurant> results = cuisineMap.getOrDefault(choice, new ArrayList<>());
+            if (results.isEmpty()) {
+                System.out.println("Sorry, no recommendations available for that cuisine.");
+            } else {
+                System.out.println("Here are some " + choice + " food suggestions:");
+                for (Restaurant r : results) {
+                    System.out.println("- " + r.getName() + " (Rating: " + r.getRating() + ")");
+                }
             }
         }
     }
