@@ -185,4 +185,64 @@ public class CoursePlanner {
 
         return result;
     }
+
+    public Set<String> getAllCareerPaths() {
+        return interestManager.getAllCareerPaths();
+    }
+
+    /**
+     * Recommend courses based on a career path
+     */
+    public List<CourseRecommendation> recommendCoursesForCareerPath(String careerPath) {
+        List<CourseRecommendation> allRecommendations = new ArrayList<>();
+
+        // Get all interest areas relevant to this career path
+        List<String> relevantInterests = interestManager.getInterestsForCareerPath(careerPath);
+
+        if (relevantInterests.isEmpty()) {
+            System.out.println("No interests found for career path: " + careerPath);
+            return allRecommendations;
+        }
+
+        System.out.println("Recommending courses for career path: " + careerPath);
+        System.out.println("Relevant interest areas: " + String.join(", ", relevantInterests));
+
+        // Collect recommendations from all relevant interest areas
+        for (String interest : relevantInterests) {
+            List<CourseRecommendation> interestRecommendations = recommendCourses(interest);
+            allRecommendations.addAll(interestRecommendations);
+        }
+
+        // Remove duplicates (same course might be recommended in multiple interest areas)
+        List<CourseRecommendation> uniqueRecommendations = new ArrayList<>();
+        Set<String> addedCourseIds = new HashSet<>();
+
+        for (CourseRecommendation rec : allRecommendations) {
+            String courseId = rec.getRecommendedCourse().getCourseId();
+            if (!addedCourseIds.contains(courseId)) {
+                uniqueRecommendations.add(rec);
+                addedCourseIds.add(courseId);
+            }
+        }
+
+        // Sort by course quality
+        uniqueRecommendations.sort((r1, r2) -> {
+            double q1 = r1.getRecommendedCourse().getCourseQuality();
+            double q2 = r2.getRecommendedCourse().getCourseQuality();
+
+            // Handle N/A ratings (represented as -1)
+            if (q1 == -1 && q2 == -1) return 0;
+            if (q1 == -1) return 1;
+            if (q2 == -1) return -1;
+
+            return Double.compare(q2, q1);
+        });
+
+        return uniqueRecommendations;
+    }
+
+    public void loadPrerequisitesFromCSV(String filename) {
+        courseLoader.loadPrerequisitesFromCSV(filename, courseGraph);
+    }
+
 }

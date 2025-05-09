@@ -68,5 +68,34 @@ public class CourseLoader {
             return -1;
         }
     }
+
+    public void loadPrerequisitesFromCSV(String filename, CourseGraph courseGraph) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            boolean firstLine = true;
+
+            while ((line = br.readLine()) != null) {
+                if (firstLine) {
+                    firstLine = false;
+                    continue; // Skip header line
+                }
+
+                String[] values = line.split(",");
+                if (values.length < 2) {
+                    System.out.println("Skipping invalid prerequisite line: " + line);
+                    continue;
+                }
+
+                String courseId = values[0].trim();
+                String prerequisiteId = values[1].trim();
+
+                courseGraph.addPrerequisite(courseId, prerequisiteId);
+            }
+
+            System.out.println("Successfully loaded prerequisites from " + filename);
+        } catch (IOException e) {
+            System.err.println("Error loading prerequisites from CSV: " + e.getMessage());
+        }
+    }
 }
 
