@@ -14,6 +14,7 @@ public class FoodGraph {
     // The nodes are then categorized in a hashmap basis the cost ($).
     // Each restaurant has a boolean flag to signify if the restaurant
     // is near the campus (In case that matters to the user)
+    // $ $$ $$$ $$$$
     private HashMap<String, HashMap<String, PriorityQueue<Node>>> nodes;
 
     //To keep track of the number of edges:
@@ -32,7 +33,7 @@ public class FoodGraph {
     //These fields help determine the criteria for the user.
     private String mood;
     private ArrayList<String> cost;
-    private boolean time = false;
+    private boolean time;
     private Set<String> userCuisines;
 
 
@@ -45,6 +46,9 @@ public class FoodGraph {
         numEdges = 0;
         numRestaurants = 0;
         cuisines = new HashSet<>();
+        cost = new ArrayList<>();
+        userCuisines = new HashSet<>();
+        time = false;
 
         //Set of bad mood words
         moodWords = new ArrayList<>(List.of(
