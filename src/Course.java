@@ -2,6 +2,7 @@ import java.util.List;
 
 /**
  * Course class to store course information
+ * - Constructor class//
  */
 // Course.java
 public class Course {

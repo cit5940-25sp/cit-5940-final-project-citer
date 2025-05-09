@@ -69,6 +69,11 @@ public class CourseLoader {
         }
     }
 
+    /**
+     * Load course Prerequisites from CSV file
+     * @param filename The path to the CSV file
+     * @param courseGraph with the course data
+     */
     public void loadPrerequisitesFromCSV(String filename, CourseGraph courseGraph) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;

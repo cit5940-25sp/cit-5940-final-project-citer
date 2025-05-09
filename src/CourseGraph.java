@@ -1,5 +1,3 @@
-//public class CourseGraph {
-//}
 
 /**
  * Load courses from CSV file
@@ -10,7 +8,7 @@
 import java.util.*;
 
 public class CourseGraph {
-    // Graph representation for prerequisites (course -> list of prereqs)
+    // Graph representation for prerequisites (course -> list of preReqs)
     private Map<String, List<String>> prerequisiteGraph;
 
     // Reverse graph for finding courses that require this course
@@ -48,7 +46,8 @@ public class CourseGraph {
     }
 
     /**
-     * Get a list of all prerequisites for a course in correct order (topological sort)
+     * Get a list of all prerequisites for a course in correct order
+     * (topological sort)
      */
     public List<String> getOrderedPrerequisites(String courseId) {
         Set<String> visited = new HashSet<>();
@@ -65,6 +64,9 @@ public class CourseGraph {
         return result;
     }
 
+    /**
+     Running DFS on Prerequisite courses
+    */
     private void findAllPrerequisites(String courseId, Set<String> visited, List<String> result) {
         if (visited.contains(courseId)) {
             return;
