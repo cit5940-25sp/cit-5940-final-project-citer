@@ -169,7 +169,7 @@ public class FoodGraph {
                 // Use an iterator so we don't modify the queue destructively
                 Iterator<Node> iter = queue.iterator();
                 while (iter.hasNext() && restSet.size() < 3) {
-                    restSet.add(iter.next().getName());
+                    restSet.add((iter.next().getName() + " (" + costLevel + ")"));
                 }
 
                 if (restSet.size() >= 3) break; // Stop if we've found 3
@@ -187,6 +187,9 @@ public class FoodGraph {
                 System.out.println(Colors.YELLOW_BRIGHT + "  ✨ " + rest + Colors.RESET);
             }
         }
+        //Clear the user cuisines in case it is to be reused !
+        userCuisines.clear();
+        cost.clear();
     }
 
     /**
@@ -370,15 +373,18 @@ public class FoodGraph {
             if (response.equals("y") || response.equals("yes") || response.equals("ye")) {
                 userCuisines.add("bars & breweries");
                 userCuisines.add("club");
+                userCuisines.add("bodega/late night");
+                userCuisines.add("dive bar");
                 System.out.println(Colors.CYAN_BRIGHT + "Awesome! Added some celebration spots to your list." + " 🥂" + Colors.RESET);
             }
         } else {
             //If mood is bad
-            cuisines.add("coffeeshop");
-            cuisines.add("bakery");
-            cuisines.add("ice cream");
-            cuisines.add("italian");
-
+            System.out.println(Colors.CYAN_BRIGHT + "So sorry to hear that you dont feel good \uD83D\uDE1E");
+            System.out.println(Colors.CYAN_BRIGHT + "We will recommend some restaurants to cheer you up !");
+            userCuisines.add("coffeeshop");
+            userCuisines.add("bakery");
+            userCuisines.add("ice cream");
+            userCuisines.add("italian");
         }
 
 
@@ -389,29 +395,24 @@ public class FoodGraph {
 
 
         feel = scanner.nextLine();
-        if (feel.length() == 1) {
-            cost.add(feel);
+        if (feel.isEmpty() || !feel.matches("\\$+")) {
+            // Default if empty or invalid input
+            cost.add("$");
             cost.add("$$");
-        } else if (feel.length() == 4) {
-            cost.add(feel);
-            cost.add("$$$");
         } else {
+            //First add the cost entered by the user
             cost.add(feel);
-            //Add one level up
-            cost.add(feel + "$");
-            //Add one level down
-            cost.add(feel.substring(0, feel.length() - 1));
-        }
 
+            // Add adjacent cost levels for more options
+            if (feel.length() < 4) {
+                // Add one level up if not already at maximum
+                cost.add(feel + "$");
+            }
 
-        //Final checks on the time commitments
-        System.out.println(Colors.YELLOW_BRIGHT + "Are you in a hurry? (Y/N) " + "⏱️" + Colors.RESET);
-
-        feel = scanner.nextLine().toLowerCase();
-
-        if (feel.equals("y") || feel.equals("yes") || feel.equals("ye")) {
-            time = true;
-            cuisines.add("fast food");
+            if (feel.length() > 1) {
+                // Add one level down if not already at minimum
+                cost.add(feel.substring(0, feel.length() - 1));
+            }
         }
 
         //NOTE: SCANNER not closed because it gets closed in the main chat-bot class.
@@ -484,7 +485,6 @@ public class FoodGraph {
                         bestMatch = candidate;
                     }
                 }
-
                 return bestMatch;
             }
         }
