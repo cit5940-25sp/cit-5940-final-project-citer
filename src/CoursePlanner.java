@@ -3,129 +3,112 @@ import java.io.IOException;
 import java.util.*;
 
 public class CoursePlanner {
-//    private Map<String, List<String>> adjList;
-//
-//    public CoursePlanner() {
-//        adjList = new HashMap<>();
-//    }
-//
-//    public void addCourse(String course, List<String> prerequisites) {
-//        adjList.put(course, prerequisites);
-//    }
-//
-//    public void recommendCourses(String interest) {
-//        System.out.println("Recommending courses for: " + interest);
-//        // You would implement actual graph logic here
-//    }
-// Graph representation for prerequisites (course -> list of prereqs)
-private Map<String, List<String>> prerequisiteGraph;
-
-    // Reverse graph for finding courses that require this course
-    private Map<String, List<String>> dependencyGraph;
-
-    // Map to store course information
     private Map<String, Course> courses;
-
-    // Map to store interest areas and their related courses
-    private Map<String, List<String>> interestAreas;
+    private CourseGraph courseGraph;
+    private InterestAreaManager interestManager;
+    private CourseLoader courseLoader;
 
     public CoursePlanner() {
-        prerequisiteGraph = new HashMap<>();
-        dependencyGraph = new HashMap<>();
         courses = new HashMap<>();
-        interestAreas = new HashMap<>();
-
-        // Initialize some common interest areas
-        interestAreas.put("Machine Learning", new ArrayList<>());
-        interestAreas.put("Software Engineering", new ArrayList<>());
-        interestAreas.put("Data Science", new ArrayList<>());
-        interestAreas.put("Algorithms", new ArrayList<>());
-        interestAreas.put("Systems", new ArrayList<>());
-        interestAreas.put("Theory", new ArrayList<>());
+        courseGraph = new CourseGraph();
+        interestManager = new InterestAreaManager();
+        courseLoader = new CourseLoader();
     }
 
     /**
      * Add a course to the system
-     * @param courseId The course ID (e.g., "CIS 5940")
-     * @param courseName The name of the course
-     * @param prerequisites List of prerequisite course IDs
-     * @param interests List of interest areas this course belongs to
-     * @param courseQuality Course quality rating
-     * @param instructorQuality Instructor quality rating
-     * @param difficulty Course difficulty rating
-     * @param workRequired Work required rating
      */
-    public void addCourse(String courseId, String courseName, List<String> prerequisites,
-                          List<String> interests, double courseQuality, double instructorQuality,
-                          double difficulty, double workRequired) {
-        // Create and store the course
-        Course course = new Course(courseId, courseName, prerequisites, courseQuality,
-                instructorQuality, difficulty, workRequired);
-        courses.put(courseId, course);
+    public void addCourse(Course course) {
+        courses.put(course.getCourseId(), course);
 
-        // Add to prerequisite graph
-        prerequisiteGraph.put(courseId, new ArrayList<>(prerequisites));
-
-        // Add to dependency graph (reverse edges)
-        for (String preReq : prerequisites) {
-            dependencyGraph.putIfAbsent(preReq, new ArrayList<>());
-            dependencyGraph.get(preReq).add(courseId);
-        }
-
-        // Add to relevant interest areas
-        for (String interest : interests) {
-            interestAreas.putIfAbsent(interest, new ArrayList<>());
-            interestAreas.get(interest).add(courseId);
+        // Add prerequisites to graph
+        for (String preReq : course.getPrerequisites()) {
+            courseGraph.addPrerequisite(course.getCourseId(), preReq);
         }
     }
 
     /**
-     * Get a list of all prerequisites for a course in correct order
-     * @param courseId The course to find prerequisites for
-     * @return Ordered list of prerequisites
+     * Add a course to an interest area
      */
-    public List<String> getOrderedPrerequisites(String courseId) {
-        Set<String> visited = new HashSet<>();
-        List<String> result = new ArrayList<>();
-
-        // Use DFS to get all prerequisites
-        findAllPrerequisites(courseId, visited, result);
-
-        // Remove the course itself from the result
-        if (!result.isEmpty() && result.get(result.size() - 1).equals(courseId)) {
-            result.remove(result.size() - 1);
-        }
-
-        return result;
+    public void addCourseToInterest(String courseId, String interest) {
+        interestManager.addCourseToInterest(courseId, interest);
     }
 
-    private void findAllPrerequisites(String courseId, Set<String> visited, List<String> result) {
-        if (visited.contains(courseId)) {
-            return;
-        }
+    /**
+     * Add prerequisite relationship
+     */
+    public void addPrerequisite(String course, String prerequisite) {
+        courseGraph.addPrerequisite(course, prerequisite);
+    }
 
-        visited.add(courseId);
+    /**
+     * Load courses from CSV
+     */
+    public void loadCoursesFromCSV(String filename) {
+        // Load courses
+        Map<String, Course> loadedCourses = courseLoader.loadCoursesFromCSV(filename);
 
-        // Visit all prerequisites first
-        if (prerequisiteGraph.containsKey(courseId)) {
-            for (String preReq : prerequisiteGraph.get(courseId)) {
-                findAllPrerequisites(preReq, visited, result);
+        // Add courses to our system
+        for (Course course : loadedCourses.values()) {
+            courses.put(course.getCourseId(), course);
+
+            // Automatically determine interests based on course name
+            List<String> interests = interestManager.determineInterests(
+                    course.getCourseId(), course.getCourseName());
+
+            // Add course to each interest area
+            for (String interest : interests) {
+                addCourseToInterest(course.getCourseId(), interest);
             }
         }
 
-        // Add current course after all prerequisites
-        result.add(courseId);
+        // For demonstration, add some prerequisite relationships
+        // In a real system, this would come from another data source
+        inferPrerequisites();
+    }
+
+    /**
+     * Infer prerequisites based on course IDs
+     * This is just a simple heuristic for demonstration
+     */
+    private void inferPrerequisites() {
+        // Example: higher-numbered courses might require lower-numbered ones in the same series
+        List<String> allCourseIds = new ArrayList<>(courses.keySet());
+        Collections.sort(allCourseIds);
+
+        for (int i = 0; i < allCourseIds.size(); i++) {
+            String courseId = allCourseIds.get(i);
+
+            // Look for potential prerequisites (courses with similar ID but lower number)
+            for (int j = 0; j < i; j++) {
+                String potentialPrereq = allCourseIds.get(j);
+
+                // If course IDs have the same prefix but different numbers
+                if (courseId.substring(0, 3).equals(potentialPrereq.substring(0, 3))) {
+                    int courseNum, prereqNum;
+                    try {
+                        courseNum = Integer.parseInt(courseId.substring(3));
+                        prereqNum = Integer.parseInt(potentialPrereq.substring(3));
+
+                        // If the course number is directly after the prerequisite
+                        if (courseNum == prereqNum + 1 || courseNum == prereqNum + 10) {
+                            courseGraph.addPrerequisite(courseId, potentialPrereq);
+                        }
+                    } catch (NumberFormatException e) {
+                        // Skip if we can't parse the numbers
+                    }
+                }
+            }
+        }
     }
 
     /**
      * Recommend courses based on an interest area
-     * @param interest The interest area to recommend courses for
-     * @return List of recommended courses with their prerequisites
      */
     public List<CourseRecommendation> recommendCourses(String interest) {
         List<CourseRecommendation> recommendations = new ArrayList<>();
 
-        if (!interestAreas.containsKey(interest)) {
+        if (!interestManager.getAllInterestAreas().contains(interest)) {
             System.out.println("No courses found for interest: " + interest);
             return recommendations;
         }
@@ -133,21 +116,26 @@ private Map<String, List<String>> prerequisiteGraph;
         System.out.println("Recommending courses for interest: " + interest);
 
         // Get all courses in this interest area
-        List<String> coursesInInterest = interestAreas.get(interest);
+        List<String> coursesInInterest = interestManager.getCoursesInInterest(interest);
 
         for (String courseId : coursesInInterest) {
             Course course = courses.get(courseId);
             if (course == null) continue;
 
             // Get ordered prerequisites
-            List<String> orderedPreReqs = getOrderedPrerequisites(courseId);
+            List<String> orderedPrereqs = courseGraph.getOrderedPrerequisites(courseId);
+            List<Course> prereqCourses = new ArrayList<>();
+
+            // Convert prerequisite IDs to Course objects
+            for (String prereqId : orderedPrereqs) {
+                Course prereq = courses.get(prereqId);
+                if (prereq != null) {
+                    prereqCourses.add(prereq);
+                }
+            }
 
             // Create recommendation
-            CourseRecommendation recommendation = new CourseRecommendation(
-                    course,
-                    getCoursesFromIds(orderedPreReqs)
-            );
-
+            CourseRecommendation recommendation = new CourseRecommendation(course, prereqCourses);
             recommendations.add(recommendation);
         }
 
@@ -168,55 +156,33 @@ private Map<String, List<String>> prerequisiteGraph;
     }
 
     /**
-     * Convert a list of course IDs to Course objects
+     * Get all courses in the system
      */
-    private List<Course> getCoursesFromIds(List<String> courseIds) {
-        List<Course> result = new ArrayList<>();
-        for (String id : courseIds) {
-            if (courses.containsKey(id)) {
-                result.add(courses.get(id));
-            }
-        }
-        return result;
+    public List<Course> getAllCourses() {
+        return new ArrayList<>(courses.values());
     }
 
     /**
-     * Find all courses that use the specified course as a prerequisite
-     * @param courseId The prerequisite course
-     * @return List of courses that require this course
+     * Get all interest areas
+     */
+    public Set<String> getAllInterestAreas() {
+        return interestManager.getAllInterestAreas();
+    }
+
+    /**
+     * Find courses that depend on the specified course
      */
     public List<Course> findDependentCourses(String courseId) {
         List<Course> result = new ArrayList<>();
+        List<String> dependents = courseGraph.getDependentCourses(courseId);
 
-        if (dependencyGraph.containsKey(courseId)) {
-            for (String dependent : dependencyGraph.get(courseId)) {
-                if (courses.containsKey(dependent)) {
-                    result.add(courses.get(dependent));
-                }
+        for (String dependent : dependents) {
+            Course course = courses.get(dependent);
+            if (course != null) {
+                result.add(course);
             }
         }
 
         return result;
     }
-
-    /**
-     * Get all available courses by interest area
-     * @return Map of interest areas to their courses
-     */
-    public Map<String, List<Course>> getAllCoursesByInterest() {
-        Map<String, List<Course>> result = new HashMap<>();
-
-        for (Map.Entry<String, List<String>> entry : interestAreas.entrySet()) {
-            List<Course> interestCourses = new ArrayList<>();
-            for (String courseId : entry.getValue()) {
-                if (courses.containsKey(courseId)) {
-                    interestCourses.add(courses.get(courseId));
-                }
-            }
-            result.put(entry.getKey(), interestCourses);
-        }
-
-        return result;
-    }
-
 }

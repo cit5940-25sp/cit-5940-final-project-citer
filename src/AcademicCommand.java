@@ -1,3 +1,6 @@
+// AcademicCommand.java
+import java.util.List;
+
 public class AcademicCommand implements Command {
     private CoursePlanner planner;
     private String interest;
@@ -32,7 +35,7 @@ public class AcademicCommand implements Command {
             return;
         }
 
-        List<CoursePlanner.CourseRecommendation> recommendations = planner.recommendCourses(interest);
+        List<CourseRecommendation> recommendations = planner.recommendCourses(interest);
 
         if (recommendations.isEmpty()) {
             System.out.println("No course recommendations found for " + interest);
@@ -44,10 +47,11 @@ public class AcademicCommand implements Command {
 
         // Show only the top N recommendations
         int count = 0;
-        for (CoursePlanner.CourseRecommendation rec : recommendations) {
+        for (CourseRecommendation rec : recommendations) {
             System.out.println(rec);
             count++;
             if (count >= maxRecommendations) break;
         }
     }
 }
+
