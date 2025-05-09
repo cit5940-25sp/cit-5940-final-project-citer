@@ -22,7 +22,7 @@ public class FoodCommand implements Command {
         if (strategyChoice.contains("random")) {
             strategy = new RandomStrategy();
         } else {
-            strategy = new HighestRatedStrategy(); // default if unsure
+            strategy = new HighestRatedStrategy();
         }
 
         // Ask cuisine
