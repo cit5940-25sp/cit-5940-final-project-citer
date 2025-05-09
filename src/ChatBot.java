@@ -44,8 +44,8 @@ public class ChatBot {
         ChatBot bot = new ChatBot();
 
         // load datasets from CSV files
-        List<Restaurant> restaurants = RestaurantData.loadFromCSV("../data/restaurant_data.csv");
-        List<CourseReview> courseReviews = CourseReviewData.loadFromCSV("../data/cis_courses.csv");
+//        List<Restaurant> restaurants = RestaurantData.loadFromCSV("../data/restaurant_data.csv");
+//        List<CourseReview> courseReviews = CourseReviewData.loadFromCSV("../data/cis_courses.csv");
 
         // initialize core data structures
         CoursePlanner coursePlanner = new CoursePlanner();
@@ -54,8 +54,8 @@ public class ChatBot {
         // register commands and their associated features
         bot.featureChosen("course", new AcademicCommand(coursePlanner));
         bot.featureChosen("todo", new TodoCommand(dailyPlanner));
-        bot.featureChosen("food", new FoodCommand(restaurants));
-        bot.featureChosen("review", new ReviewCommand(courseReviews));
+        bot.featureChosen("food", new FoodCommand());
+//        bot.featureChosen("review", new ReviewCommand(courseReviews));
 
         System.out.println("🤖 Welcome to the Planner Bot!");
         Scanner scanner = new Scanner(System.in);
