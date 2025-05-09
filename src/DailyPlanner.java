@@ -14,4 +14,8 @@ public class DailyPlanner {
     public Task getNextTask() {
         return taskStack.isEmpty() ? new Task("No tasks!") : taskStack.pop();
     }
+    public Task peekNextTask() {
+        return taskStack.isEmpty() ? new Task("No tasks!") : taskStack.peek();
+    }
+
 }
