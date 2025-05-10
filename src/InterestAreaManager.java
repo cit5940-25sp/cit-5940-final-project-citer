@@ -5,7 +5,7 @@ public class InterestAreaManager {
     // Map to store interest areas and their related courses
     private Map<String, List<String>> interestAreas;
 
-    // Map to store career paths and their recommended interest areas
+    // Map to store career paths and their recommended interest areascc
     private Map<String, List<String>> careerPaths;
 
     public InterestAreaManager() {
