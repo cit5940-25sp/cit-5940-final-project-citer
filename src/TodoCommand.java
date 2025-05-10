@@ -12,7 +12,7 @@ public class TodoCommand implements Command {
 
     @Override
     public void execute() {
-        // Load default task based on the day
+        // load default task based on the day
         DayOfWeek today = LocalDate.now().getDayOfWeek();
         switch (today) {
             case WEDNESDAY:
@@ -29,7 +29,7 @@ public class TodoCommand implements Command {
                 break;
         }
 
-        // Interactive menu
+        // interactive menu
         while (true) {
             System.out.println("\n📋 TODO Menu:");
             System.out.println("[1] Add a custom task");
