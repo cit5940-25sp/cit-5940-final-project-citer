@@ -95,3 +95,105 @@ And the results and their sorting -> Is also an INTERNAL application.
             2. Strategy Interface -> A common class which will initialise, store and help the context call the concrete strategies
             3. Concrete strategies -> The concrete strategies are the strategies implemented and which can be called by the strategy interface.
 
+######################################################################################################################################################
+
+1. Stretch Feature #2:
+    Trip planner for long weekends and breaks !
+
+    Idea: The idea is to have a trip planner that will help the user search for long weekends and breaks
+    Now the big idea here is that the bot is specifically geared towards Upenn MCIT students, -> So I can have the upenn almanac
+
+    Point is to capture -> The weekend:
+    The number of days will help the user decide if its a long holiday or a short one
+
+    When the user wants to go on a vacation !!
+    Then search the almanac -> And see if there are holidays available during that period
+    +1/-1 Month.
+    If yes -> Then show the date ranges available, classified into long and short holidays
+
+     Now the user has an option -> What date range they select:
+     Once they select a date range then :the chatbot:
+        Will ask the user for:
+            The budget preferential listing (low to high)/ (high to low) / (no preference)
+            Whether they are open for flying out of philadelphia
+
+        Recommend places:
+            Near Philadelphia (East coast) -> for short holidays.
+            ALl over the US -> For long holidays
+
+2.  General considerations that people have when going on a trip:
+    -- How long is the break ?
+    -- Am I travelling with a group or Solo ?
+    -- Budget considerations.
+    -- What activities are available at that location.
+    -- How much do I spend on stay
+    -- How much do I spend on the food
+    -- Are there any places of interest available at those locations
+
+3. The chatbot should be able to recommend the places as just a list of names, and when I look up those places, a general list
+    The user should be asked to enter the places they like.
+    Once that is done the chatbot should then start recommending the (general considerations about those places)
+    And then it should ask the user -> If they are satisfied with the place or they can enter some more places
+    If the user is finally interested in the places they like -> attach a google link for the places at the end and finish the command.
+
+4. Data sets:
+   Need a dataset/ create a data set using chat gpt ->
+   1) the almanac
+   2) database for all the places to visit in the US
+   3) detailed database for the general considerations:
+        Each place with:
+            Things/ Activities to do/ see
+            Best places to stay
+            Things to eat
+            Average cost for the trip (Food + stay+ travel) (per day)
+
+   Further thought: Instead of being focused on the almanac what I plan to do is that ask the user if they are interested in
+   a short trip or a long visit :)
+   If they select long then show them the upcoming holidays (+2 months) which they can utilise for this
+   (Short trips can be on weekends so no worries)
+
+   And then show them the available places
+
+5. Data structures:
+    The data for the places should be available as a:
+
+
+        HashMap<Category, Set<Places>>
+
+        So -> The user is asked what they wanna do over the weekend/ and then they are given the list of places matching
+        that criteria with an average cost of the place
+        Also they are given the data whether the place is far or near.
+        If the place is far then the list of available long holidays is displayed.
+        I need to show the list only for holidays coming after today's date*** So wil
+
+        best thing to do -> Take today's date - start date. if value < 0 then do not include it
+        If that holiday is in the past then ignore it -> else add it to the data structure !
+
+        HashMap<Holiday, String duration>
+
+        Final Recommendation:
+        The final recommendation should be the details about the place
+            The user puts in the list of places they are interested in:
+                For each place typed:
+                The bot gives information about:
+                    Things to see
+                    Activities to do
+                    Things to eat
+
+6. To do:
+    Create a Travel locations command:
+    Create a Places interface
+    Create a find Based on user choice strategy
+    Create a random place suggestion strategy
+    A Graph type of data structure that will hold:
+        1. The holidays -> HashMap<String, String>
+        2. The list of places -> HashMap<Category, Set<Places>>
+        3. The destination details ->
+            This will need a separate node class-> data is huge
+            HashMap<Place, Node>
+            Node See -> Things to see
+            Node Activities -> Activities to do
+            Node Food -> Things to eat
+
+
+
