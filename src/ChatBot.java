@@ -1,15 +1,15 @@
 import java.util.*;
 
 public class ChatBot {
-    // maps command keywords (like "course") to their corresponding Command implementations
+    // maps command keywords to their corresponding Command implementations
     private HashMap<String, Command> ruleMap;
+    // tie for auto correction
     private Trie commandTrie = new Trie();
-
     // maps numeric options to command keywords for numbered selection
     private HashMap<Integer, String> numberToCommand;
-
     // tracks the next available number for command registration
     private int nextCommandIndex = 1;
+
 
     // constructor: initialize data structures
     public ChatBot() {
