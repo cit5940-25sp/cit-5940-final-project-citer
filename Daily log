@@ -85,3 +85,13 @@ And the results and their sorting -> Is also an INTERNAL application.
     There is a command interface that I can implement in my execution.
     A graph that will be the primary data structure, followed by the command execute -> which should be implemented in the
     calling class.
+
+8. Design pattern:
+    The design patterns selected for this project are : command and strategy
+    Command is pretty straightforward:
+    Strategy:
+        The strategy pattern has three things:
+            1. The context -> Class that utilizes the strategies (The main class that can switch between the strategy at runtime)
+            2. Strategy Interface -> A common class which will initialise, store and help the context call the concrete strategies
+            3. Concrete strategies -> The concrete strategies are the strategies implemented and which can be called by the strategy interface.
+

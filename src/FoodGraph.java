@@ -9,12 +9,6 @@ import java.util.*;
  */
 public class FoodGraph {
 
-    //The graph is being implemented as an adjacency list.
-    // It is devised as -> Cuisine will be the key factor -> Which will have Nodes(Restaurants)
-    // The nodes are then categorized in a hashmap basis the cost ($).
-    // Each restaurant has a boolean flag to signify if the restaurant
-    // is near the campus (In case that matters to the user)
-    // $ $$ $$$ $$$$
     private HashMap<String, HashMap<String, PriorityQueue<Node>>> nodes;
 
     //To keep track of the number of edges:
@@ -31,18 +25,19 @@ public class FoodGraph {
 
 
     //These fields help determine the criteria for the user.
-    private String mood;
+    private boolean mood;
     private ArrayList<String> cost;
     private boolean time;
     private Set<String> userCuisines;
 
-    //For auto correct !!!
+    //For auto correct
     private Trie cuisineTrie;
 
 
 
     /**
      * Constructor for initializing the graph to a null state.
+     * and define the other fields in the graph.
      */
     public FoodGraph() {
         nodes = new HashMap<>();
@@ -131,7 +126,7 @@ public class FoodGraph {
                 nodes.putIfAbsent(parts[1], new HashMap<>());
 
                 // Add cuisine to the set and the Trie
-                if (cuisines.add(parts[1])) {
+                if (cuisines.add(parts[1].trim())) {
                     // Add to Trie when a new cuisine is discovered
                     cuisineTrie.insert(parts[1]);
                 }
@@ -140,7 +135,8 @@ public class FoodGraph {
 
                 //Add the element to the hashmap
 
-                nodes.get(parts[1]).get(parts[2]).add(new Node(parts[0], Double.parseDouble(parts[3]),flag));
+                nodes.get(parts[1]).get(parts[2]).add(new Node(parts[0],
+                        Double.parseDouble(parts[3]),flag));
                 numRestaurants++;
             }
         } catch (IOException e) {
@@ -150,13 +146,12 @@ public class FoodGraph {
 
 
     /**
-     * Method to find the suggestions for the user based on the criteria they mention to the bot
+     * Method to traverse the graph and find
      *
      */
     public void findSuggestions() {
         HashMap<String, HashSet<String>> suggestions = new HashMap<>();
 
-        setCriteria();
 
         for (String cuisine : userCuisines) {
             HashSet<String> restSet = new HashSet<>();
@@ -187,244 +182,7 @@ public class FoodGraph {
                 System.out.println(Colors.YELLOW_BRIGHT + "  ✨ " + rest + Colors.RESET);
             }
         }
-        //Clear the user cuisines in case it is to be reused !
-        userCuisines.clear();
-        cost.clear();
-    }
-
-    /**
-     * Method which is run inside the findsSuggestions to help set criteria for the search.
-     */
-    public void setCriteria() {
-        Scanner scanner = new Scanner(System.in);
-
-        //Check mood
-        System.out.println(Colors.CYAN_BOLD + "In a single word -> describe how you feel " + "😊" + Colors.RESET);
-
-        String feel = scanner.nextLine().toLowerCase();
-
-        if (moodWords.contains(feel)) {
-            mood = "bad";
-        } else {
-            mood = "good";
-        }
-
-        //If mood is bad then have a set of cuisines -> handled
-
-
-        if (mood.equals("good")) {
-            System.out.println(Colors.CYAN_BOLD + "What would you like to eat today? " + "🍽️" + Colors.RESET);
-
-            // Displaying the cuisines available in the file
-            System.out.println(Colors.CYAN + "Available cuisines: " + "👨‍🍳" + Colors.RESET);
-            // First, ensure we have a truly unique list
-            Set<String> uniqueCuisines = new HashSet<>(cuisines);
-            List<String> sortedCuisines = new ArrayList<>(uniqueCuisines);
-            Collections.sort(sortedCuisines);
-
-// Display in columns
-            int columns = 3;
-            int itemsPerColumn = (int) Math.ceil(sortedCuisines.size() / (double)columns);
-
-            for (int i = 0; i < itemsPerColumn; i++) {
-                StringBuilder lineBuilder = new StringBuilder("  ");
-
-                for (int j = 0; j < columns; j++) {
-                    int index = i + (j * itemsPerColumn);
-                    if (index < sortedCuisines.size()) {
-                        lineBuilder.append(String.format("%-20s", sortedCuisines.get(index)));
-                    }
-                }
-                System.out.println(Colors.WHITE_BRIGHT + lineBuilder.toString() + Colors.RESET);
-            }
-
-
-
-            // surprise me option
-            System.out.println(Colors.GREEN_BRIGHT + "Please select up to 3 cuisines (separated by spaces) " + "🌮 🍕 🍜" + Colors.RESET);
-            System.out.println(Colors.GREEN_BRIGHT + "Or type 'surprise' if you want us to choose for you! " + "🎲" + Colors.RESET);
-            String response = scanner.nextLine().toLowerCase();
-
-            // Handle "surprise me" option
-            if (response.contains("surprise")) {
-                System.out.println(Colors.CYAN_BRIGHT + "Surprise it is! " + "✨ We'll pick some great options for you." + Colors.RESET);
-                // Pick 3 random cuisines
-                List<String> shuffledCuisines = new ArrayList<>(cuisines);
-                Collections.shuffle(shuffledCuisines);
-                //Select 3 or less than 3 available options
-                for (int i = 0; i < Math.min(3, shuffledCuisines.size()); i++) {
-                    //Add it to user cuisines
-                    userCuisines.add(shuffledCuisines.get(i));
-                }
-            } else {
-                // Validate user input
-                String[] responseParts = response.split(" ");
-                Set<String> validCuisines = new HashSet<>();
-                List<String> invalidCuisines = new ArrayList<>();
-
-                for (String selectedCuisine : responseParts) {
-                    selectedCuisine = selectedCuisine.trim();
-                    if (selectedCuisine.isEmpty()) continue;
-
-                    // Check if exactly matches any cuisine
-                    boolean found = false;
-                    for (String cuisine : cuisines) {
-                        if (cuisine.equalsIgnoreCase(selectedCuisine)) {
-                            validCuisines.add(cuisine);
-                            found = true;
-                            break;
-                        }
-                    }
-
-                    if (!found) {
-                        // Try to find close matches -> uses the levenshtein distance
-                        String closestMatch = findClosestCuisine(selectedCuisine, cuisines);
-                        if (closestMatch != null) {
-                            System.out.println(Colors.YELLOW + "Did you mean '" + closestMatch + "' instead of '" +
-                                    selectedCuisine + "'? (y/n) " + "🤔" + Colors.RESET);
-                            String confirm = scanner.nextLine().toLowerCase();
-                            if (confirm.startsWith("y")) {
-                                validCuisines.add(closestMatch);
-                                System.out.println(Colors.GREEN_BRIGHT + "Great! Added " + closestMatch + " to your selections." + " ✅" + Colors.RESET);
-                            } else {
-                                invalidCuisines.add(selectedCuisine);
-                            }
-                        } else {
-                            invalidCuisines.add(selectedCuisine);
-                        }
-                    }
-
-                    // Limit to 3 cuisines
-                    if (validCuisines.size() >= 3) break;
-                }
-
-                // Handle case where user entered invalid cuisines
-                if (!invalidCuisines.isEmpty()) {
-                    System.out.println(Colors.YELLOW + "These cuisines weren't recognized: " + "❓ " +
-                            String.join(", ", invalidCuisines) + Colors.RESET);
-                }
-
-                // Handle case where user didn't select any valid cuisines
-                if (validCuisines.isEmpty()) {
-                    System.out.println(Colors.YELLOW + "No valid cuisines selected. Suggesting popular options... " + "💡" + Colors.RESET);
-                    // Add 2-3 popular cuisines from available ones
-                    List<String> popularCuisines = new ArrayList<>(cuisines);
-                    Collections.shuffle(popularCuisines);
-                    for (int i = 0; i < Math.min(3, popularCuisines.size()); i++) {
-                        validCuisines.add(popularCuisines.get(i));
-                    }
-                }
-
-                // If user selects less than 3 cuisines, ask if they want to add more
-                if (validCuisines.size() < 3) {
-                    System.out.println(Colors.CYAN_BRIGHT +
-                            "You've selected " + validCuisines.size() + " cuisine(s). Would you like to add more? (y/n) " + "➕" +
-                            Colors.RESET);
-                    String addMore = scanner.nextLine().toLowerCase();
-
-                    if (addMore.startsWith("y") && validCuisines.size() < 3) {
-                        System.out.println(Colors.GREEN_BRIGHT + "Please select " + (3 - validCuisines.size()) +
-                                " more cuisine(s): " + "👇" + Colors.RESET);
-                        response = scanner.nextLine().toLowerCase();
-
-                        // Process additional selections
-                        String[] additionalParts = response.split(" ");
-                        for (String additionalCuisine : additionalParts) {
-                            additionalCuisine = additionalCuisine.trim();
-                            if (additionalCuisine.isEmpty()) continue;
-
-                            // Similar validation as before
-                            boolean found = false;
-                            for (String cuisine : cuisines) {
-                                if (cuisine.equalsIgnoreCase(additionalCuisine)) {
-                                    validCuisines.add(cuisine);
-                                    found = true;
-                                    break;
-                                }
-                            }
-
-                            if (!found) {
-                                String closestMatch = findClosestCuisine(additionalCuisine, cuisines);
-                                if (closestMatch != null && !validCuisines.contains(closestMatch)) {
-                                    System.out.println(Colors.YELLOW + "Did you mean '" + closestMatch + "'? (y/n) " + "🤔" + Colors.RESET);
-                                    String confirm = scanner.nextLine().toLowerCase();
-                                    if (confirm.startsWith("y")) {
-                                        validCuisines.add(closestMatch);
-                                        System.out.println(Colors.GREEN_BRIGHT + "Added " + closestMatch + " to your selections." + " ✅" + Colors.RESET);
-                                    }
-                                }
-                            }
-
-                            if (validCuisines.size() >= 3) break;
-                        }
-                    }
-                }
-
-                userCuisines.addAll(validCuisines);
-            }
-
-            // Display selected cuisines for confirmation
-            System.out.println(Colors.CYAN_BRIGHT + "You've selected these cuisines: " + "🎯 " +
-                    String.join(", ", userCuisines) + Colors.RESET);
-
-            // Ask about special occasion
-            System.out.println(Colors.YELLOW_BRIGHT + "Do you have a special occasion to celebrate? (Y/N) " + "🎉" + Colors.RESET);
-            response = scanner.nextLine().toLowerCase();
-            if (response.equals("y") || response.equals("yes") || response.equals("ye")) {
-                userCuisines.add("bars & breweries");
-                userCuisines.add("club");
-                userCuisines.add("bodega/late night");
-                userCuisines.add("dive bar");
-                System.out.println(Colors.CYAN_BRIGHT + "Awesome! Added some celebration spots to your list." + " 🥂" + Colors.RESET);
-            }
-        } else {
-            //If mood is bad
-            System.out.println(Colors.CYAN_BRIGHT + "So sorry to hear that you dont feel good \uD83D\uDE1E");
-            System.out.println(Colors.CYAN_BRIGHT + "We will recommend some restaurants to cheer you up !");
-            userCuisines.add("coffeeshop");
-            userCuisines.add("bakery");
-            userCuisines.add("ice cream");
-            userCuisines.add("italian");
-        }
-
-
-        //Now ask the user how much are willing to spend on a scale of $ to $$$$
-        System.out.println(Colors.CYAN_BRIGHT + "On a scale of $ to $$$$ how much are you willing to spend " + "💰" + Colors.RESET);
-        System.out.println(Colors.CYAN + "Restaurants will be recommended around your choice" + Colors.RESET);
-
-
-
-        feel = scanner.nextLine();
-        if (feel.isEmpty() || !feel.matches("\\$+")) {
-            // Default if empty or invalid input
-            cost.add("$");
-            cost.add("$$");
-        } else {
-            //First add the cost entered by the user
-            cost.add(feel);
-
-            // Add adjacent cost levels for more options
-            if (feel.length() < 4) {
-                // Add one level up if not already at maximum
-                cost.add(feel + "$");
-            }
-
-            if (feel.length() > 1) {
-                // Add one level down if not already at minimum
-                cost.add(feel.substring(0, feel.length() - 1));
-            }
-        }
-
-        //NOTE: SCANNER not closed because it gets closed in the main chat-bot class.
-    }
-
-    /**
-     * Method to return the number of edges in the graph
-     * @return Number of edges
-     */
-    public int getNumEdges() {
-        numEdges = nodes.size();
-        return numEdges;
+        clearVars();
     }
 
     /**
@@ -457,7 +215,7 @@ public class FoodGraph {
      * @param availableCuisines The available set of cuisines
      * @return The closest match, or null if no good match found
      */
-    private String findClosestCuisine(String input, Set<String> availableCuisines) {
+    public String findClosestCuisine(String input, Set<String> availableCuisines) {
         // First check for exact match or substring match
         for (String cuisine : availableCuisines) {
             if (cuisine.toLowerCase().contains(input.toLowerCase()) ||
@@ -467,7 +225,7 @@ public class FoodGraph {
         }
 
         // Start with a prefix search if the input is at least 1 character long
-        if (input.length() > 0) {
+        if (!input.isEmpty()) {
             // Get words with same starting character(s)
             List<String> candidates = cuisineTrie.getWordsWithPrefix(input.substring(0, 1));
 
@@ -490,5 +248,122 @@ public class FoodGraph {
         }
 
         return null; // No good match found
+    }
+
+
+    /**
+     * Returns true if the mood is not good for the user!
+     * @param scanner
+     * @return
+     */
+    public boolean moodFind(Scanner scanner) {
+        System.out.println(Colors.CYAN_BOLD + "In a single word -> describe how you feel " + "😊" + Colors.RESET);
+        String feel = scanner.nextLine().toLowerCase();
+        mood =  (moodWords.contains(feel));
+
+        return mood;
+    }
+
+    /**
+     * This method will help set the cost parameters to be used for finding the restaurants.
+     * @param scanner
+     */
+    public void checkCost(Scanner scanner) {
+        System.out.println(Colors.CYAN_BRIGHT + "On a scale of $ to $$$$ how much are you willing to spend " + "💰" + Colors.RESET);
+        System.out.println(Colors.CYAN + "Restaurants will be recommended around your choice" + Colors.RESET);
+
+        String feel = scanner.nextLine();
+        if (feel.isEmpty() || !feel.matches("\\$+")) {
+            // Default if empty or invalid input
+            cost.add("$");
+            cost.add("$$");
+        } else {
+            //First add the cost entered by the user
+            cost.add(feel);
+
+            // Add adjacent cost levels for more options
+            if (feel.length() < 4) {
+                // Add one level up if not already at maximum
+                cost.add(feel + "$");
+            }
+
+            if (feel.length() > 1) {
+                // Add one level down if not already at minimum
+                cost.add(feel.substring(0, feel.length() - 1));
+            }
+        }
+    }
+
+    /**
+     * Getter for the cost selected by the user.
+     * @return cost.
+     */
+    public ArrayList<String> getCost() {
+        return cost;
+    }
+
+    /**
+     * If the user wants to celebrate, then set cuisines for P(Bars, Clubs, Late night)
+     * @param scanner
+     */
+    public void celebration(Scanner scanner) {
+        System.out.println(Colors.YELLOW_BRIGHT + "Do you have a special occasion to celebrate? (Y/N) " + "🎉" + Colors.RESET);
+        String response = scanner.nextLine().toLowerCase();
+        if (response.equals("y") || response.equals("yes") || response.equals("ye")) {
+            userCuisines.add("bars & breweries");
+            userCuisines.add("club");
+            userCuisines.add("bodega/late night");
+            userCuisines.add("dive bar");
+            System.out.println(Colors.CYAN_BRIGHT + "Awesome! Added some celebration spots to your list." + " 🥂" + Colors.RESET);
+        }
+    }
+
+    /**
+     * Method to clear the user cuisines and cost
+     */
+    public void clearVars() {
+        userCuisines.clear();
+        cost.clear();
+    }
+
+    public void displayCuisines() {
+        System.out.println(Colors.CYAN + "Available cuisines: " + "👨‍🍳" + Colors.RESET);
+        // First, ensure we have a truly unique list
+        Set<String> uniqueCuisines = new HashSet<>(cuisines);
+        List<String> sortedCuisines = new ArrayList<>(uniqueCuisines);
+        Collections.sort(sortedCuisines);
+
+        // Display in columns
+        int columns = 3;
+        int itemsPerColumn = (int) Math.ceil(sortedCuisines.size() / (double)columns);
+
+        for (int i = 0; i < itemsPerColumn; i++) {
+            StringBuilder lineBuilder = new StringBuilder("  ");
+
+            for (int j = 0; j < columns; j++) {
+                int index = i + (j * itemsPerColumn);
+                if (index < sortedCuisines.size()) {
+                    lineBuilder.append(String.format("%-20s", sortedCuisines.get(index)));
+                }
+            }
+            System.out.println(Colors.WHITE_BRIGHT + lineBuilder.toString() + Colors.RESET);
+        }
+    }
+
+    /**
+     * Getter for the total cuisines
+     * @return cuisines
+     */
+    public Set<String> getCuisines() {
+        return cuisines;
+    }
+
+    /**
+     * Getter for user cuisines
+     * @return user cuisines
+     */
+
+    public Set<String> getUserCuisines() {
+        return userCuisines;
     }
 }
