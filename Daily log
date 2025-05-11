@@ -216,10 +216,10 @@ To DO: Changes after the meeting 10th May 8:00 PM
 1. Implement and work on edge cases -> Travel -> Done
 2. Implement and work on edge cases -> Restaurant -> Done
 1:30 PM
-3. Clean the code -> Travel (Separate the UI class from the Travel and Restaurant methods)
+3. Clean the code -> Travel (Separate the UI class from the Travel and Restaurant methods) -> Done
 4. Clean the code -> Restaurant -> Done
 2:30 PM
-5. Implement the random strategy in the restaurant tab.
+5. Implement the random strategy in the restaurant tab. -> Done
 6. Merge with main
 4:00 PM
 7. Make a UML class diagram

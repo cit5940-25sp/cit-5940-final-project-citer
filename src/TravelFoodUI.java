@@ -284,11 +284,4 @@ public class TravelFoodUI {
             line = scanner.nextLine().toLowerCase();
         }
     }
-
-
-
-
-
-
-
 }
