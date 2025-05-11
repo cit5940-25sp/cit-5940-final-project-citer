@@ -8,7 +8,7 @@ public class FoodCommand implements Command {
 
     public FoodCommand() {
         foodGraph = new FoodGraph();
-        foodGraph.buildGraph("/Users/varunsingh/Desktop/Course notes/CIT 5940/Projects/CIT 594 Final/Databases/Philly Food DB V2.csv");
+        foodGraph.buildGraph("Databases/Philly Food DB V2.csv");
         scanner = new Scanner(System.in);
         cuisineStrategy = new CuisineStrategy();
         travelFoodUI = new TravelFoodUI(foodGraph);

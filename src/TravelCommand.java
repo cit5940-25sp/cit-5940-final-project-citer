@@ -12,7 +12,7 @@ public class TravelCommand implements Command {
     public TravelCommand() {
         travelData = new TravelData();
         //Load the data from the datasets
-        travelData.addDataFromDataFile("/Users/varunsingh/Desktop/Course notes/CIT 5940/cit-5940-final-project-citer/Databases/UPenn_Holiday_Almanac_2025_2026.csv", "/Users/varunsingh/Desktop/Course notes/CIT 5940/cit-5940-final-project-citer/Databases/Updated_Verified_Costs_Research.csv", "/Users/varunsingh/Desktop/Course notes/CIT 5940/cit-5940-final-project-citer/Databases/Detailed dataset.csv");
+        travelData.addDataFromDataFile("Databases/UPenn_Holiday_Almanac_2025_2026.csv", "Databases/Updated_Verified_Costs_Research.csv", "Databases/Detailed dataset.csv");
         travelFactory = new TravelStrategyFactory(travelData, scanner);
         travelFoodUI = new TravelFoodUI(travelData);
     }
