@@ -298,4 +298,12 @@ public class FoodGraph {
     public void setMood(boolean other) {
         mood = other;
     }
+
+    /**
+     * Getter for the number of restaurants
+     * @Return number of restaurants
+     */
+    public int getNumRestaurants() {
+        return numRestaurants;
+    }
 }
