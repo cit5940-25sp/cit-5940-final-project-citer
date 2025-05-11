@@ -1,262 +1,259 @@
-Tags,Place,Distance Category,Cost Per Day
-History,"Philadelphia, PA",Near,84
-Foodie,"Philadelphia, PA",Near,84
-Urban,"Philadelphia, PA",Near,84
-Urban,"New York City, NY",Near,163
-Nightlife,"New York City, NY",Near,163
-Foodie,"New York City, NY",Near,163
-Culture,"New York City, NY",Near,163
-Museums,"Washington, D.C.",Near,200
-History,"Washington, D.C.",Near,200
-Politics,"Washington, D.C.",Near,200
-Urban,"Pittsburgh, PA",Near,220
-Bridges,"Pittsburgh, PA",Near,220
-Sports,"Pittsburgh, PA",Near,220
-Nature,"The Poconos, PA",Near,210
-Peaceful,"The Poconos, PA",Near,210
-Cabin,"The Poconos, PA",Near,210
-Casino,"Atlantic City, NJ",Near,190
-Beach,"Atlantic City, NJ",Near,190
-Party,"Atlantic City, NJ",Near,190
-Beach,"Cape May, NJ",Near,210
-Quiet,"Cape May, NJ",Near,210
-Historic,"Cape May, NJ",Near,210
-Explore,"Delaware Beaches, DE",Near,210
-Vibes,"Delaware Beaches, DE",Near,210
-Travel,"Delaware Beaches, DE",Near,210
-Explore,"Bushkill Falls, PA",Near,200
-Vibes,"Bushkill Falls, PA",Near,200
-Travel,"Bushkill Falls, PA",Near,200
-Historic,"Boston, MA",Far,291
-Walkable,"Boston, MA",Far,291
-Foodie,"Boston, MA",Far,291
-Urban,"Chicago, IL",Far,323
-Foodie,"Chicago, IL",Far,323
-Architecture,"Chicago, IL",Far,323
-Hollywood,"Los Angeles, CA",Far,300
-Beach,"Los Angeles, CA",Far,300
-Celebs,"Los Angeles, CA",Far,300
-Hills,"San Francisco, CA",Far,251
-Golden Gate,"San Francisco, CA",Far,251
-Tech,"San Francisco, CA",Far,251
-Party,"Las Vegas, NV",Far,369
-Casino,"Las Vegas, NV",Far,369
-Shows,"Las Vegas, NV",Far,369
-Theme Parks,"Orlando, FL",Far,368
-Family,"Orlando, FL",Far,368
-Fun,"Orlando, FL",Far,368
-Beachy Vibes,"Miami, FL",Far,258
-Party,"Miami, FL",Far,258
-Tropical,"Miami, FL",Far,258
-Jazz,"New Orleans, LA",Far,271
-Foodie,"New Orleans, LA",Far,271
-Party,"New Orleans, LA",Far,271
-Coffee,"Seattle, WA",Far,242
-Rain,"Seattle, WA",Far,242
-Tech,"Seattle, WA",Far,242
-Music,"Austin, TX",Far,167
-Foodie,"Austin, TX",Far,167
-Quirky,"Austin, TX",Far,167
-Mountains,"Denver, CO",Far,248
-Urban,"Denver, CO",Far,248
-Outdoors,"Denver, CO",Far,248
-Mountains,"Salt Lake City, UT",Far,282
-Mormon,"Salt Lake City, UT",Far,282
-Snow,"Salt Lake City, UT",Far,282
-Wildlife,"Yellowstone National Park, WY/MT",Far,181
-Nature,"Yellowstone National Park, WY/MT",Far,181
-Adventure,"Yellowstone National Park, WY/MT",Far,181
-Nature,"Grand Canyon National Park, AZ",Far,203
-Hiking,"Grand Canyon National Park, AZ",Far,203
-Photography,"Grand Canyon National Park, AZ",Far,203
-Beach,"San Diego, CA",Far,233
-Chill,"San Diego, CA",Far,233
-Surf,"San Diego, CA",Far,233
-Tropical,"Honolulu, HI",Far,322
-Beach,"Honolulu, HI",Far,322
-Island,"Honolulu, HI",Far,322
-Nature,"Anchorage, AK",Far,228
-Wilderness,"Anchorage, AK",Far,228
-Unique,"Anchorage, AK",Far,228
-Historic,"Savannah, GA",Far,202
-Charming,"Savannah, GA",Far,202
-Ghost Tours,"Savannah, GA",Far,202
-Southern,"Charleston, SC",Far,212
-Historic,"Charleston, SC",Far,212
-Foodie,"Charleston, SC",Far,212
-Peaceful,"Sedona, AZ",Far,200
-Nature,"Sedona, AZ",Far,200
-Desert,"Phoenix, AZ",Far,276
-Resort,"Phoenix, AZ",Far,276
-Golf,"Phoenix, AZ",Far,276
-Urban,"Dallas, TX",Far,166
-Texan,"Dallas, TX",Far,166
-Food,"Dallas, TX",Far,166
-Urban,"Houston, TX",Far,287
-Space Center,"Houston, TX",Far,287
-Diverse,"Houston, TX",Far,287
-Riverwalk,"San Antonio, TX",Far,161
-History,"San Antonio, TX",Far,161
-Culture,"San Antonio, TX",Far,161
-Urban,"Minneapolis, MN",Far,235
-Lakes,"Minneapolis, MN",Far,235
-Arts,"Minneapolis, MN",Far,235
-Explore,"Kansas City, MO",Far,196
-Vibes,"Kansas City, MO",Far,196
-Travel,"Kansas City, MO",Far,196
-Explore,"Detroit, MI",Far,165
-Vibes,"Detroit, MI",Far,165
-Travel,"Detroit, MI",Far,165
-Music,"Nashville, TN",Far,202
-Bars,"Nashville, TN",Far,202
-Party,"Nashville, TN",Far,202
-Elvis,"Memphis, TN",Far,199
-BBQ,"Memphis, TN",Far,199
-Blues,"Memphis, TN",Far,199
-Explore,"Louisville, KY",Far,175
-Vibes,"Louisville, KY",Far,175
-Travel,"Louisville, KY",Far,175
-Mountains,"Asheville, NC",Far,159
-Beer,"Asheville, NC",Far,159
-Artsy,"Asheville, NC",Far,159
-Urban,"Charlotte, NC",Far,225
-Banking,"Charlotte, NC",Far,225
-Food,"Charlotte, NC",Far,225
-Urban,"Raleigh, NC",Far,231
-College Town,"Raleigh, NC",Far,231
-Chill,"Raleigh, NC",Far,231
-Urban,"Atlanta, GA",Far,204
-Hip Hop,"Atlanta, GA",Far,204
-Foodie,"Atlanta, GA",Far,204
-Beach,"Tampa, FL",Far,218
-City,"Tampa, FL",Far,218
-Warm,"Tampa, FL",Far,218
-Explore,"St. Petersburg, FL",Far,239
-Vibes,"St. Petersburg, FL",Far,239
-Travel,"St. Petersburg, FL",Far,239
-Island,"Key West, FL",Far,300
-Tropical,"Key West, FL",Far,300
-Sunset,"Key West, FL",Far,300
-Desert,"Palm Springs, CA",Far,210
-Resort,"Palm Springs, CA",Far,210
-Retro,"Palm Springs, CA",Far,210
-Snow,"Lake Tahoe, CA/NV",Far,210
-Nature,"Lake Tahoe, CA/NV",Far,210
-Scenic,"Lake Tahoe, CA/NV",Far,210
-Waterfalls,"Yosemite National Park, CA",Far,210
-Nature,"Yosemite National Park, CA",Far,210
-Hiking,"Yosemite National Park, CA",Far,210
-Canyons,"Zion National Park, UT",Far,210
-Hiking,"Zion National Park, UT",Far,210
-Adventure,"Zion National Park, UT",Far,210
-Hoodoos,"Bryce Canyon National Park, UT",Far,159
-Hiking,"Bryce Canyon National Park, UT",Far,159
-Nature,"Bryce Canyon National Park, UT",Far,159
-Desert,"Arches National Park, UT",Far,210
-Arches,"Arches National Park, UT",Far,210
-Hiking,"Arches National Park, UT",Far,210
-Mountains,"Rocky Mountain National Park, CO",Far,210
-Wildlife,"Rocky Mountain National Park, CO",Far,210
-Scenic,"Rocky Mountain National Park, CO",Far,210
-Nature,"Glacier National Park, MT",Far,210
-Hiking,"Glacier National Park, MT",Far,210
-Remote,"Glacier National Park, MT",Far,210
-Coastline,"Acadia National Park, ME",Far,210
-Nature,"Acadia National Park, ME",Far,210
-Fall Foliage,"Acadia National Park, ME",Far,210
-Coffee,"Portland, OR",Far,211
-Foodie,"Portland, OR",Far,211
-Artsy,"Portland, OR",Far,211
-Explore,"Boise, ID",Far,210
-Vibes,"Boise, ID",Far,210
-Travel,"Boise, ID",Far,210
-Cliffs,"Big Sur, CA",Far,240
-Ocean,"Big Sur, CA",Far,240
-Scenic Drive,"Big Sur, CA",Far,240
-Desert,"Death Valley, CA",Far,210
-Extreme,"Death Valley, CA",Far,210
-Isolation,"Death Valley, CA",Far,210
-Desert,"Joshua Tree National Park, CA",Far,210
-Stars,"Joshua Tree National Park, CA",Far,210
-Artistic,"Joshua Tree National Park, CA",Far,210
-Art,"Santa Fe, NM",Far,210
-Culture,"Santa Fe, NM",Far,210
-Southwest,"Santa Fe, NM",Far,210
-Balloons,"Albuquerque, NM",Far,210
-Culture,"Albuquerque, NM",Far,210
-Desert,"Albuquerque, NM",Far,210
-Waterfalls,"Niagara Falls, NY",Far,146
-Nature,"Niagara Falls, NY",Far,146
-Scenic,"Niagara Falls, NY",Far,146
-Wineries,"Finger Lakes, NY",Far,200
-Lakes,"Finger Lakes, NY",Far,200
-Relaxing,"Finger Lakes, NY",Far,200
-Nature,"Catskills, NY",Far,200
-Hiking,"Catskills, NY",Far,200
-Peaceful,"Catskills, NY",Far,200
-Mountains,"Adirondacks, NY",Far,200
-Cabin,"Adirondacks, NY",Far,200
-Hike,"Adirondacks, NY",Far,200
-Olympics,"Lake Placid, NY",Far,210
-Lake,"Lake Placid, NY",Far,210
-Snow,"Lake Placid, NY",Far,210
-Ski,"Jackson Hole, WY",Far,300
-Outdoors,"Jackson Hole, WY",Far,300
-Luxury,"Jackson Hole, WY",Far,300
-Ski,"Park City, UT",Far,370
-Film Festival,"Park City, UT",Far,370
-Scenic,"Park City, UT",Far,370
-Luxury,"Vail, CO",Far,300
-Ski,"Vail, CO",Far,300
-Resort,"Vail, CO",Far,300
-Celebrity,"Aspen, CO",Far,355
-Ski,"Aspen, CO",Far,355
-Luxury,"Aspen, CO",Far,355
-Beach,"Santa Monica, CA",Far,250
-Pier,"Santa Monica, CA",Far,250
-LA Vibes,"Santa Monica, CA",Far,250
-Beach,"Malibu, CA",Far,250
-Celebs,"Malibu, CA",Far,250
-Surf,"Malibu, CA",Far,250
-Celebrities,"Hollywood, CA",Far,210
-Movies,"Hollywood, CA",Far,210
-Touristy,"Hollywood, CA",Far,210
-Rose Parade,"Pasadena, CA",Far,210
-Suburban,"Pasadena, CA",Far,210
-Chill,"Pasadena, CA",Far,210
-Urban,"Oakland, CA",Far,210
-Diverse,"Oakland, CA",Far,210
-Underrated,"Oakland, CA",Far,210
-College,"Berkeley, CA",Far,210
-Liberal,"Berkeley, CA",Far,210
-Artsy,"Berkeley, CA",Far,210
-State Capitol,"Sacramento, CA",Far,210
-Chill,"Sacramento, CA",Far,210
-History,"Sacramento, CA",Far,210
-Luxury,"Palm Beach, FL",Far,210
-Beach,"Palm Beach, FL",Far,210
-Relax,"Palm Beach, FL",Far,210
-Beach,"Amelia Island, FL",Far,210
-Historic,"Amelia Island, FL",Far,210
-Family,"Amelia Island, FL",Far,210
-Beach,"Hilton Head Island, SC",Far,210
-Golf,"Hilton Head Island, SC",Far,210
-Family,"Hilton Head Island, SC",Far,210
-Beach,"Myrtle Beach, SC",Far,210
-Fun,"Myrtle Beach, SC",Far,210
-Boardwalk,"Myrtle Beach, SC",Far,210
-History,"Richmond, VA",Far,200
-Urban,"Richmond, VA",Far,200
-Chill,"Richmond, VA",Far,200
-Beach,"Outer Banks, NC",Far,210
-Scenic,"Outer Banks, NC",Far,210
-Relaxing,"Outer Banks, NC",Far,210
-Beach,"Montauk, NY",Far,210
-Quiet,"Montauk, NY",Far,210
-Chic,"Montauk, NY",Far,210
-Beach,"Fire Island, NY",Far,210
-LGBTQ+,"Fire Island, NY",Far,210
-Escape,"Fire Island, NY",Far,210
-Lake,"Lake George, NY",Far,210
-Family,"Lake George, NY",Far,210
-Boats,"Lake George, NY",Far,210
+Tags,Place
+Historic,Philadelphia PA
+Foodie,Philadelphia PA
+Urban,Philadelphia PA
+Urban,New York City NY
+Nightlife,New York City NY
+Foodie,New York City NY
+Culture,New York City NY
+Museums,Washington D.C.
+Historic,Washington D.C.
+Politics,Washington D.C.
+Urban,Pittsburgh PA
+Bridges,Pittsburgh PA
+Sports,Pittsburgh PA
+Nature,The Poconos PA
+Peaceful,The Poconos PA
+Cabin,The Poconos PA
+Casino,Atlantic City NJ
+Beachy Vibes,Atlantic City NJ
+Party,Atlantic City NJ
+Beachy Vibes,Cape May NJ
+Quiet,Cape May NJ
+Historic,Cape May NJ
+Explore,Delaware Beaches DE
+Vibes,Delaware Beaches DE
+Travel,Delaware Beaches DE
+Explore,Bushkill Falls PA
+Vibes,Bushkill Falls PA
+Travel,Bushkill Falls PA
+Historic,Boston MA
+Walkable,Boston MA
+Foodie,Boston MA
+Urban,Chicago IL
+Foodie,Chicago IL
+Architecture,Chicago IL
+Hollywood,Los Angeles CA
+Beachy Vibes,Los Angeles CA
+Celebs,Los Angeles CA
+Hills,San Francisco CA
+Golden Gate,San Francisco CA
+Tech,San Francisco CA
+Party,Las Vegas NV
+Casino,Las Vegas NV
+Shows,Las Vegas NV
+Theme Parks,Orlando FL
+Family,Orlando FL
+Fun,Orlando FL
+Beachy Vibes,Miami FL
+Party,Miami FL
+Tropical,Miami FL
+Jazz,New Orleans LA
+Foodie,New Orleans LA
+Party,New Orleans LA
+Coffee,Seattle WA
+Rain,Seattle WA
+Tech,Seattle WA
+Music,Austin TX
+Foodie,Austin TX
+Quirky,Austin TX
+Mountains,Denver CO
+Urban,Denver CO
+Outdoors,Denver CO
+Mountains,Salt Lake City UT
+Mormon,Salt Lake City UT
+Snow,Salt Lake City UT
+Wildlife,Yellowstone National Park WY/MT
+Nature,Yellowstone National Park WY/MT
+Adventure,Yellowstone National Park WY/MT
+Nature,Grand Canyon National Park AZ
+Hiking,Grand Canyon National Park AZ
+Photography,Grand Canyon National Park AZ
+Beachy Vibes,San Diego CA
+Chill,San Diego CA
+Surf,San Diego CA
+Tropical,Honolulu HI
+Beachy Vibes,Honolulu HI
+Island,Honolulu HI
+Nature,Anchorage AK
+Wilderness,Anchorage AK
+Unique,Anchorage AK
+Historic,Savannah GA
+Charming,Savannah GA
+Ghost Tours,Savannah GA
+Southern,Charleston SC
+Historic,Charleston SC
+Foodie,Charleston SC
+Peaceful,Sedona AZ
+Nature,Sedona AZ
+Desert,Phoenix AZ
+Relaxing,Phoenix AZ
+Golf,Phoenix AZ
+Urban,Dallas TX
+Texan,Dallas TX
+Foodie,Dallas TX
+Urban,Houston TX
+Space Center,Houston TX
+Diverse,Houston TX
+Relaxing,San Antonio TX
+Historic,San Antonio TX
+Culture,San Antonio TX
+Urban,Minneapolis MN
+Lakes,Minneapolis MN
+Artistic,Minneapolis MN
+Explore,Kansas City MO
+Vibes,Kansas City MO
+Travel,Kansas City MO
+Explore,Detroit MI
+Vibes,Detroit MI
+Travel,Detroit MI
+Music,Nashville TN
+Bars,Nashville TN
+Party,Nashville TN
+Elvis,Memphis TN
+BBQ,Memphis TN
+Blues,Memphis TN
+Explore,Louisville KY
+Vibes,Louisville KY
+Travel,Louisville KY
+Mountains,Asheville NC
+Beer,Asheville NC
+Artistic,Asheville NC
+Urban,Charlotte NC
+Foodie,Charlotte NC
+Urban,Raleigh NC
+College Town,Raleigh NC
+Chill,Raleigh NC
+Urban,Atlanta GA
+Hip Hop,Atlanta GA
+Foodie,Atlanta GA
+Beachy Vibes,Tampa FL
+Chill,Tampa FL
+Warm,Tampa FL
+Explore,St. Petersburg FL
+Vibes,St. Petersburg FL
+Travel,St. Petersburg FL
+Island,Key West FL
+Tropical,Key West FL
+Sunset,Key West FL
+Desert,Palm Springs CA
+Relaxing,Palm Springs CA
+Retro,Palm Springs CA
+Snow,Lake Tahoe CA/NV
+Nature,Lake Tahoe CA/NV
+Scenic,Lake Tahoe CA/NV
+Waterfalls,Yosemite National Park CA
+Nature,Yosemite National Park CA
+Hiking,Yosemite National Park CA
+Canyons,Zion National Park UT
+Hiking,Zion National Park UT
+Adventure,Zion National Park UT
+Hoodoos,Bryce Canyon National Park UT
+Hiking,Bryce Canyon National Park UT
+Nature,Bryce Canyon National Park UT
+Desert,Arches National Park UT
+Arches,Arches National Park UT
+Hiking,Arches National Park UT
+Mountains,Rocky Mountain National Park CO
+Wildlife,Rocky Mountain National Park CO
+Scenic,Rocky Mountain National Park CO
+Nature,Glacier National Park MT
+Hiking,Glacier National Park MT
+Relaxing,Glacier National Park MT
+Coastline,Acadia National Park ME
+Nature,Acadia National Park ME
+Fall Foliage,Acadia National Park ME
+Coffee,Portland OR
+Foodie,Portland OR
+Artistic,Portland OR
+Explore,Boise ID
+Vibes,Boise ID
+Travel,Boise ID
+Cliffs,Big Sur CA
+Ocean,Big Sur CA
+Scenic,Big Sur CA
+Desert,Death Valley CA
+Extreme,Death Valley CA
+Isolation,Death Valley CA
+Desert,Joshua Tree National Park CA
+Stars,Joshua Tree National Park CA
+Artistic,Joshua Tree National Park CA
+Artistic,Santa Fe NM
+Culture,Santa Fe NM
+Southwest,Santa Fe NM
+Culture,Albuquerque NM
+Desert,Albuquerque NM
+Waterfalls,Niagara Falls NY
+Nature,Niagara Falls NY
+Scenic,Niagara Falls NY
+Wineries,Finger Lakes NY
+Lakes,Finger Lakes NY
+Relaxing,Finger Lakes NY
+Nature,Catskills NY
+Hiking,Catskills NY
+Peaceful,Catskills NY
+Mountains,Adirondacks NY
+Cabin,Adirondacks NY
+Hiking,Adirondacks NY
+Olympics,Lake Placid NY
+Lakes,Lake Placid NY
+Snow,Lake Placid NY
+Ski,Jackson Hole WY
+Outdoors,Jackson Hole WY
+Luxury,Jackson Hole WY
+Ski,Park City UT
+Film Festival,Park City UT
+Scenic,Park City UT
+Luxury,Vail CO
+Ski,Vail CO
+Relaxing,Vail CO
+Celebs,Aspen CO
+Ski,Aspen CO
+Luxury,Aspen CO
+Beachy Vibes,Santa Monica CA
+Pier,Santa Monica CA
+LA Vibes,Santa Monica CA
+Beachy Vibes,Malibu CA
+Celebs,Malibu CA
+Surf,Malibu CA
+Celebs,Hollywood CA
+Movies,Hollywood CA
+Touristy,Hollywood CA
+Relaxing,Pasadena CA
+Suburban,Pasadena CA
+Chill,Pasadena CA
+Urban,Oakland CA
+Diverse,Oakland CA
+Underrated,Oakland CA
+College,Berkeley CA
+Liberal,Berkeley CA
+Artistic,Berkeley CA
+State Capitol,Sacramento CA
+Chill,Sacramento CA
+Historic,Sacramento CA
+Luxury,Palm Beach FL
+Beachy Vibes,Palm Beach FL
+Relaxing,Palm Beach FL
+Beachy Vibes,Amelia Island FL
+Historic,Amelia Island FL
+Family,Amelia Island FL
+Beachy Vibes,Hilton Head Island SC
+Golf,Hilton Head Island SC
+Family,Hilton Head Island SC
+Beachy Vibes,Myrtle Beach SC
+Fun,Myrtle Beach SC
+Boardwalk,Myrtle Beach SC
+Historic,Richmond VA
+Urban,Richmond VA
+Chill,Richmond VA
+Beachy Vibes,Outer Banks NC
+Scenic,Outer Banks NC
+Relaxing,Outer Banks NC
+Beachy Vibes,Montauk NY
+Quiet,Montauk NY
+Chill,Montauk NY
+Beachy Vibes,Fire Island NY
+Escape,Fire Island NY
+Lakes,Lake George NY
+Family,Lake George NY
+Boats,Lake George NY

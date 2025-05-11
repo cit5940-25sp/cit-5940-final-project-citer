@@ -66,7 +66,7 @@ public class Colors {
     public static final String CYAN_BOLD_BRIGHT = "\033[1;96m";  // CYAN
     public static final String WHITE_BOLD_BRIGHT = "\033[1;97m"; // WHITE
 
-    // High Intensity backgrounds
+    // High-Intensity backgrounds
     public static final String BLACK_BACKGROUND_BRIGHT = "\033[0;100m";// BLACK
     public static final String RED_BACKGROUND_BRIGHT = "\033[0;101m";// RED
     public static final String GREEN_BACKGROUND_BRIGHT = "\033[0;102m";// GREEN

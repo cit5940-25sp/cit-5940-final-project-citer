@@ -195,5 +195,26 @@ And the results and their sorting -> Is also an INTERNAL application.
             Node Activities -> Activities to do
             Node Food -> Things to eat
 
+Approach -> Bottom up:
+    Create the command pattern -> Empty execute -> Done
+
+    Create the graph class then divide it into methods
+
+    Find what is common in all three strategies that is being implemented.
+
+    Then create an interface that helps implement the strategies
+
+    Then create the random place strategy -> Move some methods into it
+
+    Then create the choice strategy ->
+
+    In the end create the command that requires you to execute it.
+
+
+
+To DO: Changes after the meeting 10th May 8:00 PM
+1. the random choice
+
+
 
 

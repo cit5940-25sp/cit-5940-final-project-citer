@@ -55,7 +55,7 @@ public class ChatBot {
         bot.featureChosen("course", new AcademicCommand(coursePlanner));
         bot.featureChosen("todo", new TodoCommand(dailyPlanner));
         bot.featureChosen("food", new FoodCommand());
-//        bot.featureChosen("review", new ReviewCommand(courseReviews));
+        bot.featureChosen("travel", new TravelCommand());
 
         System.out.println("🤖 Welcome to the Planner Bot!");
         Scanner scanner = new Scanner(System.in);

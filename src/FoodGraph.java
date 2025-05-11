@@ -53,7 +53,7 @@ public class FoodGraph {
 
         //Set of bad mood words
         moodWords = new ArrayList<>(List.of(
-                "sad", "angry", "anxious", "frustrated", "annoyed", "upset", "depressed", "lonely", "scared", "nervous", "insecure", "jealous", "bitter", "resentful", "hopeless", "helpless",
+                "terrible","sad", "angry", "anxious", "frustrated", "annoyed", "upset", "depressed", "lonely", "scared", "nervous", "insecure", "jealous", "bitter", "resentful", "hopeless", "helpless",
                 "guilty", "ashamed", "embarrassed", "regretful", "heartbroken", "rejected", "desperate",
                 "envious", "paranoid", "moody", "restless", "unsettled", "cynical", "apathetic", "irritable",
                 "pessimistic", "panicked", "distraught", "devastated", "tearful", "tense", "stressed", "jittery",
