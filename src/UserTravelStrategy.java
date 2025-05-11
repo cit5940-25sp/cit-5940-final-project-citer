@@ -5,9 +5,11 @@ import java.util.*;
  */
 public class UserTravelStrategy implements TravelTagRecommendation {
 
-    private int MAX_TAGS = 3;
-    private int MAX_SUGGESTIONS = 5;
-    private static final int MAX_EDIT_DISTANCE = 2;
+    /*
+     * Maximum edit distance is used when the Tries are not successful in returning suggestions
+     */
+    private int maxEditDist = 2;
+
 
     /**
      * Helps the user set the travel tags
@@ -16,7 +18,7 @@ public class UserTravelStrategy implements TravelTagRecommendation {
      */
     @Override
     public void setTag(TravelData travelData, Scanner scanner) {
-        System.out.println(Colors.PURPLE_BOLD_BRIGHT + "Enter categories or tags (separated by spaces)" + Colors.RESET);
+
 
         //Get the input from the user
         String tags = scanner.nextLine();
@@ -24,8 +26,8 @@ public class UserTravelStrategy implements TravelTagRecommendation {
         String[] tagArray = tags.toLowerCase().split(" ");
 
         //If the length > 3 ask the user to limit their selection
-        if (tagArray.length > MAX_TAGS) {
-            System.out.println( Colors.PURPLE_BOLD_BRIGHT + "Please enter a maximum of " + MAX_TAGS + " categories/tags." + Colors.RESET);
+        if (tagArray.length > 3) {
+            System.out.println(Colors.RED_BOLD_BRIGHT + "⚠️ Please enter a maximum of " + 3 + " categories/tags." + Colors.RESET);
             return;
         }
 
@@ -50,12 +52,12 @@ public class UserTravelStrategy implements TravelTagRecommendation {
             }
 
             // Try to find closest matching categories
-            List<String> suggestions = travelData.findSuggestions(categoryTrie, lowercaseInput, travelData.getTags(), MAX_EDIT_DISTANCE);
+            List<String> suggestions = travelData.findSuggestions(categoryTrie, lowercaseInput, travelData.getTags(), maxEditDist);
 
             if (suggestions.isEmpty()) {
-                System.out.println("No close matches found for: " + userInput);
+                System.out.println(Colors.YELLOW_BOLD_BRIGHT + "❌ No close matches found for: " + userInput + Colors.RESET);
             } else {
-                System.out.println("Did you mean ❓" + suggestions.getFirst());
+                System.out.println(Colors.CYAN_BOLD_BRIGHT + "🔍 Did you mean \"" + suggestions.getFirst() + "\"? (Y/N) " + Colors.RESET);
                 tags = scanner.nextLine();
                 if (tags.equalsIgnoreCase("Y")|| tags.equalsIgnoreCase("YES")) {
                     selectedCategories.add(suggestions.getFirst());
@@ -65,17 +67,17 @@ public class UserTravelStrategy implements TravelTagRecommendation {
 
         // Process the selected categories
         if (selectedCategories.isEmpty()) {
-            System.out.println("No valid categories selected.");
+            System.out.println(Colors.YELLOW_BOLD_BRIGHT + "📝 No valid categories selected." + Colors.RESET);
         } else {
-            System.out.println("\nSelected categories:");
+            System.out.println(Colors.GREEN_BOLD_BRIGHT + "\n✅ Selected categories:" + Colors.RESET);
             for (String category : selectedCategories) {
-                System.out.println(Colors.PURPLE_BOLD_BRIGHT + "- " + category + "🔆" + Colors.RESET);
+                System.out.println(Colors.PURPLE_BOLD_BRIGHT + "  🏷️ " + category + Colors.RESET);
                 // Display tags for the selected category
                 travelData.getUserTags().add(category);
-                }
             }
+        }
         System.out.println();
 
         travelData.displayLocations();
-        }
+    }
 }

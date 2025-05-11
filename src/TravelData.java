@@ -255,7 +255,7 @@ public class TravelData {
      */
     public void displayLocationData(Scanner scanner) {
         System.out.println(Colors.PURPLE_BOLD_BRIGHT + "✈️ Enter the name of the location you wish to visit 🗺️ or type 'exit' to return ❌" + Colors.RESET);
-        String line = scanner.nextLine();
+        String line = scanner.nextLine().toLowerCase();
         ArrayList<String> locations = new ArrayList<>(destDetails.keySet());
 
         while (!line.equalsIgnoreCase("exit")) {
@@ -273,19 +273,19 @@ public class TravelData {
                 if (!suggest.isEmpty()) {
                     System.out.println(Colors.YELLOW_BOLD_BRIGHT + "🤔 Did you mean \"" + suggest.get(0) + "\"? (Yes/No) " + Colors.RESET);
 
-                    String chh = scanner.nextLine();
+                    String chh = scanner.nextLine().toLowerCase();
 
                     if (chh.equalsIgnoreCase("yes") || chh.equalsIgnoreCase("y")) {
                         line = suggest.get(0);
                     } else {
                         System.out.println(Colors.PURPLE_BOLD_BRIGHT + "🔍 Please enter the name again of the location you wish to visit 🌴" + Colors.RESET);
-                        line = scanner.nextLine();
+                        line = scanner.nextLine().toLowerCase();
                         continue;
                     }
                 } else {
                     System.out.println(Colors.RED_BRIGHT + "❌ Location not found! Please try again with a different name." + Colors.RESET);
                     System.out.println(Colors.PURPLE_BOLD_BRIGHT + "🔍 Enter location name: " + Colors.RESET);
-                    line = scanner.nextLine();
+                    line = scanner.nextLine().toLowerCase();
                     continue;
                 }
             }
@@ -324,7 +324,7 @@ public class TravelData {
             System.out.println(Colors.CYAN_BRIGHT + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + Colors.RESET);
 
             System.out.println(Colors.GREEN_BRIGHT + "✨ Where to next? Enter another destination or type 'exit' to return ✈️" + Colors.RESET);
-            line = scanner.nextLine();
+            line = scanner.nextLine().toLowerCase();
         }
     }
 
@@ -341,7 +341,7 @@ public class TravelData {
         // First try to find prefix matches from the trie
         List<String> prefixMatches = trie.getWordsWithPrefix(input);
 
-        // If we have prefix matches, prioritize them
+        // If we have results from the trie -> use them
         if (!prefixMatches.isEmpty()) {
             return prefixMatches;
         }

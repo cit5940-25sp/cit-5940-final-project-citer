@@ -26,6 +26,13 @@ public class TravelCommand implements Command {
         System.out.println(Colors.YELLOW_BRIGHT + "1. 🔍 Search for a place manually" + Colors.RESET);
         System.out.println(Colors.YELLOW_BRIGHT + "2. 🏷️  Get places by categories" + Colors.RESET);
         String chh = scanner.nextLine();
+
+        //Error checking for the options
+        while (!chh.equals("1") && !chh.equals("2")) {
+            System.out.println(Colors.PURPLE_BOLD_BRIGHT + "Please enter either 1 or 2" + Colors.RESET);
+            chh = scanner.nextLine();
+        }
+
         if (chh.equals("1")) {
             travelData.displayLocationData(scanner);
             return;

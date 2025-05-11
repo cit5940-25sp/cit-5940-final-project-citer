@@ -213,8 +213,23 @@ Approach -> Bottom up:
 
 
 To DO: Changes after the meeting 10th May 8:00 PM
-1. the random choice
-
+1. Implement and work on edge cases -> Travel
+2. Implement and work on edge cases -> Restaurant
+1:30 PM
+3. Clean the code -> Travel
+4. Clean the code -> Restaurant
+2:30 PM
+5. Implement the random strategy in the restaurant tab.
+6. Merge with main
+4:00 PM
+7. Make a UML class diagram
+5:00 PM
+8. Test cases -> Restaurant
+9. Test cases -> Travel
+7:00 PM
+10. Java docs
+9:00 Pm
+Finir
 
 
 
