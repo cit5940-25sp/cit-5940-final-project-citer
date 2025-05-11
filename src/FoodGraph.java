@@ -54,7 +54,7 @@ public class FoodGraph {
         //Set of bad mood words
         moodWords = new ArrayList<>(List.of(
                 "terrible","sad", "angry", "anxious", "frustrated", "annoyed", "upset", "depressed", "lonely", "scared", "nervous", "insecure", "jealous", "bitter", "resentful", "hopeless", "helpless",
-                "guilty", "ashamed", "embarrassed", "regretful", "heartbroken", "rejected", "desperate",
+                "guilty", "ashamed", "embarrassed", "regretful", "heartbroken", "rejected", "desperate","awful","horrid","depressed","",
                 "envious", "paranoid", "moody", "restless", "unsettled", "cynical", "apathetic", "irritable",
                 "pessimistic", "panicked", "distraught", "devastated", "tearful", "tense", "stressed", "jittery",
                 "uneasy", "worthless", "numb", "overwhelmed", "fearful", "withdrawn", "furious", "raging",
@@ -170,7 +170,7 @@ public class FoodGraph {
                 if (restSet.size() >= 3) break; // Stop if we've found 3
             }
         }
-
+        System.out.println();
         System.out.println(Colors.CYAN_BOLD + "🍴 Here are your recommendations:" + Colors.RESET);
 
         for (Map.Entry<String, HashSet<String>> entry : suggestions.entrySet()) {
@@ -251,48 +251,6 @@ public class FoodGraph {
     }
 
 
-    /**
-     * Returns true if the mood is not good for the user!
-     * @param scanner
-     * @return
-     */
-    public boolean moodFind(Scanner scanner) {
-        System.out.println(Colors.CYAN_BOLD + "In a single word -> describe how you feel " + "😊" + Colors.RESET);
-        String feel = scanner.nextLine().toLowerCase();
-        mood =  (moodWords.contains(feel));
-
-        return mood;
-    }
-
-    /**
-     * This method will help set the cost parameters to be used for finding the restaurants.
-     * @param scanner
-     */
-    public void checkCost(Scanner scanner) {
-        System.out.println(Colors.CYAN_BRIGHT + "On a scale of $ to $$$$ how much are you willing to spend " + "💰" + Colors.RESET);
-        System.out.println(Colors.CYAN + "Restaurants will be recommended around your choice" + Colors.RESET);
-
-        String feel = scanner.nextLine();
-        if (feel.isEmpty() || !feel.matches("\\$+")) {
-            // Default if empty or invalid input
-            cost.add("$");
-            cost.add("$$");
-        } else {
-            //First add the cost entered by the user
-            cost.add(feel);
-
-            // Add adjacent cost levels for more options
-            if (feel.length() < 4) {
-                // Add one level up if not already at maximum
-                cost.add(feel + "$");
-            }
-
-            if (feel.length() > 1) {
-                // Add one level down if not already at minimum
-                cost.add(feel.substring(0, feel.length() - 1));
-            }
-        }
-    }
 
     /**
      * Getter for the cost selected by the user.
@@ -303,51 +261,11 @@ public class FoodGraph {
     }
 
     /**
-     * If the user wants to celebrate, then set cuisines for P(Bars, Clubs, Late night)
-     * @param scanner
-     */
-    public void celebration(Scanner scanner) {
-        System.out.println(Colors.YELLOW_BRIGHT + "Do you have a special occasion to celebrate? (Y/N) " + "🎉" + Colors.RESET);
-        String response = scanner.nextLine().toLowerCase();
-        if (response.equals("y") || response.equals("yes") || response.equals("ye")) {
-            userCuisines.add("bars & breweries");
-            userCuisines.add("club");
-            userCuisines.add("bodega/late night");
-            userCuisines.add("dive bar");
-            System.out.println(Colors.CYAN_BRIGHT + "Awesome! Added some celebration spots to your list." + " 🥂" + Colors.RESET);
-        }
-    }
-
-    /**
      * Method to clear the user cuisines and cost
      */
     public void clearVars() {
         userCuisines.clear();
         cost.clear();
-    }
-
-    public void displayCuisines() {
-        System.out.println(Colors.CYAN + "Available cuisines: " + "👨‍🍳" + Colors.RESET);
-        // First, ensure we have a truly unique list
-        Set<String> uniqueCuisines = new HashSet<>(cuisines);
-        List<String> sortedCuisines = new ArrayList<>(uniqueCuisines);
-        Collections.sort(sortedCuisines);
-
-        // Display in columns
-        int columns = 3;
-        int itemsPerColumn = (int) Math.ceil(sortedCuisines.size() / (double)columns);
-
-        for (int i = 0; i < itemsPerColumn; i++) {
-            StringBuilder lineBuilder = new StringBuilder("  ");
-
-            for (int j = 0; j < columns; j++) {
-                int index = i + (j * itemsPerColumn);
-                if (index < sortedCuisines.size()) {
-                    lineBuilder.append(String.format("%-20s", sortedCuisines.get(index)));
-                }
-            }
-            System.out.println(Colors.WHITE_BRIGHT + lineBuilder.toString() + Colors.RESET);
-        }
     }
 
     /**
@@ -362,8 +280,22 @@ public class FoodGraph {
      * Getter for user cuisines
      * @return user cuisines
      */
-
     public Set<String> getUserCuisines() {
         return userCuisines;
+    }
+
+    /**
+     * Getter for the moodwords array
+     * @return moodWords
+     */
+    public ArrayList<String> getMoodWords() {
+        return moodWords;
+    }
+
+    /**
+     * Setter for the boolean mood variable
+     */
+    public void setMood(boolean other) {
+        mood = other;
     }
 }

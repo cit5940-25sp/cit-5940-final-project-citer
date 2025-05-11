@@ -16,6 +16,7 @@ public class RandomStrategy implements FoodRecommendationStrategy {
         }
 
         // Display selected cuisines for confirmation
+        System.out.println();
         System.out.println(Colors.CYAN_BRIGHT + "You've selected these cuisines: " + "🎯 " +
                 String.join(", ", foodGraph.getUserCuisines()) + Colors.RESET);
 

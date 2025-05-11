@@ -142,72 +142,6 @@ public class TravelData {
         }
     }
 
-    /**
-     * Displays the Upenn's Calendar's data
-     */
-    public void displayHolidayData() {
-        System.out.println(Colors.PURPLE_BRIGHT + "Before we begin here are the Holiday's from the Penn Academic Calendar \uD83C\uDF08" + Colors.RESET);
-
-        // Define column headers
-        String holidayHeader = "Holiday";
-        String dateHeader = "Date";
-
-        // Find the maximum length of holiday names for alignment
-        int maxHolidayLength = holidayHeader.length();
-        for (Map.Entry<String, String> entry : holidayData) {
-            maxHolidayLength = Math.max(maxHolidayLength, entry.getKey().length());
-        }
-
-        // Print the headers with proper formatting
-        String headerFormat = "%-" + (maxHolidayLength + 2) + "s | %s%n";
-        System.out.printf(headerFormat, holidayHeader, dateHeader);
-
-        // Print a separator line
-        System.out.print("-".repeat(maxHolidayLength + 2) + "-+-" + "-".repeat(15) + "\n");
-
-        // Print each holiday and its date in the order they were added
-        for (Map.Entry<String, String> entry : holidayData) {
-            System.out.printf(headerFormat, entry.getKey(), entry.getValue());
-        }
-    }
-
-    /**
-     * Displays the place categories and their associated tags
-     */
-    public void displayPlaceList() {
-        System.out.println(Colors.CYAN_BRIGHT + "Available Categories \uD83D\uDCC1" + Colors.RESET);
-
-        // Get all categories
-        List<String> categories = new ArrayList<>(placeList.keySet());
-
-        // Sort categories alphabetically
-        Collections.sort(categories);
-
-        // Determine how many columns to use based on the length of the longest category
-        int maxCategoryLength = 0;
-        for (String category : categories) {
-            maxCategoryLength = Math.max(maxCategoryLength, category.length());
-        }
-
-        int columnWidth = maxCategoryLength + 4; // Add some padding
-        int numColumns = 5;
-
-        // Print separator line
-        System.out.println("--------------------------------------------");
-
-        // Print categories in columns
-        String columnFormat = "%-" + columnWidth + "s";
-        for (int i = 0; i < categories.size(); i++) {
-            System.out.printf(columnFormat, categories.get(i));
-
-            // Start a new line after printing the last column or at the end of the list
-            if ((i + 1) % numColumns == 0 || i == categories.size() - 1) {
-                System.out.println();
-            }
-        }
-
-        System.out.println("--------------------------------------------");
-    }
 
     /**
      * Method to return the tags for the given file
@@ -231,103 +165,6 @@ public class TravelData {
     public void clearUserTags() {
         userTags.clear();
     }
-
-    /**
-     * Method to display the locations based on the user tags
-     */
-    public void displayLocations() {
-        System.out.println(Colors.PURPLE_BOLD_BRIGHT + "These are the locations based on your choice of categories" + " \uD83C\uDF40" + Colors.RESET);
-
-        for (String tag : userTags) {
-            System.out.println(Colors.PURPLE_UNDERLINED + " \uD83C\uDF43" + tag + Colors.RESET);
-
-            Set<String> tagSet = placeList.get(tag);
-
-            for (String s : tagSet) {
-                System.out.println(Colors.CYAN_BRIGHT + s + Colors.RESET);
-            }
-            System.out.println();
-        }
-    }
-
-    /**
-     * Displays the location data with enhanced colors and emojis
-     */
-    public void displayLocationData(Scanner scanner) {
-        System.out.println(Colors.PURPLE_BOLD_BRIGHT + "✈️ Enter the name of the location you wish to visit 🗺️ or type 'exit' to return ❌" + Colors.RESET);
-        String line = scanner.nextLine().toLowerCase();
-        ArrayList<String> locations = new ArrayList<>(destDetails.keySet());
-
-        while (!line.equalsIgnoreCase("exit")) {
-            System.out.println();
-
-            //Implementing the auto-correct feature.
-            if (!destDetails.containsKey(line)) {
-                Trie categoryTrie = new Trie();
-                for (String category : destDetails.keySet()) {
-                    categoryTrie.insert(category.toLowerCase());
-                }
-
-                List<String> suggest = findSuggestions(categoryTrie, line, locations, 2);
-
-                if (!suggest.isEmpty()) {
-                    System.out.println(Colors.YELLOW_BOLD_BRIGHT + "🤔 Did you mean \"" + suggest.get(0) + "\"? (Yes/No) " + Colors.RESET);
-
-                    String chh = scanner.nextLine().toLowerCase();
-
-                    if (chh.equalsIgnoreCase("yes") || chh.equalsIgnoreCase("y")) {
-                        line = suggest.get(0);
-                    } else {
-                        System.out.println(Colors.PURPLE_BOLD_BRIGHT + "🔍 Please enter the name again of the location you wish to visit 🌴" + Colors.RESET);
-                        line = scanner.nextLine().toLowerCase();
-                        continue;
-                    }
-                } else {
-                    System.out.println(Colors.RED_BRIGHT + "❌ Location not found! Please try again with a different name." + Colors.RESET);
-                    System.out.println(Colors.PURPLE_BOLD_BRIGHT + "🔍 Enter location name: " + Colors.RESET);
-                    line = scanner.nextLine().toLowerCase();
-                    continue;
-                }
-            }
-
-            // Location header with emojis
-            System.out.println("\n" + Colors.GREEN_BOLD_BRIGHT + "🌟 DESTINATION: " + line.toUpperCase() + " 🌟" + Colors.RESET);
-            System.out.println(Colors.YELLOW_BRIGHT + "💰 Average cost per day: $" + destDetails.get(line).getCost() + Colors.RESET);
-
-            // Separator line
-            System.out.println(Colors.CYAN_BRIGHT + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + Colors.RESET);
-
-            // Must Visit section
-            System.out.println(Colors.CYAN_BRIGHT + "🏛️ MUST VISIT ATTRACTIONS:" + Colors.RESET);
-            ArrayList<String> tags = destDetails.get(line).getSee();
-            for (String tag : tags) {
-                System.out.println(Colors.CYAN_BRIGHT + "  • " + tag + Colors.RESET);
-            }
-            System.out.println();
-
-            // Activities section
-            System.out.println(Colors.BLUE_BOLD_BRIGHT + "🏄 ACTIVITIES & EXPERIENCES:" + Colors.RESET);
-            ArrayList<String> acts = destDetails.get(line).getDoStuff();
-            for (String tag : acts) {
-                System.out.println(Colors.BLUE_BRIGHT + "  • " + tag + Colors.RESET);
-            }
-            System.out.println();
-
-            // Food section
-            System.out.println(Colors.RED_BOLD_BRIGHT + "🍽️ LOCAL CUISINE & DINING:" + Colors.RESET);
-            ArrayList<String> food = destDetails.get(line).getFood();
-            for (String tag : food) {
-                System.out.println(Colors.RED_BRIGHT + "  • " + tag + Colors.RESET);
-            }
-
-            // Separator line
-            System.out.println(Colors.CYAN_BRIGHT + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + Colors.RESET);
-
-            System.out.println(Colors.GREEN_BRIGHT + "✨ Where to next? Enter another destination or type 'exit' to return ✈️" + Colors.RESET);
-            line = scanner.nextLine().toLowerCase();
-        }
-    }
-
 
     /**
      * Finds suggestions based on Trie prefix search and Levenshtein distance
@@ -388,6 +225,18 @@ public class TravelData {
         }
 
         return dp[a.length()][b.length()];
+    }
+
+    public List<Map.Entry<String, String>> getHolidayData() {
+        return holidayData;
+    }
+
+    public HashMap<String, Set<String>> getPlaceList() {
+        return placeList;
+    }
+
+    public HashMap<String, DestinationNode> getDestDetails() {
+        return destDetails;
     }
 
 }

@@ -9,6 +9,7 @@ public class UserTravelStrategy implements TravelTagRecommendation {
      * Maximum edit distance is used when the Tries are not successful in returning suggestions
      */
     private int maxEditDist = 2;
+    private TravelFoodUI tfi;
 
 
     /**
@@ -19,7 +20,7 @@ public class UserTravelStrategy implements TravelTagRecommendation {
     @Override
     public void setTag(TravelData travelData, Scanner scanner) {
 
-
+        tfi = new TravelFoodUI(travelData);
         //Get the input from the user
         String tags = scanner.nextLine();
         //Split the input basis whitespace
@@ -78,6 +79,6 @@ public class UserTravelStrategy implements TravelTagRecommendation {
         }
         System.out.println();
 
-        travelData.displayLocations();
+        tfi.displayLocations();
     }
 }
