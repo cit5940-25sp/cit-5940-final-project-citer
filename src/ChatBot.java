@@ -73,7 +73,7 @@ public class ChatBot {
 
 
         // register commands and their associated features
-        bot.featureChosen("course", new AcademicCommand(coursePlanner));
+        bot.featureChosen("course", academicCommand);
         bot.featureChosen("todo", new TodoCommand(dailyPlanner));
         bot.featureChosen("food", new FoodCommand(restaurants));
         bot.featureChosen("review", new ReviewCommand(courseReviews));
@@ -165,98 +165,4 @@ public class ChatBot {
 
         return dp[a.length()][b.length()];
     }
-
-//    private static void launchCourseRecommendationSystem(CoursePlanner planner) {
-//        // Create the academic command
-//        AcademicCommand academicCommand = new AcademicCommand(planner);
-//
-//        // Create scanner for user input
-//        Scanner scanner = new Scanner(System.in);
-//
-//        // Interactive loop
-//        while (true) {
-//            System.out.println("\n==== Course Recommendation System ====");
-//            System.out.println("1. Recommend courses by interest area");
-//            System.out.println("2. Recommend courses by career path");
-//            System.out.println("3. List all interest areas");
-//            System.out.println("4. List all career paths");
-//            System.out.println("5. Return to main menu");
-//            System.out.print("Enter your choice (1-5): ");
-//
-//            int choice;
-//            try {
-//                choice = Integer.parseInt(scanner.nextLine());
-//            } catch (NumberFormatException e) {
-//                System.out.println("Invalid choice. Please enter a number between 1 and 5.");
-//                continue;
-//            }
-//
-//            switch (choice) {
-//                case 1:
-//                    // Recommend by interest area
-//                    System.out.println("\nAvailable interest areas:");
-//                    for (String area : planner.getAllInterestAreas()) {
-//                        System.out.println("- " + area);
-//                    }
-//                    System.out.print("\nEnter interest area: ");
-//                    String interest = scanner.nextLine();
-//
-//                    academicCommand.setInterest(interest);
-//                    System.out.print("Enter max number of recommendations: ");
-//                    try {
-//                        int max = Integer.parseInt(scanner.nextLine());
-//                        academicCommand.setMaxRecommendations(max);
-//                    } catch (NumberFormatException e) {
-//                        System.out.println("Using default recommendations.");
-//                    }
-//
-//                    academicCommand.execute();
-//                    break;
-//
-//                case 2:
-//                    // Recommend by career path
-//                    System.out.println("\nAvailable career paths:");
-//                    for (String path : planner.getAllCareerPaths()) {
-//                        System.out.println("- " + path);
-//                    }
-//                    System.out.print("\nEnter career path: ");
-//                    String careerPath = scanner.nextLine();
-//
-//                    academicCommand.setCareerPath(careerPath);
-//                    System.out.print("Enter max number of recommendations: ");
-//                    try {
-//                        int max = Integer.parseInt(scanner.nextLine());
-//                        academicCommand.setMaxRecommendations(max);
-//                    } catch (NumberFormatException e) {
-//                        System.out.println("Using default recommendations.");
-//                    }
-//
-//                    academicCommand.execute();
-//                    break;
-//
-//                case 3:
-//                    // List all interest areas
-//                    System.out.println("\nAll Interest Areas:");
-//                    for (String area : planner.getAllInterestAreas()) {
-//                        System.out.println("- " + area);
-//                    }
-//                    break;
-//
-//                case 4:
-//                    // List all career paths
-//                    System.out.println("\nAll Career Paths:");
-//                    for (String path : planner.getAllCareerPaths()) {
-//                        System.out.println("- " + path);
-//                    }
-//                    break;
-//
-//                case 5:
-//                    // Return to main menu
-//                    return;
-//
-//                default:
-//                    System.out.println("Invalid choice. Please enter a number between 1 and 5.");
-//            }
-//        }
-//    }
 }
