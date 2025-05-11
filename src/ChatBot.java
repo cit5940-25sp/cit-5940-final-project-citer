@@ -1,15 +1,15 @@
 import java.util.*;
 
 public class ChatBot {
-    // maps command keywords (like "course") to their corresponding Command implementations
+    // maps command keywords to their corresponding Command implementations
     private HashMap<String, Command> ruleMap;
+    // tie for auto correction
     private Trie commandTrie = new Trie();
-
     // maps numeric options to command keywords for numbered selection
     private HashMap<Integer, String> numberToCommand;
-
     // tracks the next available number for command registration
     private int nextCommandIndex = 1;
+
 
     // constructor: initialize data structures
     public ChatBot() {
@@ -43,19 +43,40 @@ public class ChatBot {
     public static void main(String[] args) {
         ChatBot bot = new ChatBot();
 
+        // Create and initialize the CoursePlanner
+        CoursePlanner coursePlanner = new CoursePlanner();
+        try {
+            coursePlanner.loadCoursesFromCSV("cis_courses.csv");
+            coursePlanner.loadPrerequisitesFromCSV("prereq.csv");
+        } catch (Exception e) {
+            System.out.println("Warning: Error loading course data: " + e.getMessage());
+        }
+
+        // Create the AcademicPlannerUI
+        AcademicPlannerUI academicPlannerUI = new AcademicPlannerUI(coursePlanner);
+
         // load datasets from CSV files
-//        List<Restaurant> restaurants = RestaurantData.loadFromCSV("../data/restaurant_data.csv");
-//        List<CourseReview> courseReviews = CourseReviewData.loadFromCSV("../data/cis_courses.csv");
+        List<Restaurant> restaurants = RestaurantData.loadFromCSV("../data/restaurant_data.csv");
+        List<CourseReview> courseReviews = CourseReviewData.loadFromCSV("cis_courses.csv");
 
         // initialize core data structures
-        CoursePlanner coursePlanner = new CoursePlanner();
         DailyPlanner dailyPlanner = new DailyPlanner();
 
+        // Create a custom AcademicCommand that will launch the course recommendation system
+        Command academicCommand = new Command() {
+            @Override
+            public void execute() {
+                // This launches the course recommendation system
+                academicPlannerUI.start();
+            }
+        };
+
+
         // register commands and their associated features
-        bot.featureChosen("course", new AcademicCommand(coursePlanner));
+        bot.featureChosen("course", academicCommand);
         bot.featureChosen("todo", new TodoCommand(dailyPlanner));
-        bot.featureChosen("food", new FoodCommand());
-        bot.featureChosen("travel", new TravelCommand());
+        bot.featureChosen("food", new FoodCommand(restaurants));
+        bot.featureChosen("review", new ReviewCommand(courseReviews));
 
         System.out.println("🤖 Welcome to the Planner Bot!");
         Scanner scanner = new Scanner(System.in);

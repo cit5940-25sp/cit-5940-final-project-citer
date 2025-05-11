@@ -1,17 +1,24 @@
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class DailyPlanner {
-    private Stack<Task> taskStack;
-
-    public DailyPlanner() {
-        taskStack = new Stack<>();
-    }
+    private Queue<Task> tasks = new LinkedList<>();
 
     public void addTask(Task task) {
-        taskStack.push(task);
+        tasks.add(task); // Add to the queue
+    }
+
+    public Task peekNextTask() {
+        if (tasks.isEmpty()) {
+            return null;
+        }
+        return tasks.peek(); // Look at the front of the queue (oldest task)
     }
 
     public Task getNextTask() {
-        return taskStack.isEmpty() ? new Task("No tasks!") : taskStack.pop();
+        if (tasks.isEmpty()) {
+            return null;
+        }
+        return tasks.poll(); // Remove and return the front of the queue (oldest task)
     }
 }
