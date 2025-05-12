@@ -38,7 +38,7 @@ This is an example of a project directory for you to start working from. Please 
     ├── cis_course_reviews.csv
 ```
 
-design pattern: command & startegy
+design pattern: command & strategy
 
 
 Food data set: https://docs.google.com/spreadsheets/d/1CMosrdfNzjkUW9Svkm0dPuIjv4a2jcOg/edit?gid=1143306179#gid=1143306179

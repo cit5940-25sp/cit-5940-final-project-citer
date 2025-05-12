@@ -110,6 +110,7 @@ public class TravelData {
                 }
                 placeList.putIfAbsent(lineParts[0].trim(), new HashSet<>());
                 //Add the item if key is present
+                //Replace double quotes in the dataset
                 placeList.get(lineParts[0]).add(lineParts[1].replaceAll("\"",""));
             }
         } catch (IOException e) {

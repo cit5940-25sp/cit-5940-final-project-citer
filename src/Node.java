@@ -9,17 +9,17 @@ public class Node implements Comparable<Node> {
     /**
      * Field for restaurant name
      */
-    String restaurantName;
+    private String restaurantName;
 
     /**
      * Field for restaurant rating
      */
-    double rating;
+    private double rating;
 
     /**
      * Field for checking if the restaurant is near Penn
      */
-    boolean nearCollFlag;
+    private boolean nearCollFlag;
 
 
     /**
