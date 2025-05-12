@@ -1,11 +1,18 @@
 import java.util.*;
 
+/**
+ * The GoodMoodStrategy class is a concrete implementation of the
+ * FoodRecommendationStrategy interface. It handles cuisine selection
+ * logic when the user's mood is good and they wish to select their
+ * preferred cuisines manually.
+ */
 public class GoodMoodStrategy implements FoodRecommendationStrategy {
 
 
     /**
      * Sets the user cuisine variable if the user mood is good.
-     * @param foodGraph
+     * @param foodGraph Graph object for accessing the underlying graph structure
+     * @param scanner for fetching user input
      */
 
     @Override

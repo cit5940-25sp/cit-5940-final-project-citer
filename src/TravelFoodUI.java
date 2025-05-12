@@ -4,23 +4,37 @@ import java.util.*;
  * Provides a level of abstraction for the UI display fpr the restaurant and travel commands
  */
 public class TravelFoodUI {
+
+    /**
+     * The instance of the travel data structure used to access the underlying datasets
+     */
     private TravelData travelData;
+
+    /**
+     * The instance of the food graph used to access the underlying datasets
+     */
     private FoodGraph foodGraph;
 
-    //To be used in the Travel command
+    /**
+     * Constructor for intialising the traveldata, and used in the travel command
+     * @param travelData structure
+     */
     public TravelFoodUI(TravelData travelData) {
         this.travelData = travelData;
     }
 
-    //To be used in the Foodgraph command
+    /**
+     * Constructor for intialising the foodgraph, and used in the food command
+     * @param foodGraph structure
+     */
     public TravelFoodUI(FoodGraph foodGraph) {
         this.foodGraph = foodGraph;
     }
 
-    //Move
+
     /**
-     * If the user wants to celebrate, then set cuisines for P(Bars, Clubs, Late night)
-     * @param scanner
+     * If the user wants to celebrate, then set cuisines for (Bars, Clubs, Late night)
+     * @param scanner for fetching user input
      */
     public void displayCelebration(Scanner scanner) {
         System.out.println();
@@ -36,7 +50,9 @@ public class TravelFoodUI {
         }
     }
 
-    //Move
+    /**
+     * Method used to display the available cuisine to the terminal
+     */
     public void displayCuisines() {
         System.out.println(Colors.CYAN + "Available cuisines: " + "👨‍🍳" + Colors.RESET);
         // First, ensure we have a truly unique list
@@ -64,7 +80,7 @@ public class TravelFoodUI {
 
     /**
      * This method will help set the cost parameters to be used for finding the restaurants.
-     * @param scanner
+     * @param scanner for fetching in the cost parameters of the user
      */
     public void displayCost(Scanner scanner) {
         System.out.println();
@@ -91,8 +107,8 @@ public class TravelFoodUI {
 
     /**
      * Returns true if the mood is not good for the user!
-     * @param scanner
-     * @return
+     * @param scanner for fetching the user input when they enter how they feel
+     * @return a boolean value, true if the mood is bad
      */
     public boolean moodFind(Scanner scanner) {
         System.out.println(Colors.CYAN_BOLD + "In a single word -> describe how you feel " + "😊" + Colors.RESET);
@@ -107,9 +123,9 @@ public class TravelFoodUI {
 
     //All methods below are related to the travel data for the chatbot
 
-    //Move
+
     /**
-     * Displays the Upenn's Calendar's data
+     * Displays the Penn's Calendar's data
      */
     public void displayHolidayData() {
         System.out.println(Colors.PURPLE_BRIGHT + "Before we begin here are the Holiday's from the Penn Academic Calendar \uD83C\uDF08" + Colors.RESET);
@@ -196,9 +212,10 @@ public class TravelFoodUI {
     }
 
 
-    //
+
     /**
-     * Displays the location data with enhanced colors and emojis
+     * This method displays the location data with the cost per day, the things to see and do
+     * and the cuisine to eat.
      */
     public void displayLocationData(Scanner scanner) {
         System.out.println(Colors.PURPLE_BOLD_BRIGHT + "✈️ Enter the name of the location you wish to visit 🗺️ or type 'exit' to return ❌" + Colors.RESET);

@@ -1,11 +1,30 @@
 import java.util.*;
 
+/**
+ * This is the food command class which is executed by the chatbot
+ * It implements the Command interface
+ */
 public class FoodCommand implements Command {
+    /**
+     * Private field for the food graph
+     */
     private FoodGraph foodGraph;
+    /**
+     * Private field for scanner
+     */
     private Scanner scanner;
+    /**
+     * Private field for the cuisine strategy factory
+     */
     private CuisineStrategy cuisineStrategy;
+    /**
+     * Private field for the food UI
+     */
     private TravelFoodUI travelFoodUI;
 
+    /**
+     * No argument constructor used to initialize all fields in the underlying class
+     */
     public FoodCommand() {
         foodGraph = new FoodGraph();
         foodGraph.buildGraph("Databases/Philly Food DB V2.csv");
@@ -14,6 +33,9 @@ public class FoodCommand implements Command {
         travelFoodUI = new TravelFoodUI(foodGraph);
     }
 
+    /**
+     * The execute command from the interface is implemented here
+     */
     @Override
     public void execute() {
         //Welcome message and the user mood checks

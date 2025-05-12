@@ -7,9 +7,8 @@ public interface FoodRecommendationStrategy {
 
     /**
      * Each strategy helps set the cuisines in the food graph basis the user's preference
-     *
-     * @param foodGraph
-     * @param scanner
+     * @param foodGraph Graph object to retrieve and set the underlying graph structure
+     * @param scanner Used to fetch input from the user
      */
     public void setUserCuisines(FoodGraph foodGraph, Scanner scanner);
 

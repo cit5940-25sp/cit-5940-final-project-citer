@@ -14,7 +14,6 @@ public class RandomTravelStrategy implements TravelTagRecommendation {
      * @param travelData to access the datasets
      * @param scanner scanner to read in user input
      */
-
     @Override
     public void setTag(TravelData travelData, Scanner scanner){
         ArrayList<String> tags = travelData.getTags();

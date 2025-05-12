@@ -4,39 +4,70 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @author VarunS.
- *
+ * The FoodGraph class implements the methods to create, store and retrieve
+ * the contents of the graph.
  */
 public class FoodGraph {
 
+    /**
+     * The field for storing the graph.It is implemented as a HashMap with
+     * String for storing the cuisine, the values are a HashMap which has
+     * Cost as its key ($) and value as a priority queue used for Nodes.
+     * The ordering is maintained by the user ratings from Yelp/Google reviews
+     * Higher rated restaurants are displayed first.
+     */
     private HashMap<String, HashMap<String, PriorityQueue<Node>>> nodes;
 
-    //To keep track of the number of edges:
+    /**
+     * Field to keep track of the number of edges
+     */
     private int numEdges;
 
-    //Number of restaurants in the data set
+    /**
+     * Field to keep track of the number of restaurants
+     */
     private int numRestaurants;
 
-    //Number of cuisines in the data set
+    /**
+     * Field to keep track of the number of cuisines
+     */
     private Set<String> cuisines;
 
-    //An arrayList to populate bad mood words for the user
+    /**
+     * Field to keep track of the words that hint towards a bad mood
+     */
     private ArrayList<String> moodWords;
 
 
-    //These fields help determine the criteria for the user.
+    /**
+     * Field to keep track of the mood of the user
+     */
     private boolean mood;
+
+    /**
+     * Field to keep track of the cost preferences of the user
+     */
     private ArrayList<String> cost;
+
+    /**
+     * Field to keep track if the user is in a hurry
+     */
     private boolean time;
+
+    /**
+     * Field to keep track of the cuisine preferences of the user
+     */
     private Set<String> userCuisines;
 
-    //For autocorrect
+    /**
+     * Field to implement the auto correct feature using Tries.
+     */
     private Trie cuisineTrie;
 
 
 
     /**
-     * Constructor for initializing the graph to a null state.
+     * No argument constructor for initializing the graph to a null state.
      * and define the other fields in the graph.
      */
     public FoodGraph() {
@@ -106,9 +137,8 @@ public class FoodGraph {
     /**
      * Method to build the graph with the list of restaurants.
      * The file has to be a neatly formatted csv file.
-     * @param filePath
+     * @param filePath the location of the dataset
      */
-
     public void buildGraph(String filePath) {
         try (BufferedReader bread = new BufferedReader(new FileReader(filePath))) {
             //This is for skipping the headers
@@ -151,8 +181,8 @@ public class FoodGraph {
 
 
     /**
-     * Method to traverse the graph and find
-     *
+     * Method to traverse the graph and find suggestions based on user cuisine
+     * preferences
      */
     public void findSuggestions() {
         HashMap<String, HashSet<String>> suggestions = new HashMap<>();
@@ -196,7 +226,7 @@ public class FoodGraph {
     }
 
     /**
-     * Calculates how different two strings are (edit distance) (Borrowed from CIT 5960)
+     * Calculates how different two strings are (edit distance)
      */
     private int editDistance(String s1, String s2) {
         int[][] dp = new int[s1.length() + 1][s2.length() + 1];
@@ -257,7 +287,7 @@ public class FoodGraph {
             }
         }
 
-        return null; // No good match found
+        return null;
     }
 
 
@@ -295,8 +325,8 @@ public class FoodGraph {
     }
 
     /**
-     * Getter for the moodwords array
-     * @return moodWords
+     * Getter for the mood words array
+     * @return moodWords The field that stores the bad mood words
      */
     public ArrayList<String> getMoodWords() {
         return moodWords;
@@ -311,6 +341,7 @@ public class FoodGraph {
 
     /**
      * getter for the boolean mood variable
+     * @return mood the private field for user mood
      */
     public boolean getMood() {
         return mood;
@@ -318,7 +349,7 @@ public class FoodGraph {
 
     /**
      * Getter for the number of restaurants
-     * @Return number of restaurants
+     * @return numRestaurants The number of restaurants in the graph.
      */
     public int getNumRestaurants() {
         return numRestaurants;

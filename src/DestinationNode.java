@@ -5,19 +5,31 @@ import java.util.ArrayList;
  * see and eat at the specified destination
  */
 public class DestinationNode {
-    //Fields to store the activities
 
-    //Things to see at the destination
+    /**
+     * Things to see at the destination
+     */
     private ArrayList<String> see;
-    //Things to do at the destination
+    /**
+     * Things to do at the destination
+     */
     private ArrayList<String> doStuff;
-    //Things to eat at the destination
+    /**
+     * Things to eat at the destination
+     */
     private ArrayList<String> food;
-    //Estiimated cost per day
+    /**
+     * Estimated cost per day
+     */
     private int cost;
-    //Distance from philly
+    /**
+     * Distance from philly whether near or far
+     */
     private String distance;
 
+    /**
+     * No argument constructor used for initializing the class fields.
+     */
     DestinationNode() {
         see = new ArrayList<>();
         doStuff = new ArrayList<>();
@@ -59,7 +71,7 @@ public class DestinationNode {
     }
 
     /**
-     * Getter for the cost variable
+     * Setter for the cost variable
      *
      */
     public void setCost(int cost) {

@@ -2,13 +2,36 @@ import java.util.Scanner;
 
 /**
  * The travel command executes the travel strategies.
+ * It is used to implement the Command interface
  */
 public class TravelCommand implements Command {
+
+    /**
+     * Represents an instance of {@link TravelData} used for storing and managing travel-related datasets.
+     * The purpose is to integrate data such as holidays, destinations, and tags
+     * into the functionalities provided by the chatbot strategies.
+     */
     TravelData travelData;
+
+    /**
+     * An instance of the scanner, used for fetching user input
+     */
     Scanner scanner = new Scanner(System.in);
+
+    /**
+     * An instance of the travel factory class which is used for getting the various travel strategies.
+     */
     TravelStrategyFactory travelFactory;
+
+    /**
+     * The travel food UI handles all UI-related tasks
+     */
     TravelFoodUI travelFoodUI;
 
+    /**
+     * Zero argument constructor for the class, initializes all field objects and variables
+     * and also loads the datasets into their respective data structures !
+     */
     public TravelCommand() {
         travelData = new TravelData();
         //Load the data from the datasets
@@ -18,7 +41,10 @@ public class TravelCommand implements Command {
     }
 
 
-
+    /**
+     * The execute command helps implement the command and strategy design pattern.
+     * It switches context on runtime based on user inputs.
+     */
     @Override
     public void execute() {
         //To implement.
