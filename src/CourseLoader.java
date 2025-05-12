@@ -47,7 +47,7 @@ public class CourseLoader {
                 courses.put(courseId, course);
             }
 
-            System.out.println("Successfully loaded " + courses.size() + " courses from " + filename);
+//            System.out.println("Successfully loaded " + courses.size() + " courses from " + filename);
         } catch (IOException e) {
             System.err.println("Error loading courses from CSV: " + e.getMessage());
         }
@@ -87,7 +87,7 @@ public class CourseLoader {
 
                 String[] values = line.split(",");
                 if (values.length < 2) {
-                    System.out.println("Skipping invalid prerequisite line: " + line);
+//                    System.out.println("Skipping invalid prerequisite line: " + line);
                     continue;
                 }
 
@@ -97,7 +97,7 @@ public class CourseLoader {
                 courseGraph.addPrerequisite(courseId, prerequisiteId);
             }
 
-            System.out.println("Successfully loaded prerequisites from " + filename);
+//            System.out.println("Successfully loaded prerequisites from " + filename);
         } catch (IOException e) {
             System.err.println("Error loading prerequisites from CSV: " + e.getMessage());
         }
