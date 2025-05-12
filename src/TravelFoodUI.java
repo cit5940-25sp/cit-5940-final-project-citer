@@ -39,8 +39,11 @@ public class TravelFoodUI {
     public void displayCelebration(Scanner scanner) {
         System.out.println();
         System.out.println(Colors.YELLOW_BRIGHT + "Do you have a special occasion to celebrate? (Y/N) " + "🎉" + Colors.RESET);
+
         String response = scanner.nextLine().toLowerCase();
-        if (response.equals("y") || response.equals("yes") || response.equals("ye")) {
+        checkResponse(response, scanner);
+
+        if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("ye")) {
             foodGraph.getUserCuisines().add("bars & breweries");
             foodGraph.getUserCuisines().add("club");
             foodGraph.getUserCuisines().add("gastropub");
@@ -85,9 +88,17 @@ public class TravelFoodUI {
     public void displayCost(Scanner scanner) {
         System.out.println();
         System.out.println(Colors.CYAN_BRIGHT + "On a scale of $ to $$$$ how much are you willing to spend " + "💰" + Colors.RESET);
-        System.out.println(Colors.CYAN + "Restaurants will be recommended around your choice" + Colors.RESET);
+        System.out.println(Colors.WHITE_BRIGHT + "Restaurants will be recommended around your choice" + Colors.RESET);
 
         String feel = scanner.nextLine();
+
+        String check = "$$$$";
+
+        while (!check.contains(feel)) {
+            System.out.println(Colors.WHITE_BRIGHT + "Please enter the cost in $ ranging from $ to $$$$" + Colors.RESET);
+            feel = scanner.nextLine();
+        }
+
         if (feel.isEmpty() || !feel.matches("\\$+")) {
             // Default if empty or invalid input
             foodGraph.getCost().add("$");
@@ -294,6 +305,14 @@ public class TravelFoodUI {
 
             System.out.println(Colors.GREEN_BRIGHT + "✨ Where to next? Enter another destination or type 'exit' to return ✈️" + Colors.RESET);
             line = scanner.nextLine().toLowerCase();
+        }
+    }
+
+    private void checkResponse(String input, Scanner scanner) {
+        while (!input.equalsIgnoreCase("Y") && !input.equalsIgnoreCase("Yes") &&
+                !input.equalsIgnoreCase("N") && !input.equalsIgnoreCase("No")) {
+            System.out.println("Please enter a valid option");
+            input = scanner.nextLine();
         }
     }
 }

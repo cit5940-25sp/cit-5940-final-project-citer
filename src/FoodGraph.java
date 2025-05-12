@@ -88,7 +88,7 @@ public class FoodGraph {
                 "guilty", "ashamed", "embarrassed", "regretful", "heartbroken", "rejected", "desperate","awful","horrid","depressed","",
                 "envious", "paranoid", "moody", "restless", "unsettled", "cynical", "apathetic", "irritable",
                 "pessimistic", "panicked", "distraught", "devastated", "tearful", "tense", "stressed", "jittery",
-                "uneasy", "worthless", "numb", "overwhelmed", "fearful", "withdrawn", "furious", "raging",
+                "uneasy", "worthless", "numb", "overwhelmed", "fearful", "withdrawn", "furious", "raging", "horrible",
                 "seething", "hostile", "contemptuous", "belligerent", "grumpy", "snappy", "cold", "dismissive",
                 "condescending", "aggressive", "passive-aggressive", "spiteful", "vindictive", "sarcastic",
                 "defensive", "abrasive", "combative", "antagonistic", "critical", "judgemental", "condemning",

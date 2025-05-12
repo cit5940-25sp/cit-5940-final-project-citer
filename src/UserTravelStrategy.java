@@ -68,7 +68,9 @@ public class UserTravelStrategy implements TravelTagRecommendation {
 
         // Process the selected categories
         if (selectedCategories.isEmpty()) {
-            System.out.println(Colors.YELLOW_BOLD_BRIGHT + "📝 No valid categories selected." + Colors.RESET);
+            System.out.println(Colors.YELLOW_BOLD_BRIGHT + "\uD83D\uDE13 No valid categories selected." + Colors.RESET);
+            System.out.println(Colors.WHITE_BRIGHT + "Please re enter at most 3 categories" + Colors.RESET);
+            setTag(travelData, scanner);
         } else {
             System.out.println(Colors.GREEN_BOLD_BRIGHT + "\n✅ Selected categories:" + Colors.RESET);
             for (String category : selectedCategories) {

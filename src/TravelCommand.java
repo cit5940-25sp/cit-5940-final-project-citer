@@ -67,11 +67,25 @@ public class TravelCommand implements Command {
         } else {
             System.out.println(Colors.PURPLE_BOLD_BRIGHT + "🎲 Would you like us to surprise you with some awesome places? (Y/N) 🎲" + Colors.RESET);
             String check = scanner.nextLine();
+
+            while (!check.equalsIgnoreCase("Y") && !check.equalsIgnoreCase("Yes") &&
+                    !check.equalsIgnoreCase("N") && !check.equalsIgnoreCase("No")) {
+                System.out.println("Please enter a valid option");
+                check = scanner.nextLine();
+            }
+
             if (check.equalsIgnoreCase("Y") || check.equalsIgnoreCase("Yes")) {
                 travelFactory.getRandomTravelStrategy();
 
                 System.out.println(Colors.PURPLE_BOLD_BRIGHT + "👍 Would you like to go ahead with these categories? (Y/N) 👎" + Colors.RESET);
                 check = scanner.nextLine();
+
+                while (!check.equalsIgnoreCase("Y") && !check.equalsIgnoreCase("Yes") &&
+                        !check.equalsIgnoreCase("N") && !check.equalsIgnoreCase("No")) {
+                    System.out.println("Please enter a valid option");
+                    check = scanner.nextLine();
+                }
+
                 if (check.equalsIgnoreCase("N") || check.equalsIgnoreCase("No")) {
                     travelData.clearUserTags();
                 } else {
