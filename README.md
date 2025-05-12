@@ -12,7 +12,12 @@ This is an example of a project directory for you to start working from. Please 
 ```text
 |
 |--- .gitignore # lists all of the junk that might exist in your folder that should not be committed
-|--- README.md # explanation for the purpose of your repo
+|--- README.md 
+    We built a rule-based fixed prompt Chatbot, specifically geared towards students at UPenn. 
+    This Chat bot will serve as a personal assistant to the students.
+    As international students, it took us considerable time to get adapted to life @ penn and understand the program. 
+    We all were of the opinion that providing resources to the future students in the form of a ChatBot 
+    will definitely be useful and help them adapt into Philly, Penn and the MCIT program more quickly.
 |--- src
     |----- AcademicCommand.java  
     |----- AcademicPlannerUI.java         
