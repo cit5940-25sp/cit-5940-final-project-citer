@@ -20,7 +20,7 @@ public class TravelStrategyTest {
     public void setUp() {
         travelData = new TravelData();
 
-        travelData.addDataFromDataFile("Databases/Holidays_calendar.csv", "Databases/place_and_category.csv", "Databases/destination_details.csv");
+        travelData.addDataFromDataFile("data/Holidays_calendar.csv", "data/place_and_category.csv", "data/destination_details.csv");
 
 
 
