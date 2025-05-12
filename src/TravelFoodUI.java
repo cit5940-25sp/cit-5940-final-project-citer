@@ -80,11 +80,6 @@ public class TravelFoodUI {
             //First add the cost entered by the user
             foodGraph.getCost().add(feel);
 
-            // Add adjacent cost levels for more options
-            if (feel.length() < 4) {
-                // Add one level up if not already at maximum
-                foodGraph.getCost().add(feel + "$");
-            }
 
             if (feel.length() > 1) {
                 // Add one level down if not already at minimum

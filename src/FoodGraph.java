@@ -30,7 +30,7 @@ public class FoodGraph {
     private boolean time;
     private Set<String> userCuisines;
 
-    //For auto correct
+    //For autocorrect
     private Trie cuisineTrie;
 
 
@@ -119,23 +119,28 @@ public class FoodGraph {
                 line = line.toLowerCase();
                 String[] parts = line.trim().split(",");
 
+
+
                 // Create a boolean flag and set it to value from the file.
-                boolean flag = parts[4].equals("yes");
+                boolean flag = parts[4].trim().equalsIgnoreCase("yes");
 
                 //Put if Absent to populate the node
-                nodes.putIfAbsent(parts[1], new HashMap<>());
+                nodes.putIfAbsent(parts[1].trim().toLowerCase(), new HashMap<>());
 
                 // Add cuisine to the set and the Trie
-                if (cuisines.add(parts[1].trim())) {
-                    // Add to Trie when a new cuisine is discovered
-                    cuisineTrie.insert(parts[1]);
+                if (cuisines.add(parts[1].trim().toLowerCase())) {
+                    // Add to Trie when new cuisine is discovered
+                    cuisineTrie.insert(parts[1].trim().toLowerCase());
                 }
 
-                nodes.get(parts[1]).putIfAbsent(parts[2], new PriorityQueue<>());
+
+                nodes.get(parts[1].trim().toLowerCase()).putIfAbsent(parts[2], new PriorityQueue<>());
+
 
                 //Add the element to the hashmap
 
-                nodes.get(parts[1]).get(parts[2]).add(new Node(parts[0],
+                nodes.get(parts[1].trim().toLowerCase()).get(parts[2].trim().toLowerCase()).
+                        add(new Node(parts[0].trim().toLowerCase(),
                         Double.parseDouble(parts[3]),flag));
                 numRestaurants++;
             }
@@ -157,15 +162,20 @@ public class FoodGraph {
             HashSet<String> restSet = new HashSet<>();
             suggestions.put(cuisine, restSet);
 
+
             for (String costLevel : cost) {
                 PriorityQueue<Node> queue = nodes.get(cuisine).get(costLevel);
+
                 if (queue == null) continue;
 
-                // Use an iterator so we don't modify the queue destructively
-                Iterator<Node> iter = queue.iterator();
-                while (iter.hasNext() && restSet.size() < 3) {
-                    restSet.add((iter.next().getName() + " (" + costLevel + ")"));
+                PriorityQueue<Node> queue2 = new PriorityQueue<>(queue);
+
+                while (!queue2.isEmpty() && restSet.size() < 3) {
+                    Node resty = queue2.poll();
+                    restSet.add((resty.getName() + " (" + costLevel + ")"));
                 }
+
+
 
                 if (restSet.size() >= 3) break; // Stop if we've found 3
             }
@@ -297,6 +307,13 @@ public class FoodGraph {
      */
     public void setMood(boolean other) {
         mood = other;
+    }
+
+    /**
+     * getter for the boolean mood variable
+     */
+    public boolean getMood() {
+        return mood;
     }
 
     /**

@@ -51,6 +51,7 @@ public class TravelCommand implements Command {
                 } else {
                     travelFoodUI.displayLocations();
                     travelFoodUI.displayLocationData(scanner);
+                    travelData.clearUserTags();
                     return;
                 }
             }

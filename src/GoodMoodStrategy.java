@@ -9,8 +9,8 @@ public class GoodMoodStrategy implements FoodRecommendationStrategy {
      */
 
     @Override
-    public void setUserCuisines(FoodGraph foodGraph, Scanner scanner){
-        //This strategy is accessed only when the user's mood is not bad and they have
+    public void setUserCuisines(FoodGraph foodGraph, Scanner scanner) {
+        //This strategy is accessed only when the user's mood is not bad and they haveset
         // not requested us to select cuisines for them.
         String response = scanner.nextLine().toLowerCase();
 
