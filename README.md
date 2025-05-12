@@ -18,6 +18,17 @@ This is an example of a project directory for you to start working from. Please 
     As international students, it took us considerable time to get adapted to life @ penn and understand the program. 
     We all were of the opinion that providing resources to the future students in the form of a ChatBot 
     will definitely be useful and help them adapt into Philly, Penn and the MCIT program more quickly.
+    
+    To run the Chat Bot please navigate to the ChatBot class and run the main in that class.
+    
+    The current functionality provides help with:
+        1. Course selection
+        2. To do list
+        3. Food and Restaurant recommendations
+        4. Course review
+        5. Travel location recommendations
+    
+    
 |--- src
     |----- AcademicCommand.java  
     |----- AcademicPlannerUI.java         
@@ -81,10 +92,25 @@ This is an example of a project directory for you to start working from. Please 
 |--- data
     |----- prereq.csv
     |----- cis_courses.csv
+    |----- food_dataset.csv
+    |----- Holidays_calendar.csv
+    |----- place_and_category.csv
+    |----- destination_details.csv
+    
 ```
 
-design pattern: command & strategy
+Design pattern: 1) Command Design pattern & 2) Strategy Design pattern
 
 
-Food data set: https://docs.google.com/spreadsheets/d/1CMosrdfNzjkUW9Svkm0dPuIjv4a2jcOg/edit?gid=1143306179#gid=1143306179
+Resources used for building the data sets:
 
+1. Food Database: (food_dataset.csv)
+    Primary Source: https://docs.google.com/spreadsheets/d/1CMosrdfNzjkUW9Svkm0dPuIjv4a2jcOg/edit?gid=1143306179#gid=1143306179
+    Yelp/ Google reviews: Used the web scraping and lookup feature of ChatGPT to scrape the reviews for all the restaurants in the data set.
+
+2. Holiday Calendar: (Holidays_calendar.csv):
+    Primary Source: https://almanac.upenn.edu/penn-academic-calendar
+
+3. Category and Places: (place_and_category.csv, destination_details.csv):
+   Primary Source: Used the research and web scraping feature of ChatGPT to curate a list of holiday destinations tagged to a category
+                    and for each destination got the top things to see, activities to do and must try food along with costs per day.

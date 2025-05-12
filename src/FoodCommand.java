@@ -27,7 +27,7 @@ public class FoodCommand implements Command {
      */
     public FoodCommand() {
         foodGraph = new FoodGraph();
-        foodGraph.buildGraph("Databases/Philly Food DB V2.csv");
+        foodGraph.buildGraph("data/food_dataset.csv");
         scanner = new Scanner(System.in);
         cuisineStrategy = new CuisineStrategy();
         travelFoodUI = new TravelFoodUI(foodGraph);

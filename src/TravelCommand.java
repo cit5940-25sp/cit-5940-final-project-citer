@@ -35,7 +35,7 @@ public class TravelCommand implements Command {
     public TravelCommand() {
         travelData = new TravelData();
         //Load the data from the datasets
-        travelData.addDataFromDataFile("Databases/UPenn_Holiday_Almanac_2025_2026.csv", "Databases/Updated_Verified_Costs_Research.csv", "Databases/Detailed dataset.csv");
+        travelData.addDataFromDataFile("data/Holidays_calendar.csv", "data/place_and_category.csv", "data/destination_details.csv");
         travelFactory = new TravelStrategyFactory(travelData, scanner);
         travelFoodUI = new TravelFoodUI(travelData);
     }

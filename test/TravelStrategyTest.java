@@ -20,7 +20,7 @@ public class TravelStrategyTest {
     public void setUp() {
         travelData = new TravelData();
 
-        travelData.addDataFromDataFile("Databases/UPenn_Holiday_Almanac_2025_2026.csv", "Databases/Updated_Verified_Costs_Research.csv", "Databases/Detailed dataset.csv");
+        travelData.addDataFromDataFile("Databases/Holidays_calendar.csv", "Databases/place_and_category.csv", "Databases/destination_details.csv");
 
 
 

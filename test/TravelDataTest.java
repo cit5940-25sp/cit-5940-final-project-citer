@@ -15,9 +15,9 @@ public class TravelDataTest {
     public void setUp() {
         travelData = new TravelData();
         travelData.addDataFromDataFile(
-                "Databases/UPenn_Holiday_Almanac_2025_2026.csv",
-                "Databases/Updated_Verified_Costs_Research.csv",
-                "Databases/Detailed dataset.csv"
+                "data/Holidays_calendar.csv",
+                "data/place_and_category.csv",
+                "data/destination_details.csv"
         );
     }
 
