@@ -14,28 +14,68 @@ This is an example of a project directory for you to start working from. Please 
 |--- .gitignore # lists all of the junk that might exist in your folder that should not be committed
 |--- README.md # explanation for the purpose of your repo
 |--- src
-    |----- *.java (source code files)
-    ├── ChatBot.java          (the brain)
-    ├── Command.java          (the command interface)
-    ├── AcademicCommand.java  (course planning feature)
-    ├── TodoCommand.java      (daily planner feature)
-    ├── FoodCommand.java      (food recommendations feature)
-    ├── CoursePlanner.java    (DAG for course recommendations)
-    ├── DailyPlanner.java     (Stack for tasks)
-    ├── Task.java              (Represents a to-do task)
-    ├── Restaurant.java        (Represents a restaurant)
-    ├── RestaurantData.java    (Load restaurants from CSV)
-    ├── FoodRecommendationStrategy.java (Strategy pattern interface)
-    ├── HighestRatedStrategy.java (Concrete strategy)
-    ├── RandomStrategy.java     (Concrete strategy)
-    ├── CourseReviewLoader.java (Loader if you want course reviews)
-    ├── CourseReview.java       (Course review object)
-    ├── ReviewCommand.java      (Optional: View course reviews)
+    |----- AcademicCommand.java  
+    |----- AcademicPlannerUI.java         
+    |----- ChatBot.java       
+    |----- Colors.java           
+    |----- Command.java         
+    |----- Course.java
+    |----- CourseGraph.java
+    |----- CourseLoader.java
+    |----- CoursePlanner.java
+    |----- CourseRecommendation.java
+    |----- CourseReview.java         
+    |----- CourseReviewData.java 
+    |----- CuisineStrategy.java 
+    |----- DailyPlanner.java 
+    |----- DestinationNode.java     
+    |----- FoodCommand.java  
+    |----- FoodGraph.java    
+    |----- FoodRecommendationStrategy.java 
+    |----- GoodMoodStrategy.java 
+    |----- InterestAreaManager.java 
+    |----- Node.java  
+    |----- NotGoodMoodStrategy.java 
+    |----- RandomStrategy.java   
+    |----- RandomTravelStrategy.java  
+    |----- ReviewCommand.java   
+    |----- Task.java             
+    |----- TodoCommand.java  
+    |----- TravelCommand.java        
+    |----- TravelData.java  
+    |----- TravelFoodUI.java 
+    |----- TravelStrategyFactory.java 
+    |----- TravelTagRecommendation.java 
+    |----- Trie.java
+    |----- TrieNode.java     
+    |----- UserTravelStrategy.java  
 |--- test
-    |----- *Test.java (unit test files)
-├── data
-    ├── restaurant_data.csv
-    ├── cis_course_reviews.csv
+    |----- AcademicPlanningTest.java
+    |----- ChatBotTest.java
+    |----- CourseGraphTest.java
+    |----- CourseLoaderTest.java
+    |----- CoursePlannerTest.java
+    |----- CourseRecommendationTest.java
+    |----- CourseReviewDataTest.java
+    |----- CourseReviewTest.java
+    |----- CourseTest.java
+    |----- DailyPlannerTest.java
+    |----- FoodCommandTest.java
+    |----- FoodGraphTest.java
+    |----- InterestAreaManagerTest.java
+    |----- RestaurantDataTest.java
+    |----- TaskTest.java
+    |----- TestDestinationNode.java
+    |----- TestNodeFood.java
+    |----- TodoCommandTest.java
+    |----- TravelCommandTest.java
+    |----- TravelDataTest.java
+    |----- TravelStrategyTest.java
+    |----- TrieNodeTest.java
+    |----- TrieTest.java
+|--- data
+    |----- prereq.csv
+    |----- cis_courses.csv
 ```
 
 design pattern: command & strategy
