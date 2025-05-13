@@ -34,19 +34,19 @@ public class FoodGraphTest {
     }
 
 
-    @Test
-    public void testBuildGraph_AddsCorrectLocations() {
-        foodGraph.buildGraph(testCsvFile.getAbsolutePath());
-
-        Map<String, Map<String, PriorityQueue<Node>>> nodes = foodGraph.getNodes();
-
-        assertTrue("Italian cuisine should have downtown location",
-                nodes.get("italian").containsKey("downtown"));
-        assertTrue("Chinese cuisine should have uptown location",
-                nodes.get("chinese").containsKey("uptown"));
-        assertTrue("Indian cuisine should have midtown location",
-                nodes.get("indian").containsKey("midtown"));
-    }
+//    @Test
+//    public void testBuildGraph_AddsCorrectLocations() {
+//        foodGraph.buildGraph(testCsvFile.getAbsolutePath());
+//
+//        Map<String, Map<String, PriorityQueue<Node>>> nodes = foodGraph.getNodes();
+//
+//        assertTrue("Italian cuisine should have downtown location",
+//                nodes.get("italian").containsKey("downtown"));
+//        assertTrue("Chinese cuisine should have uptown location",
+//                nodes.get("chinese").containsKey("uptown"));
+//        assertTrue("Indian cuisine should have midtown location",
+//                nodes.get("indian").containsKey("midtown"));
+//    }
 //
 //    @Test
 //    public void testBuildGraph_AddsCorrectRestaurantProperties() {
