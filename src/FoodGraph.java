@@ -4,39 +4,70 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @author VarunS.
- *
+ * The FoodGraph class implements the methods to create, store and retrieve
+ * the contents of the graph.
  */
 public class FoodGraph {
 
+    /**
+     * The field for storing the graph.It is implemented as a HashMap with
+     * String for storing the cuisine, the values are a HashMap which has
+     * Cost as its key ($) and value as a priority queue used for Nodes.
+     * The ordering is maintained by the user ratings from Yelp/Google reviews
+     * Higher rated restaurants are displayed first.
+     */
     private HashMap<String, HashMap<String, PriorityQueue<Node>>> nodes;
 
-    //To keep track of the number of edges:
+    /**
+     * Field to keep track of the number of edges
+     */
     private int numEdges;
 
-    //Number of restaurants in the data set
+    /**
+     * Field to keep track of the number of restaurants
+     */
     private int numRestaurants;
 
-    //Number of cuisines in the data set
+    /**
+     * Field to keep track of the number of cuisines
+     */
     private Set<String> cuisines;
 
-    //An arrayList to populate bad mood words for the user
+    /**
+     * Field to keep track of the words that hint towards a bad mood
+     */
     private ArrayList<String> moodWords;
 
 
-    //These fields help determine the criteria for the user.
+    /**
+     * Field to keep track of the mood of the user
+     */
     private boolean mood;
+
+    /**
+     * Field to keep track of the cost preferences of the user
+     */
     private ArrayList<String> cost;
+
+    /**
+     * Field to keep track if the user is in a hurry
+     */
     private boolean time;
+
+    /**
+     * Field to keep track of the cuisine preferences of the user
+     */
     private Set<String> userCuisines;
 
-    //For auto correct
+    /**
+     * Field to implement the auto correct feature using Tries.
+     */
     private Trie cuisineTrie;
 
 
 
     /**
-     * Constructor for initializing the graph to a null state.
+     * No argument constructor for initializing the graph to a null state.
      * and define the other fields in the graph.
      */
     public FoodGraph() {
@@ -57,7 +88,7 @@ public class FoodGraph {
                 "guilty", "ashamed", "embarrassed", "regretful", "heartbroken", "rejected", "desperate","awful","horrid","depressed","",
                 "envious", "paranoid", "moody", "restless", "unsettled", "cynical", "apathetic", "irritable",
                 "pessimistic", "panicked", "distraught", "devastated", "tearful", "tense", "stressed", "jittery",
-                "uneasy", "worthless", "numb", "overwhelmed", "fearful", "withdrawn", "furious", "raging",
+                "uneasy", "worthless", "numb", "overwhelmed", "fearful", "withdrawn", "furious", "raging", "horrible",
                 "seething", "hostile", "contemptuous", "belligerent", "grumpy", "snappy", "cold", "dismissive",
                 "condescending", "aggressive", "passive-aggressive", "spiteful", "vindictive", "sarcastic",
                 "defensive", "abrasive", "combative", "antagonistic", "critical", "judgemental", "condemning",
@@ -106,9 +137,8 @@ public class FoodGraph {
     /**
      * Method to build the graph with the list of restaurants.
      * The file has to be a neatly formatted csv file.
-     * @param filePath
+     * @param filePath the location of the dataset
      */
-
     public void buildGraph(String filePath) {
         try (BufferedReader bread = new BufferedReader(new FileReader(filePath))) {
             //This is for skipping the headers
@@ -119,23 +149,28 @@ public class FoodGraph {
                 line = line.toLowerCase();
                 String[] parts = line.trim().split(",");
 
+
+
                 // Create a boolean flag and set it to value from the file.
-                boolean flag = parts[4].equals("yes");
+                boolean flag = parts[4].trim().equalsIgnoreCase("yes");
 
                 //Put if Absent to populate the node
-                nodes.putIfAbsent(parts[1], new HashMap<>());
+                nodes.putIfAbsent(parts[1].trim().toLowerCase(), new HashMap<>());
 
                 // Add cuisine to the set and the Trie
-                if (cuisines.add(parts[1].trim())) {
-                    // Add to Trie when a new cuisine is discovered
-                    cuisineTrie.insert(parts[1]);
+                if (cuisines.add(parts[1].trim().toLowerCase())) {
+                    // Add to Trie when new cuisine is discovered
+                    cuisineTrie.insert(parts[1].trim().toLowerCase());
                 }
 
-                nodes.get(parts[1]).putIfAbsent(parts[2], new PriorityQueue<>());
+
+                nodes.get(parts[1].trim().toLowerCase()).putIfAbsent(parts[2], new PriorityQueue<>());
+
 
                 //Add the element to the hashmap
 
-                nodes.get(parts[1]).get(parts[2]).add(new Node(parts[0],
+                nodes.get(parts[1].trim().toLowerCase()).get(parts[2].trim().toLowerCase()).
+                        add(new Node(parts[0].trim().toLowerCase(),
                         Double.parseDouble(parts[3]),flag));
                 numRestaurants++;
             }
@@ -146,8 +181,8 @@ public class FoodGraph {
 
 
     /**
-     * Method to traverse the graph and find
-     *
+     * Method to traverse the graph and find suggestions based on user cuisine
+     * preferences
      */
     public void findSuggestions() {
         HashMap<String, HashSet<String>> suggestions = new HashMap<>();
@@ -157,15 +192,20 @@ public class FoodGraph {
             HashSet<String> restSet = new HashSet<>();
             suggestions.put(cuisine, restSet);
 
+
             for (String costLevel : cost) {
                 PriorityQueue<Node> queue = nodes.get(cuisine).get(costLevel);
+
                 if (queue == null) continue;
 
-                // Use an iterator so we don't modify the queue destructively
-                Iterator<Node> iter = queue.iterator();
-                while (iter.hasNext() && restSet.size() < 3) {
-                    restSet.add((iter.next().getName() + " (" + costLevel + ")"));
+                PriorityQueue<Node> queue2 = new PriorityQueue<>(queue);
+
+                while (!queue2.isEmpty() && restSet.size() < 3) {
+                    Node resty = queue2.poll();
+                    restSet.add((resty.getName() + " (" + costLevel + ")"));
                 }
+
+
 
                 if (restSet.size() >= 3) break; // Stop if we've found 3
             }
@@ -186,7 +226,7 @@ public class FoodGraph {
     }
 
     /**
-     * Calculates how different two strings are (edit distance) (Borrowed from CIT 5960)
+     * Calculates how different two strings are (edit distance)
      */
     private int editDistance(String s1, String s2) {
         int[][] dp = new int[s1.length() + 1][s2.length() + 1];
@@ -247,7 +287,7 @@ public class FoodGraph {
             }
         }
 
-        return null; // No good match found
+        return null;
     }
 
 
@@ -285,8 +325,8 @@ public class FoodGraph {
     }
 
     /**
-     * Getter for the moodwords array
-     * @return moodWords
+     * Getter for the mood words array
+     * @return moodWords The field that stores the bad mood words
      */
     public ArrayList<String> getMoodWords() {
         return moodWords;
@@ -300,8 +340,16 @@ public class FoodGraph {
     }
 
     /**
+     * getter for the boolean mood variable
+     * @return mood the private field for user mood
+     */
+    public boolean getMood() {
+        return mood;
+    }
+
+    /**
      * Getter for the number of restaurants
-     * @Return number of restaurants
+     * @return numRestaurants The number of restaurants in the graph.
      */
     public int getNumRestaurants() {
         return numRestaurants;

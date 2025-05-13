@@ -12,23 +12,37 @@ import java.util.AbstractMap.SimpleEntry;
 public class TravelData {
     //Fields in the graph
 
-    //Private field for the holiday data set
-    // A map entry used to preserve the order of the holidays.
+    /**
+     * Private field for the holiday data set
+     * A map entry used to preserve the order of the holidays.
+     */
     private List<Map.Entry<String, String>> holidayData;
 
-    //Private field for the list of places
+    /**
+     * Private field for the list of places
+     * A map with set as values, stores Categories and the places associated with those
+     * categories
+     */
     private HashMap<String, Set<String>> placeList;
+
+    /**
+     * Field to store the tags (categories) in the dataset
+     */
     private ArrayList<String> tags;
 
-    //Private field for the destination details
+    /**
+     * Private field for the destination details
+     */
     private HashMap<String, DestinationNode> destDetails;
 
-    //User tags preference: Used by the strategies
+    /**
+     * Field for storing user tags preference: Used by the strategies
+     */
     private ArrayList<String> userTags;
 
 
     /**
-     * Default constructor that initializes the data structures
+     * zero argument constructor that initializes the data structures and fields.
      *
      */
     public TravelData() {
@@ -43,9 +57,9 @@ public class TravelData {
     /**
      * Method that populates the data structures from the data sets
      * Uses the reference path of the datasets -> Holiday calendar, The places and destination files
-     * @param holidayFile
-     * @param placeFile
-     * @param destFile
+     * @param holidayFile path to the holiday calendar
+     * @param placeFile path to the category and place dataset
+     * @param destFile path to the detailed place and things to do dataset
      */
     public void addDataFromDataFile(String holidayFile, String placeFile, String destFile) {
         //Populate all the data structures
@@ -57,6 +71,7 @@ public class TravelData {
 
     /**
      * Method to make the holiday data structure
+     * @param holiFile path to the holiday calendar
      */
     public void makeHoliday(String holiFile) {
         try(BufferedReader bread = new BufferedReader(new FileReader(holiFile))) {
@@ -79,6 +94,7 @@ public class TravelData {
 
     /**
      * Method to make the place tags data structure
+     * @param placeFile path to the category and place dataset
      */
     public void makePlaceTags(String placeFile) {
         try(BufferedReader bread = new BufferedReader(new FileReader(placeFile))) {
@@ -94,6 +110,7 @@ public class TravelData {
                 }
                 placeList.putIfAbsent(lineParts[0].trim(), new HashSet<>());
                 //Add the item if key is present
+                //Replace double quotes in the dataset
                 placeList.get(lineParts[0]).add(lineParts[1].replaceAll("\"",""));
             }
         } catch (IOException e) {
@@ -103,6 +120,7 @@ public class TravelData {
 
     /**
      * Method to make the destination details data structure
+     * @param destFile path to the detailed place and things to do dataset
      */
     public void makeDetails(String destFile) {
         try(BufferedReader bread = new BufferedReader(new FileReader(destFile))) {
@@ -145,7 +163,7 @@ public class TravelData {
 
     /**
      * Method to return the tags for the given file
-     * @return
+     * @return tags which are stored in the dataset
      */
     public ArrayList<String> getTags() {
         return tags;
@@ -153,7 +171,7 @@ public class TravelData {
 
     /**
      * Method to return the userTags for the given file
-     * @return
+     * @return the tags selected by the user
      */
     public ArrayList<String> getUserTags() {
         return userTags;
@@ -227,14 +245,27 @@ public class TravelData {
         return dp[a.length()][b.length()];
     }
 
+    /**
+     * Retrieves the holiday data stored as a list of key-value pairs.
+     * @return A list of map entries*/
     public List<Map.Entry<String, String>> getHolidayData() {
         return holidayData;
     }
 
+    /**
+     * Retrieves the list of places categorized into different sets.
+     * @return A HashMap where the keys are category names (String) and the values are
+     *         sets of place names (Set<String>) associated with those categories.
+     */
     public HashMap<String, Set<String>> getPlaceList() {
         return placeList;
     }
 
+    /**
+     * Retrieves the destination details data structure.
+     * @return A HashMap mapping destination names (String) to their respective
+     *         DestinationNode objects containing detailed information.
+     */
     public HashMap<String, DestinationNode> getDestDetails() {
         return destDetails;
     }

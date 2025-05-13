@@ -4,29 +4,46 @@ import java.util.*;
  * Provides a level of abstraction for the UI display fpr the restaurant and travel commands
  */
 public class TravelFoodUI {
+
+    /**
+     * The instance of the travel data structure used to access the underlying datasets
+     */
     private TravelData travelData;
+
+    /**
+     * The instance of the food graph used to access the underlying datasets
+     */
     private FoodGraph foodGraph;
 
-    //To be used in the Travel command
+    /**
+     * Constructor for intialising the traveldata, and used in the travel command
+     * @param travelData structure
+     */
     public TravelFoodUI(TravelData travelData) {
         this.travelData = travelData;
     }
 
-    //To be used in the Foodgraph command
+    /**
+     * Constructor for intialising the foodgraph, and used in the food command
+     * @param foodGraph structure
+     */
     public TravelFoodUI(FoodGraph foodGraph) {
         this.foodGraph = foodGraph;
     }
 
-    //Move
+
     /**
-     * If the user wants to celebrate, then set cuisines for P(Bars, Clubs, Late night)
-     * @param scanner
+     * If the user wants to celebrate, then set cuisines for (Bars, Clubs, Late night)
+     * @param scanner for fetching user input
      */
     public void displayCelebration(Scanner scanner) {
         System.out.println();
         System.out.println(Colors.YELLOW_BRIGHT + "Do you have a special occasion to celebrate? (Y/N) " + "🎉" + Colors.RESET);
+
         String response = scanner.nextLine().toLowerCase();
-        if (response.equals("y") || response.equals("yes") || response.equals("ye")) {
+        checkResponse(response, scanner);
+
+        if (response.equalsIgnoreCase("y") || response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("ye")) {
             foodGraph.getUserCuisines().add("bars & breweries");
             foodGraph.getUserCuisines().add("club");
             foodGraph.getUserCuisines().add("gastropub");
@@ -36,7 +53,9 @@ public class TravelFoodUI {
         }
     }
 
-    //Move
+    /**
+     * Method used to display the available cuisine to the terminal
+     */
     public void displayCuisines() {
         System.out.println(Colors.CYAN + "Available cuisines: " + "👨‍🍳" + Colors.RESET);
         // First, ensure we have a truly unique list
@@ -64,14 +83,22 @@ public class TravelFoodUI {
 
     /**
      * This method will help set the cost parameters to be used for finding the restaurants.
-     * @param scanner
+     * @param scanner for fetching in the cost parameters of the user
      */
     public void displayCost(Scanner scanner) {
         System.out.println();
         System.out.println(Colors.CYAN_BRIGHT + "On a scale of $ to $$$$ how much are you willing to spend " + "💰" + Colors.RESET);
-        System.out.println(Colors.CYAN + "Restaurants will be recommended around your choice" + Colors.RESET);
+        System.out.println(Colors.WHITE_BRIGHT + "Restaurants will be recommended around your choice" + Colors.RESET);
 
         String feel = scanner.nextLine();
+
+        String check = "$$$$";
+
+        while (!check.contains(feel)) {
+            System.out.println(Colors.WHITE_BRIGHT + "Please enter the cost in $ ranging from $ to $$$$" + Colors.RESET);
+            feel = scanner.nextLine();
+        }
+
         if (feel.isEmpty() || !feel.matches("\\$+")) {
             // Default if empty or invalid input
             foodGraph.getCost().add("$");
@@ -80,11 +107,6 @@ public class TravelFoodUI {
             //First add the cost entered by the user
             foodGraph.getCost().add(feel);
 
-            // Add adjacent cost levels for more options
-            if (feel.length() < 4) {
-                // Add one level up if not already at maximum
-                foodGraph.getCost().add(feel + "$");
-            }
 
             if (feel.length() > 1) {
                 // Add one level down if not already at minimum
@@ -96,8 +118,8 @@ public class TravelFoodUI {
 
     /**
      * Returns true if the mood is not good for the user!
-     * @param scanner
-     * @return
+     * @param scanner for fetching the user input when they enter how they feel
+     * @return a boolean value, true if the mood is bad
      */
     public boolean moodFind(Scanner scanner) {
         System.out.println(Colors.CYAN_BOLD + "In a single word -> describe how you feel " + "😊" + Colors.RESET);
@@ -112,9 +134,9 @@ public class TravelFoodUI {
 
     //All methods below are related to the travel data for the chatbot
 
-    //Move
+
     /**
-     * Displays the Upenn's Calendar's data
+     * Displays the Penn's Calendar's data
      */
     public void displayHolidayData() {
         System.out.println(Colors.PURPLE_BRIGHT + "Before we begin here are the Holiday's from the Penn Academic Calendar \uD83C\uDF08" + Colors.RESET);
@@ -201,9 +223,10 @@ public class TravelFoodUI {
     }
 
 
-    //
+
     /**
-     * Displays the location data with enhanced colors and emojis
+     * This method displays the location data with the cost per day, the things to see and do
+     * and the cuisine to eat.
      */
     public void displayLocationData(Scanner scanner) {
         System.out.println(Colors.PURPLE_BOLD_BRIGHT + "✈️ Enter the name of the location you wish to visit 🗺️ or type 'exit' to return ❌" + Colors.RESET);
@@ -282,6 +305,14 @@ public class TravelFoodUI {
 
             System.out.println(Colors.GREEN_BRIGHT + "✨ Where to next? Enter another destination or type 'exit' to return ✈️" + Colors.RESET);
             line = scanner.nextLine().toLowerCase();
+        }
+    }
+
+    private void checkResponse(String input, Scanner scanner) {
+        while (!input.equalsIgnoreCase("Y") && !input.equalsIgnoreCase("Yes") &&
+                !input.equalsIgnoreCase("N") && !input.equalsIgnoreCase("No")) {
+            System.out.println("Please enter a valid option");
+            input = scanner.nextLine();
         }
     }
 }

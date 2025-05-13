@@ -1,8 +1,20 @@
 import java.util.*;
 
+/**
+ * The RandomStrategy class implements the FoodRecommendationStrategy interface to provide
+ * a food recommendation mechanism where cuisines are selected randomly.
+ * This strategy selects up to three random cuisines from the available cuisines
+ * in the FoodGraph object and sets them as the user's preferred cuisines. This approach
+ * is particularly suited for users looking for a surprise or those who do not have
+ * specific preferences.
+ */
 public class RandomStrategy implements FoodRecommendationStrategy {
 
-
+    /**
+     * Set user cuisines method in the Random strategy. Helps user get random cuisines
+     * @param foodGraph Graph object to retrieve and set the underlying graph structure
+     * @param scanner Used to fetch input from the user
+     */
     @Override
     public void setUserCuisines(FoodGraph foodGraph, Scanner scanner) {
         System.out.println(Colors.CYAN_BRIGHT + "Surprise it is! " + "✨ We'll pick some great options for you." + Colors.RESET);

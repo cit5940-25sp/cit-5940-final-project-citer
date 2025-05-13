@@ -12,7 +12,7 @@ public class TodoCommand implements Command {
 
     @Override
     public void execute() {
-        // load default task based on the day
+        // Load default task based on the day
         DayOfWeek today = LocalDate.now().getDayOfWeek();
         switch (today) {
             case WEDNESDAY:
@@ -29,7 +29,7 @@ public class TodoCommand implements Command {
                 break;
         }
 
-        // interactive menu
+        // Interactive menu
         while (true) {
             System.out.println("\n📋 TODO Menu:");
             System.out.println("[1] Add a custom task");
@@ -47,16 +47,28 @@ public class TodoCommand implements Command {
                     planner.addTask(new Task(desc));
                     System.out.println("✅ Task added.");
                     break;
+
                 case "2":
                     Task peek = planner.peekNextTask();
-                    System.out.println("🔜 Next Task: " + peek.getDescription());
+                    if (peek == null) {
+                        System.out.println("📭 No tasks to show.");
+                    } else {
+                        System.out.println("🔜 Next Task: " + peek.getDescription());
+                    }
                     break;
+
                 case "3":
                     Task popped = planner.getNextTask();
-                    System.out.println("☑️ Completed: " + popped.getDescription());
+                    if (popped == null) {
+                        System.out.println("📭 No tasks to complete.");
+                    } else {
+                        System.out.println("☑️ Completed: " + popped.getDescription());
+                    }
                     break;
+
                 case "4":
                     return;
+
                 default:
                     System.out.println("❌ Invalid option. Try again.");
             }

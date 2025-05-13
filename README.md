@@ -12,34 +12,105 @@ This is an example of a project directory for you to start working from. Please 
 ```text
 |
 |--- .gitignore # lists all of the junk that might exist in your folder that should not be committed
-|--- README.md # explanation for the purpose of your repo
+|--- README.md 
+    We built a rule-based fixed prompt Chatbot, specifically geared towards students at UPenn. 
+    This Chat bot will serve as a personal assistant to the students.
+    As international students, it took us considerable time to get adapted to life @ penn and understand the program. 
+    We all were of the opinion that providing resources to the future students in the form of a ChatBot 
+    will definitely be useful and help them adapt into Philly, Penn and the MCIT program more quickly.
+    
+    To run the Chat Bot please navigate to the ChatBot class and run the main in that class.
+    
+    The current functionality provides help with:
+        1. Course selection
+        2. To do list
+        3. Food and Restaurant recommendations
+        4. Course review
+        5. Travel location recommendations
+    
+    
 |--- src
-    |----- *.java (source code files)
-    ├── ChatBot.java          (the brain)
-    ├── Command.java          (the command interface)
-    ├── AcademicCommand.java  (course planning feature)
-    ├── TodoCommand.java      (daily planner feature)
-    ├── FoodCommand.java      (food recommendations feature)
-    ├── CoursePlanner.java    (DAG for course recommendations)
-    ├── DailyPlanner.java     (Stack for tasks)
-    ├── Task.java              (Represents a to-do task)
-    ├── Restaurant.java        (Represents a restaurant)
-    ├── RestaurantData.java    (Load restaurants from CSV)
-    ├── FoodRecommendationStrategy.java (Strategy pattern interface)
-    ├── HighestRatedStrategy.java (Concrete strategy)
-    ├── RandomStrategy.java     (Concrete strategy)
-    ├── CourseReviewLoader.java (Loader if you want course reviews)
-    ├── CourseReview.java       (Course review object)
-    ├── ReviewCommand.java      (Optional: View course reviews)
+    |----- AcademicCommand.java  
+    |----- AcademicPlannerUI.java         
+    |----- ChatBot.java       
+    |----- Colors.java           
+    |----- Command.java         
+    |----- Course.java
+    |----- CourseGraph.java
+    |----- CourseLoader.java
+    |----- CoursePlanner.java
+    |----- CourseRecommendation.java
+    |----- CourseReview.java         
+    |----- CourseReviewData.java 
+    |----- CuisineStrategy.java 
+    |----- DailyPlanner.java 
+    |----- DestinationNode.java     
+    |----- FoodCommand.java  
+    |----- FoodGraph.java    
+    |----- FoodRecommendationStrategy.java 
+    |----- GoodMoodStrategy.java 
+    |----- InterestAreaManager.java 
+    |----- Node.java  
+    |----- NotGoodMoodStrategy.java 
+    |----- RandomStrategy.java   
+    |----- RandomTravelStrategy.java  
+    |----- ReviewCommand.java   
+    |----- Task.java             
+    |----- TodoCommand.java  
+    |----- TravelCommand.java        
+    |----- TravelData.java  
+    |----- TravelFoodUI.java 
+    |----- TravelStrategyFactory.java 
+    |----- TravelTagRecommendation.java 
+    |----- Trie.java
+    |----- TrieNode.java     
+    |----- UserTravelStrategy.java  
 |--- test
-    |----- *Test.java (unit test files)
-├── data
-    ├── restaurant_data.csv
-    ├── cis_course_reviews.csv
+    |----- AcademicPlanningTest.java
+    |----- ChatBotTest.java
+    |----- CourseGraphTest.java
+    |----- CourseLoaderTest.java
+    |----- CoursePlannerTest.java
+    |----- CourseRecommendationTest.java
+    |----- CourseReviewDataTest.java
+    |----- CourseReviewTest.java
+    |----- CourseTest.java
+    |----- DailyPlannerTest.java
+    |----- FoodCommandTest.java
+    |----- FoodGraphTest.java
+    |----- InterestAreaManagerTest.java
+    |----- RestaurantDataTest.java
+    |----- TaskTest.java
+    |----- TestDestinationNode.java
+    |----- TestNodeFood.java
+    |----- TodoCommandTest.java
+    |----- TravelCommandTest.java
+    |----- TravelDataTest.java
+    |----- TravelStrategyTest.java
+    |----- TrieNodeTest.java
+    |----- TrieTest.java
+|--- data
+    |----- prereq.csv
+    |----- cis_courses.csv
+    |----- food_dataset.csv
+    |----- Holidays_calendar.csv
+    |----- place_and_category.csv
+    |----- destination_details.csv
+    
 ```
 
-design pattern: command & startegy
+Design pattern: 1) Command Design pattern & 2) Strategy Design pattern
 
 
-Food data set: https://docs.google.com/spreadsheets/d/1CMosrdfNzjkUW9Svkm0dPuIjv4a2jcOg/edit?gid=1143306179#gid=1143306179
+Resources used for building the data sets:
 
+1. Food Database: (food_dataset.csv)
+    Primary Source: https://docs.google.com/spreadsheets/d/1CMosrdfNzjkUW9Svkm0dPuIjv4a2jcOg/edit?gid=1143306179#gid=1143306179
+    Yelp/ Google reviews: Used the web scraping and lookup feature of ChatGPT to scrape the reviews for all the restaurants in the data set.
+
+2. Holiday Calendar: (Holidays_calendar.csv):
+    Primary Source: https://almanac.upenn.edu/penn-academic-calendar
+
+3. Category and Places: (place_and_category.csv, destination_details.csv):
+   Primary Source: Used the research and web scraping feature of ChatGPT to curate a list of holiday destinations tagged to a category
+                    and for each destination - got the top things to see, activities to do and must try food along with costs per day.
