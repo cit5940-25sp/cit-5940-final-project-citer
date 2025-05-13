@@ -19,7 +19,7 @@ public class FoodGraphTest {
         System.setOut(new PrintStream(outContent));
 
         // Create sample data for testing - this might need to be adjusted based on your actual implementation
-        foodGraph.buildGraph("Databases/Philly Food DB V2.csv");
+        foodGraph.buildGraph("data/food_dataset.csv");
     }
 
 

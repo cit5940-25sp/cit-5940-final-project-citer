@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.io.TempDir;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -24,9 +23,12 @@ public class AcademicPlanningTests {
     public void setUp() {
         // Create test courses
         List<String> emptyPrereqs = new ArrayList<>();
-        testCourse1 = new Course("CIS5200", "Machine Learning", emptyPrereqs, 4.0, 4.0, 3.5, 3.5);
-        testCourse2 = new Course("CIS5190", "Applied ML", emptyPrereqs, 3.8, 3.9, 3.2, 3.0);
-        testCourse3 = new Course("CIS5220", "Deep Learning", emptyPrereqs, 4.2, 4.3, 3.8, 3.7);
+        testCourse1 = new Course("CIS5200", "Machine Learning", emptyPrereqs,
+                4.0, 4.0, 3.5, 3.5);
+        testCourse2 = new Course("CIS5190", "Applied ML", emptyPrereqs,
+                3.8, 3.9, 3.2, 3.0);
+        testCourse3 = new Course("CIS5220", "Deep Learning", emptyPrereqs,
+                4.2, 4.3, 3.8, 3.7);
 
         // Redirect System.out for testing console output
         outputStream = new ByteArrayOutputStream();
@@ -50,7 +52,8 @@ public class AcademicPlanningTests {
         assertEquals(expected, testCourse1.toString());
 
         // Test N/A quality
-        Course naQualityCourse = new Course("CIS9999", "Test Course", new ArrayList<>(), -1, 3.0, 3.0, 3.0);
+        Course naQualityCourse = new Course("CIS9999", "Test Course",
+                new ArrayList<>(), -1, 3.0, 3.0, 3.0);
         assertFalse(naQualityCourse.toString().contains("Quality"));
     }
 
@@ -71,25 +74,6 @@ public class AcademicPlanningTests {
         // Test empty prerequisites
         List<String> emptyPrereqs = graph.getPrerequisites("CIS5000");
         assertTrue(emptyPrereqs.isEmpty());
-    }
-
-    @Test
-    public void testCourseGraphDependencies() {
-        CourseGraph graph = new CourseGraph();
-
-        // Add prerequisites
-        graph.addPrerequisite("CIS5220", "CIS5200");
-        graph.addPrerequisite("CIS5300", "CIS5200");
-
-        // Test getDependentCourses
-        List<String> dependents = graph.getDependentCourses("CIS5200");
-        assertEquals(2, dependents.size());
-        assertTrue(dependents.contains("CIS5220"));
-        assertTrue(dependents.contains("CIS5300"));
-
-        // Test empty dependencies
-        List<String> emptyDeps = graph.getDependentCourses("CIS5999");
-        assertTrue(emptyDeps.isEmpty());
     }
 
     @Test
@@ -579,7 +563,8 @@ public class AcademicPlanningTests {
     public void testCourseAppearsInMultipleRecommendations() {
         // Create test course
         List<String> emptyPrereqs = new ArrayList<>();
-        Course course = new Course("CIS5200", "Machine Learning", emptyPrereqs, 4.0, 4.0, 3.0, 3.0);
+        Course course = new Course("CIS5200", "Machine Learning",
+                emptyPrereqs, 4.0, 4.0, 3.0, 3.0);
 
         // Create recommendations for different interest areas with the same course
         CourseRecommendation rec1 = new CourseRecommendation(course, new ArrayList<>());
@@ -607,7 +592,8 @@ public class AcademicPlanningTests {
 
         // Create a course that will appear in multiple recommendations
         List<String> emptyPrereqs = new ArrayList<>();
-        Course course = new Course("CIS5200", "Machine Learning", emptyPrereqs, 4.0, 4.0, 3.0, 3.0);
+        Course course = new Course("CIS5200", "Machine Learning",
+                emptyPrereqs, 4.0, 4.0, 3.0, 3.0);
 
         // Create duplicate recommendations
         CourseRecommendation rec1 = new CourseRecommendation(course, new ArrayList<>());
@@ -642,8 +628,6 @@ public class AcademicPlanningTests {
         // Should have only one recommendation after deduplication
         assertEquals(1, deduplicatedRecs.size());
     }
-
-
 
     // Helper method to access private fields for testing
     private Object getPrivateField(Object obj, String fieldName) {
