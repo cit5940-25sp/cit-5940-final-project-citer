@@ -101,6 +101,9 @@ This is an example of a project directory for you to start working from. Please 
 
 Design pattern: 1) Command Design pattern & 2) Strategy Design pattern
 
+[📄 View UML Diagram (CITerFinal.drawio.pdf)](CITerFinal.drawio.pdf)
+
+
 
 Resources used for building the data sets:
 
