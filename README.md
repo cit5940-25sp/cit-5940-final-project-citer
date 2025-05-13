@@ -113,4 +113,4 @@ Resources used for building the data sets:
 
 3. Category and Places: (place_and_category.csv, destination_details.csv):
    Primary Source: Used the research and web scraping feature of ChatGPT to curate a list of holiday destinations tagged to a category
-                    and for each destination got the top things to see, activities to do and must try food along with costs per day.
+                    and for each destination - got the top things to see, activities to do and must try food along with costs per day.
